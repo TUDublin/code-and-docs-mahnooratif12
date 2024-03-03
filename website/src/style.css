@@ -1,0 +1,36 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, 
+table th{
+    border: 1px solid #ddd;
+    padding: 0.5em;
+}
+table.tr:nth-child(2n){
+    background-color: white ;
+}
+
+table tr:hover{
+    background-color: #ddd;
+}
+
+table th {
+    padding: 1em;
+    padding-bottom: 1em;
+    text-align:  left;
+    
+}
+.header {
+    padding: 60px;
+    text-align: left;
+    background: dodgerblue;
+    color: black;
+    font-size: 30px;
+  }
+
+.img {
+    
+}
+  

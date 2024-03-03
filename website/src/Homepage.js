@@ -2,8 +2,9 @@ function Homepage() {
     return (
         <div>    
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+                <link rel="style.css" type="style/css" href="style.css"></link>
                 <div class="container-fluid">
-                <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+                <a class="navbar-brand" href="./homepage"><img src="TUH logo.jpg" alt="TUH Logo" class="img"/> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,6 +30,10 @@ function Homepage() {
                 </div>
                 </div>
             </nav>
+            <div class="header">
+                <h1>Tallaght University Hopsital (TUH) Blood Results </h1>
+                <p></p>
+            </div>
             <footer className="Justify-content-center ">
                 <div className="text-white text-center bg-dark fixed-bottom Justify-content-center">
                     TUH BLood Results 
