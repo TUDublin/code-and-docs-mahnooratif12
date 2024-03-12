@@ -1,0 +1,21 @@
+project URLs
+
+https://blog.hubspot.com/website/etl-tools
+https://dsstream.com/data-stores-the-best-ways-to-store-data/
+https://www.kaggle.com/datasets
+References 
+Database Management Systems (DBMS) Comparison: MySQL, PostgreSQL, and more | AltexSoft
+MEAN and MERN Stacks: Full Stack JavaScript Development Explained | AltexSoft
+
+
+
+Node.JS 
+What is Node.js
+Where it is used 
+Why it is used. 
+Who are using it
+How we are going to used in our project 
+
+
+How to read and write csv file from python 
+https://webninjadeveloper.com/python/python-3-script-to-read-write-csv-files-using-csv-module-in-command-line/

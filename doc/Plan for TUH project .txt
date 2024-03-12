@@ -1,0 +1,20 @@
+Plan for TUH project: 
+
+-open source are ETL tools or Python to read csv 
+-compare mariadb to mongo db  and tell which is best and why do test scripts 
+-upload Report file on shareforlder
+-make tables on the data in pic 
+
+
+Iteration 1
+page login 
+page logout
+page admin 
+Home page 
+
+
+
+
+
+
+
