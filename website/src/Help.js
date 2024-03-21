@@ -16,7 +16,7 @@ function Help() {
                                 <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Exportdata">Export Data</a>
+                                <a class="nav-link justify-content-center " href="./Exportdata">Files</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link justify-content-center " href="./Help">Help</a>
@@ -28,7 +28,9 @@ function Help() {
                             </form>
                         </div>
                         </div>
-                    </nav>
+                </nav>
+                <h1 class="header">Help </h1>
+
         </div>
     )
 }

@@ -16,7 +16,7 @@ function Visualization() {
                                 <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Exportdata">Export Data</a>
+                                <a class="nav-link justify-content-center " href="./Exportdata">Files Data</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link justify-content-center " href="./Help">Help</a>
