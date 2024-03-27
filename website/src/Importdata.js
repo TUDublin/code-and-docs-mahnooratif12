@@ -61,19 +61,18 @@ function Importdata() {
     function handleSubmit(event) {
         event.preventDefault();
     
-        if (!selectedFile) {
-            setError('Please select a file');
+        if (!parsedData.length) {
+            setError('No data to upload');
             return;
         }
     
-        const formData = new FormData();
-        formData.append('excelFile', selectedFile);
-    
-        fetch('http://localhost:3060/upload', {
+        fetch('http://localhost:3060/upload-data', {
             method: 'POST',
-            body: formData,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(parsedData),
         })
-        
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Failed to upload data');
@@ -96,9 +95,12 @@ function Importdata() {
         });
     }
     
+    
+    
     return (
         <div>
-            <link rel='stylesheet.css' href='style.css'></link>
+            {/* <link rel='stylesheet.css' href='style.css'></link> */}
+            <script src='navbar.js' defer></script>
             
             <h1>Import Data (CSV files only)</h1>
             <form onSubmit={handleSubmit}>
