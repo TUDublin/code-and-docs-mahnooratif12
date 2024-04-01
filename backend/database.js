@@ -5,12 +5,11 @@ const USER = "root";
 const PASSWORD = "password";
 const DATABASE = "tuh";   
 
-const PATIENT_TABLE_NAME = ""; 
-// Add remaining table names 
 const CREATE_DATABASE_QUERY = "CREATE DATABASE IF NOT EXISTS "+DATABASE; 
-const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE `patient` (`id` int(11) NOT NULL," + 
-    "`lab_no` int(11) NOT NULL," +
-    "`ocs_no` int(11) NOT NULL,"+
+const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient`("+
+    "`id` int NOT NULL AUTO_INCREMENT," + 
+    "`lab_no` int NOT NULL," +
+    "`ocs_no` int NOT NULL,"+
     "`mrn` varchar(128) NOT NULL,"+
     "`forename` varchar(128) NOT NULL,"+
     "`surname` varchar(128) NOT NULL,"+
@@ -20,7 +19,8 @@ const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE `patient` (`id` int(11) NOT NUL
     "`address3` varchar(128) NOT NULL,"+
     "`phone_no` varchar(128) NOT NULL,"+
     "PRIMARY KEY (`id`))";
-const CREATE_REQUEST__TABLE_QUERY = "CREATE TABLE `request` ( `id` int(11) NOT NULL,"+
+const CREATE_REQUEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `request` ("+
+    "`id` int(11) NOT NULL AUTO_INCREMENT,"+
     "`patient_id` int(11) NOT NULL,"+
     "` clinician_id` int(11) NOT NULL,"+
     "`dateofRequest` datetime NOT NULL,"+
@@ -28,7 +28,8 @@ const CREATE_REQUEST__TABLE_QUERY = "CREATE TABLE `request` ( `id` int(11) NOT N
     "`dateofReceived` datetime NOT NULL,"+
     "`timeofReceived` timestamp NOT NULL,"+
     "PRIMARY KEY (`id`))";
-const CREATE_CLINICIAN_TABLE_QUERY ="CREATE TABLE `clinician` (`id` int(11) NOT NULL,"+
+const CREATE_CLINICIAN_TABLE_QUERY ="CREATE TABLE IF NOT EXISTS `clinician` (" +
+    "`id` int(11) NOT NULL AUTO_INCREMENT,"+
     "`clinician_code` varchar(128) NOT NULL,"+
     "`clinician_class` varchar(128) NOT NULL,"+
     "`source_code` varchar(128) NOT NULL,"+
@@ -51,6 +52,7 @@ export function connect() {
     });
     connection.connect(function(error) {
         if (error) {
+            console.log("Connect. 4a"); 
             console.error("Error connecting to MySQL database:", error);
             return;
         }
@@ -65,12 +67,36 @@ function createDatabase(connection) {
             console.error(); 
         }
         console.log("Database tuh is available now. "); 
-        executeSQLQuery(connection, CREATE_PATIENT_TABLE_QUERY); 
-        //  call execute sql query to enter rest of tables 
+        connection.end(); 
+        createTables(); 
     });
 }
 
-function executeSQLQuery(connection, query) { 
+function createTables() { 
+    var connection = mysql.createConnection({
+        host: HOST,
+        user: USER, 
+        password: PASSWORD, 
+        database: DATABASE
+    });
+    connection.connect(function(error) {
+        if (error) {
+            console.error("Error connecting to MySQL database:", error);
+            return;
+        }
+        console.log("Connected to MySQL database");
+        console.log("Creating patient table if not exists. ")
+        executeSQLQuery(connection, CREATE_PATIENT_TABLE_QUERY); 
+        console.log("Creating clinician table if not exists. ")
+        executeSQLQuery(connection, CREATE_CLINICIAN_TABLE_QUERY); 
+        console.log("Creating request table if not exists. ")
+        executeSQLQuery(connection, CREATE_REQUEST_TABLE_QUERY); 
+        //  call execute sql query to enter rest of tables 
+
+    });
+}
+
+function executeSQLQuery(connection, query) {
     connection.query(query, function(error, result){ 
         if (error) { 
             console.error(error); 
