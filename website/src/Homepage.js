@@ -16,9 +16,7 @@ function Homepage() {
                     <li class="nav-item">
                         <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-center " href="./Exportdata">Files</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link justify-content-center " href="./Help">Help</a>
                     </li>
