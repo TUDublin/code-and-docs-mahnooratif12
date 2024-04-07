@@ -52,7 +52,6 @@ export function connect() {
     });
     connection.connect(function(error) {
         if (error) {
-            console.log("Connect. 4a"); 
             console.error("Error connecting to MySQL database:", error);
             return;
         }
