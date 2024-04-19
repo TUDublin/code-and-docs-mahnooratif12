@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
-import './style.css'; // Import the CSS file
+import React, { useEffect, useState } from 'react';
 
 function Importdata() {
     const DELIMITER = ',';
     const NEWLINE = '\n';
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [parsedData, setParsedData] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const fileInput = document.getElementById('file');
@@ -29,94 +32,102 @@ function Importdata() {
         const reader = new FileReader();
 
         reader.onload = function (e) {
-            toTable(e.target.result);
+            const data = e.target.result;
+            setParsedData(parseData(data));
         };
 
         reader.readAsText(file);
     }
 
-    function toTable(text) {
-        const table = document.getElementById('table');
-
-        if (!text || !table) {
-            return;
-        }
-
-        // Clear Table
-        table.innerHTML = '';
-
-        const rows = text.split(NEWLINE);
+    function parseData(data) {
+        const rows = data.split(NEWLINE);
         const header = rows.shift().trim().split(DELIMITER);
 
-        const headerRow = document.createElement('tr');
-        header.forEach((h) => {
-            const th = document.createElement('th');
-            th.textContent = h.trim();
-            headerRow.appendChild(th);
-        });
-        table.appendChild(headerRow);
-
-        rows.forEach((r) => {
-            const cols = r.split(DELIMITER);
-            const row = document.createElement('tr');
-
-            cols.forEach((c) => {
-                const td = document.createElement('td');
-                td.textContent = c.trim();
-                row.appendChild(td);
+        const parsedData = rows.map(row => {
+            const cols = row.split(DELIMITER);
+            if (cols.length !== header.length) {
+                return null;
+            }
+            const rowData = {};
+            header.forEach((h, index) => {
+                rowData[h.trim()] = cols[index].trim();
             });
-            table.appendChild(row);
-        });
+            return rowData;
+        }).filter(row => row !== null);
+
+        return parsedData;
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+    
+        if (!parsedData.length) {
+            setError('No data to upload');
+            return;
+        }
+    
+        fetch('http://localhost:3060/upload-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(parsedData),
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Failed to upload data');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (data.error) {
+                setError(data.error);
+            } else {
+                console.log('Data uploaded successfully:', data);
+                setError('');
+                // Optionally, perform any additional actions after successful upload
+            }
+        })
+        .catch((error) => {
+            console.error('Error uploading data:', error);
+            setError('Error uploading data: ' + error.message);
+            // Optionally, handle the error and provide feedback to the user
+        });
+    }
+    
+    
+    
     return (
         <div>
-            <title>Import Data</title>
-            <body>
-                <div>
-                    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-                        <div class="container-fluid">
-                        <a class="navbar-brand" href="./homepage"><img src="TUH logo.jpg" alt="TUH Logo" class="img"/> </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-center" id="mynavbar">
-                            <ul class="navbar-nav me-auto justify-content-center">
-                            <li class="nav-item justify-content-center ">
-                                <a class="nav-link justify-content-center " href="./Visualization">Visualization</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Exportdata">Export Data</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Help">Help</a>
-                            </li>
-                            </ul>
-                            <form class="d-flex">
-                            <input class="form-control me-2" type="text" placeholder="Search"/>
-                            <button class="btn btn-primary" type="button">Search</button>
-                            </form>
-                        </div>
-                        </div>
-                    </nav>
-                </div>    
-            </body>
-            <h1 class="header">Import Data (CSV files only)</h1>
-            {/* File Picker */}
-            <input type="file" id="file"></input>
-
-            {/* Display CSV file */}
-            <table id="table"></table>
-            <footer className="Justify-content-center ">
-         <div className="text-white text-center bg-dark fixed-bottom Justify-content-center">
-             TUH BLood Results 
-         </div>
-     </footer>
+            {/* <link rel='stylesheet.css' href='style.css'></link> */}
+            <script src='navbar.js' defer></script>
+            
+            <h1>Import Data (CSV files only)</h1>
+            <form onSubmit={handleSubmit}>
+                <input type="file" id="file" onChange={(e) => setSelectedFile(e.target.files[0])} />
+                <button type="submit">Upload</button>
+            </form>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <table>
+                <thead>
+                    <tr>
+                        {Object.keys(parsedData[0] || {}).map(header => (
+                            <th key={header}>{header}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {parsedData.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {Object.values(row).map((value, columnIndex) => (
+                                <td key={`${rowIndex}-${columnIndex}`}>{value}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-      
+        
     );
 }
 

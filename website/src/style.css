@@ -31,6 +31,22 @@ table th {
   }
 
 .img {
+    width: auto;
+    padding-left: 50%;
     
 }
   
+.data-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.data-table th {
+    background-color: #f2f2f2;
+}

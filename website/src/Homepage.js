@@ -4,7 +4,7 @@ function Homepage() {
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
                 <link rel="style.css" type="style/css" href="style.css"></link>
                 <div class="container-fluid">
-                <a class="navbar-brand" href="./homepage"><img src="TUH logo.jpg" alt="TUH Logo" class="img"/> </a>
+                <a class="navbar-brand" href="./homepage"><img src="./TUH logo.jpg" alt="TUH Logo" class="img"/> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -16,9 +16,7 @@ function Homepage() {
                     <li class="nav-item">
                         <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-center " href="./Exportdata">Export Data</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link justify-content-center " href="./Help">Help</a>
                     </li>
