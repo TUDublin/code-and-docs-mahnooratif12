@@ -16,20 +16,31 @@ function Help() {
                                 <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link justify-content-center " href="./Exportdata">Files</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link justify-content-center " href="./Help">Help</a>
                             </li>
                             </ul>
-                            <form class="d-flex">
-                            <input class="form-control me-2" type="text" placeholder="Search"/>
-                            <button class="btn btn-primary" type="button">Search</button>
-                            </form>
                         </div>
                         </div>
                 </nav>
-                <h1 class="header">Help </h1>
+                <div className="container card col d-flex col-sm-6">
+                    <div className="card-body">
+                        <h1 class="card-title justfiy-center bg-secondary text-white text-center">Help </h1>
+                        <p className="card-text text-center justfiy-center">Content Information</p>
+                        <a className="card-text text-center justfiy-center text-black">
+                            <li>Doctor Information: ..........</li>
+                            <li>Lab Nurse: .........</li>
+                            <li>Patient Information: ..........</li>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <footer className="Justify-content-center ">
+                        <div className="text-white text-center bg-dark fixed-bottom Justify-content-center">
+                            TUH BLood Results 
+                        </div>
+                    </footer>
+                </div>
 
         </div>
     )

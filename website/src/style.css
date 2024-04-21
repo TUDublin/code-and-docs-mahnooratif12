@@ -50,3 +50,69 @@ table th {
 .data-table th {
     background-color: #f2f2f2;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this for the desired height */
+  }
+  
+  .card {
+    /* Your card styles */
+  }
+  #searchResults {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .result {
+    margin-bottom: 5px;
+  }
+/* Basic styles for the button */
+.search-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  /* Hover styles */
+  .search-button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+  }
+  
+  /* Icon styles */
+  .search-button svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  /* Center the icon vertically */
+  .search-button svg line {
+    transform: translateY(1px); /* Adjust as needed */
+  }
+  
+  /* Remove default button styles */
+  .search-button:focus {
+    outline: none;
+  }
+  
+  /* If you want to remove button border on click */
+  .search-button:active {
+    border-color: transparent;
+  }
+    

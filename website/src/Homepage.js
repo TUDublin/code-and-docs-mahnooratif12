@@ -21,10 +21,16 @@ function Homepage() {
                         <a class="nav-link justify-content-center " href="./Help">Help</a>
                     </li>
                     </ul>
-                    <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search"/>
-                    <button class="btn btn-primary" type="button">Search</button>
-                    </form>
+                    <input type="text" id="searchInput" placeholder="Search..."></input>
+                    <button class="search-button bg-primary">
+                           <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        Search
+                        </button>
+
+                    
+
+
                 </div>
                 </div>
             </nav>
