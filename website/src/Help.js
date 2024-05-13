@@ -19,6 +19,12 @@ function Help() {
                                 <a class="nav-link justify-content-center " href="./Help">Help</a>
                             </li>
                             </ul>
+                            <input type="text" id="searchInput" placeholder="Search..."></input>
+                    <button class="search-button bg-primary">
+                           <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        Search
+                        </button>
                         </div>
                         </div>
                 </nav>
