@@ -96,6 +96,7 @@ function createTables() {
         console.log("Creating request table if not exists. ")
         executeSQLQuery(connection, CREATE_REQUEST_TABLE_QUERY); 
         //  call execute sql query to enter rest of tables 
+        executeSQLQuery(connection, CREATE_Reference_Test_Result_TABLE_QUERY); 
 
     });
 }
