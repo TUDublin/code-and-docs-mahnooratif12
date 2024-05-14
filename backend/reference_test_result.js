@@ -34,7 +34,7 @@ function insert() {
             console.log('Connected to MySQL');
             for (var i=0; i<data.length; i++) { 
                 console.log(data[i]); 
-                var query = getRequestInsertQuery(data[i]); 
+                var query = getReference_Test_ResultInsetQuery(data[i]); 
                 console.log(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
@@ -52,7 +52,7 @@ function insert() {
 
 
 
-function getRequestInsetQuery(dataRecord) {
+function getReference_Test_ResultInsetQuery(dataRecord) {
     return 'INSERT INTO  reference_test_result' + 
     '(Request_Test_Result_ID, Test_Request_ID, Test_ID, Request_Test_Resultcol)' +
     `VALUES (${dataRecord['idRequest_Test_Result_ID']}, ${dataRecord['Test_Request_ID']}, '${dataRecord['Test_ID']}', '${dataRecord['Request_Test_Resultcol']}')`; 
