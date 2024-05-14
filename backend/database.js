@@ -35,7 +35,12 @@ const CREATE_CLINICIAN_TABLE_QUERY ="CREATE TABLE IF NOT EXISTS `clinician` (" +
     "`source_code` varchar(128) NOT NULL,"+
     "`source_class` varchar(128) NOT NULL,"+
     "PRIMARY KEY (`id`))";
-// const CREATE_Reference_Test_Result_TABLE_QUERY = "CREATE TABLE 'tuh'. 'reference_test_result'( `Request_Test_Result_ID` INT NOT NULL,`Test_Request_ID` INT NOT NULL,`Test_ID` INT NOT NULL,`Request_Test_Resultcol` VARCHAR(45) NOT NULL,PRIMARY KEY (`Request_Test_Result_ID`))";
+const CREATE_Reference_Test_Result_TABLE_QUERY = "CREATE TABLE 'tuh'. 'reference_test_result'( "+
+    "`Request_Test_Result_ID` INT NOT NULL,"+
+    "`Test_Request_ID` INT NOT NULL,"+
+    "`Test_ID` INT NOT NULL,"+
+    "`Request_Test_Resultcol` VARCHAR(45) NOT NULL,"+
+    "PRIMARY KEY (`Request_Test_Result_ID`))";
 // const CREATE_RESULT_QUERY = "CREATE TABLE `tuh`.`result` (`Result_ID` INT NOT NULL,`Reference_Test_Result_ID` INT NOT NULL,`Test_Result` VARCHAR(255) NOT NULL,PRIMARY KEY (`Result_ID`));"; 
 // const CREATE_TEST_TABLE_QUERY = "CREATE TABLE 'tuh'.'test'( `Test_ID` INT NOT NULL,`Test_Req_ID` INT NOT NULL,`TCL` VARCHAR(45) NOT NULL,`TFC` VARCHAR(45) NOT NULL,`testnames` VARCHAR(45) NOT NULL,`unit` VARCHAR(45) NOT NULL,PRIMARY KEY (`Test_ID`))";
 // const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` (`Reference_Id` INT NOT NULL,`Test_Id` INT NOT NULL,`age_ref` INT NOT NULL,`ref_range` DECIMAL NOT NULL,`flaglimitlow` DECIMAL NOT NULL,`flaglimithigh` DECIMAL NOT NULL,`Alertlimitlow` DECIMAL NOT NULL,`Alertlimithigh` DECIMAL NOT NULL,`Referencecol` VARCHAR(45) NOT NULL,PRIMARY KEY (`Reference_Id`))";
