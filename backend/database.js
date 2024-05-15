@@ -116,17 +116,6 @@ function createTables() {
             return;
         }
         console.log("Connected to MySQL database");
-<<<<<<< HEAD
-        console.log("Creating patient table if not exists. ")
-        executeSQLQuery(connection, CREATE_PATIENT_TABLE_QUERY); 
-        console.log("Creating clinician table if not exists. ")
-        executeSQLQuery(connection, CREATE_CLINICIAN_TABLE_QUERY); 
-        console.log("Creating request table if not exists. ")
-        executeSQLQuery(connection, CREATE_REQUEST_TABLE_QUERY); 
-        //  call execute sql query to enter rest of tables 
-        executeSQLQuery(connection, CREATE_Reference_Test_Result_TABLE_QUERY); 
-
-=======
         console.log("Creating patient table if not exists.");
         executeSQLQuery(connection, CREATE_PATIENT_TABLE_QUERY);
         console.log("Creating clinician table if not exists.");
@@ -144,7 +133,6 @@ function createTables() {
         console.log("Creating Age Result Table if not exit");
         executeSQLQuery(connection, CREATE_AGE_RESULT_TABLE_QUERY);
         // Add more table creation queries here if needed
->>>>>>> c89ace1 (added tables)
     });
 }
 
