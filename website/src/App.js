@@ -5,7 +5,7 @@ import Signup from "./Signup";
 import Homepage from "./Homepage";
 import Importdata from "./Importdata";
 import Help from "./Help";
-import Visualization from './Visualization';;
+// import Visualization from './Visualization';;
 
 function App() {
    return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/Homepage" element={<Homepage />}></Route>
-          <Route path="/Visualization" element={<Visualization />}></Route>
+          {/* <Route path="/Visualization" element={<Visualization />}></Route> */}
           <Route path="/Importdata" element={<Importdata />}></Route>
           <Route path="/Help" element={<Help />}></Route>
         </Routes>
