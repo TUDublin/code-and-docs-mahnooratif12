@@ -6,6 +6,12 @@ const PASSWORD = "password";
 const DATABASE = "tuh";
 
 const CREATE_DATABASE_QUERY = "CREATE DATABASE IF NOT EXISTS " + DATABASE;
+const CREATE_TABLE_age_table_name = "CREATE TABLE IF NOT EXISTS 'age' (" +
+    "age_id INT NOT NULL AUTO_INCREMENT"+
+    // Add other columns as needed
+    "PRIMARY KEY (age_id))"
+;
+
 const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient`(" +
     "`id` int NOT NULL AUTO_INCREMENT," +
     "`lab_no` int NOT NULL," +
@@ -66,7 +72,13 @@ const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
     "`Alertlimithigh` DECIMAL NOT NULL,"+
     "`Referencecol` VARCHAR(45) NOT NULL,"+
     "PRIMARY KEY (`Reference_Id`))";
-// const CREATE_Age_Reference_Test_TABLE_QUERY = "CREATE TABLE Age_Reference_Test()";
+const CREATE_AGE_REFERENCE_TEST_TABLE_QUERY = "CREATE TABLE `tuh`.`Age_reference` ( "+
+    "`id` INT NOT NULL AUTO_INCREMENT, "+
+    "`age_id` INT NOT NULL, "+
+    "`reference_id` INT NOT NULL, "+
+    "PRIMARY KEY (`id`))";
+    // "FOREIGN KEY (`age_id`) REFERENCES `age_table_name`(`age_id`)
+    // "FOREIGN KEY (`reference_id`) REFERENCES `reference_table_name`(`reference_id`))";
 
 const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age_result` ( "+
     "`Age_result_id` INT NOT NULL,"+
@@ -132,6 +144,8 @@ function createTables() {
         executeSQLQuery(connection, CREATE_REFERENCE_TABLE_QUERY);
         console.log("Creating Age Result Table if not exit");
         executeSQLQuery(connection, CREATE_AGE_RESULT_TABLE_QUERY);
+        console.log("Creating Age Reference Test table if not exist"); 
+        executeSQLQuery(connection,CREATE_AGE_REFERENCE_TEST_TABLE_QUERY);
         // Add more table creation queries here if needed
     });
 }
@@ -149,5 +163,8 @@ function executeSQLQuery(connection, query) {
         }
         // console.log("Query executed successfully:", query);
     });
+
+
 }
 
+// Uploading Data in backend !!
