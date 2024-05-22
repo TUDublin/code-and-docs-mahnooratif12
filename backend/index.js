@@ -7,20 +7,12 @@ database.connect();
 
 const app = express(); 
 
+app.get('/upload', (req, res) => {
+    console.log("Get request received. "); 
+});
+
 app.post('/upload', (req, res) => {
-    const file = req.file;
-    if (!file) {
-        return res.status(400).json({ error: 'No file uploaded' });
-    }
-
-    // Save the filename to the database
-    const filename = file.filename;
-
-    // parse data from exel file 
-    // write sql queries to insert data to database 
-    
-    console.log('Filename saved to database successfully');
-    res.json({ success: true });
+    console.log("Post request received. "); 
 });
 
 app.listen(PORT, () => {
