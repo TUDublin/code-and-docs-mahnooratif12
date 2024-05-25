@@ -7,12 +7,13 @@ database.connect();
 
 const app = express(); 
 
-app.get('/upload', (req, res) => {
+app.get('/', (req, res) => {
     console.log("Get request received. "); 
 });
 
-app.post('/upload', (req, res) => {
+app.post('/data', (req, res) => {
     console.log("Post request received. "); 
+    console.log(req.body);
 });
 
 app.listen(PORT, () => {
