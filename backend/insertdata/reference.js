@@ -36,8 +36,8 @@ export function insert(data) {
 
 function getPatientInsertQuery(dataRecord) { 
     return `INSERT INTO patient `+
-    `(lab_no, ocs_no, mrn, forename, surname, dob, gender, age, address1, address2, address3, phone_no) `+ 
-    `VALUES (${dataRecord['lab_no']}, ${dataRecord['ocs_no']}, '${dataRecord['mrn']}', '${dataRecord['forename']}', '${dataRecord['surname']}', `+
-    `'${dataRecord['dob']}', '${dataRecord['gender']}', '${dataRecord['age']}','${dataRecord['address1']}', '${dataRecord['address2']}', '${dataRecord['address3']}', ${dataRecord['phone_no']})`; 
+    `(Test_Id, age_ref, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh, Referencecol,) `+ 
+    `VALUES (${dataRecord['Test_Id']}, ${dataRecord['age_ref']}, '${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
+    `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}', '${dataRecord['Referencecol']}',)`; 
 }
 

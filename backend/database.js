@@ -20,6 +20,8 @@ const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient`(" +
     "`forename` varchar(128) NOT NULL," +
     "`surname` varchar(128) NOT NULL," +
     "`dob` varchar(128) NOT NULL," +
+    "`gender` varchar(128) NOT NULL,"+
+    "`age` int NOT NULL,"+
     "`address1` varchar(128) NOT NULL," +
     "`address2` varchar(128) NOT NULL," +
     "`address3` varchar(128) NOT NULL," +
@@ -42,7 +44,7 @@ const CREATE_CLINICIAN_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `clinician` (" 
     "`source_class` varchar(128) NOT NULL," +
     "PRIMARY KEY (`id`))";
 const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `reference_test_result`( " +
-    "`Request_Test_Result_ID` INT NOT NULL," +
+    "`Request_Test_Result_ID` INT NOT NULL, AUTO_INCREMENT" +
     "`Test_Request_ID` INT NOT NULL," +
     "`Test_ID` INT NOT NULL," +
     "`Request_Test_Resultcol` VARCHAR(45) NOT NULL," +
@@ -62,7 +64,7 @@ const CREATE_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `test`(" +
     "PRIMARY KEY (`Test_ID`))";
 
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
-    "`Reference_Id` INT NOT NULL,"+
+    "`Reference_Id` INT NOT NULL, AUTO_INCREMENT"+
     "`Test_Id` INT NOT NULL,"+
     "`age_ref` INT NOT NULL,"+
     "`ref_range` DECIMAL NOT NULL,"+
