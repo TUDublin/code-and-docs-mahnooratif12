@@ -19,7 +19,7 @@ export function insert(data) {
             console.log('Connected to MySQL');
             for (var i=0; i<data.length; i++) { 
                 console.log(data[i]); 
-                var query = getPatientInsertQuery(data[i]); 
+                var query = getReference_test_resultInsertQuery(data[i]); 
                 console.log(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
@@ -34,7 +34,7 @@ export function insert(data) {
     });
 }
 
-function getPatientInsertQuery(dataRecord) { 
+function getReference_test_resultInsertQuery(dataRecord) { 
     return `INSERT INTO patient `+
     `(Test_Request_ID, Test_ID, Request_Test_Resultcol) `+ 
     `VALUES (${dataRecord['Test_Request_ID']}, ${dataRecord['Test_ID']}, '${dataRecord['Request_Test_Resultcol']}',)`; 
