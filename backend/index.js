@@ -51,6 +51,9 @@ app.post('/upload/patient', (req, res) => {
             "phone_no": 0
         }
     ]; 
+
+
+    
     console.log("Post request received. ");
     console.log("Data: "+data);  
     patient.insert(data); 
@@ -63,6 +66,75 @@ app.post('/upload/patient', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html'})
     res.end(html)
 });
+
+
+app.post('/upload/clincian', (req, res) => {
+    var data = [
+        { 
+            "clinician_code ": "BORG", 
+            "clinician_class": "CPAT", 
+            "source_code": "OS", 
+            "source_class": "WD", 
+            
+        }, 
+        { 
+            "clinician_code": "WALCA", 
+            "clinicain_class": "UNSP", 
+            "source_code": "JO", 
+            "source_class": "WD", 
+            }
+    ]; 
+
+
+    
+    console.log("Post request received. ");
+    console.log("Data: "+data);  
+    patient.insert(data); 
+    const html = `
+    <html>
+        <body>
+            <h1>Clinicain data entered successfully. </h1>
+        </body>
+    </html>`
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(html)
+});
+
+
+
+app.post('/upload/request', (req, res) => {
+    var data = [
+        { 
+            "dateofRequest ": "12/01/2024", 
+            "timeofRequest": "11:17", 
+            "dateofReceived": "12/01/2024", 
+            "timeofReceived": "12:18", 
+            
+        }, 
+        { 
+            "dateofRequest ": "13/01/2024", 
+            "timeofRequest": "12:15", 
+            "dateofReceived": "13/01/2024", 
+            "timeofReceived": "13:18", 
+        }
+    ]; 
+
+
+    
+    console.log("Post request received. ");
+    console.log("Data: "+data);  
+    patient.insert(data); 
+    const html = `
+    <html>
+        <body>
+            <h1>Request data entered successfully. </h1>
+        </body>
+    </html>`
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(html)
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
