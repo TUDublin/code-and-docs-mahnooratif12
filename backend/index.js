@@ -68,7 +68,7 @@ app.post('/upload/patient', (req, res) => {
 });
 
 
-app.post('/upload/clincian', (req, res) => {
+app.post('/upload/clinician', (req, res) => {
     var data = [
         { 
             "clinician_code ": "BORG", 
