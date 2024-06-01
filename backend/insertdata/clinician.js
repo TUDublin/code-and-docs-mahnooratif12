@@ -35,8 +35,8 @@ export function insert(data) {
 }
 
 function getClinicianInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
+    return `INSERT INTO clinician `+
     `(clinician_code, clinician_class, source_code, source_class) `+ 
-    `VALUES (${dataRecord['clinician_code']}, ${dataRecord['clinician_class']}, '${dataRecord['source_code']}', '${dataRecord['source_class']}',)`; 
+    `VALUES ('${dataRecord['clinician_code']}', '${dataRecord['clinician_class']}', '${dataRecord['source_code']}', '${dataRecord['source_class']}')`; 
 }
 

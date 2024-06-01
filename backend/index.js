@@ -1,6 +1,7 @@
 import express from 'express'; 
 import * as database from './database.js'; 
 import * as patient from './insertdata/patient.js'; 
+import * as clinician from './insertdata/clinician.js'
 
 const PORT = 3061;  
 
@@ -71,25 +72,25 @@ app.post('/upload/patient', (req, res) => {
 app.post('/upload/clinician', (req, res) => {
     var data = [
         { 
-            "clinician_code ": "BORG", 
+            "clinician_code": "BORG", 
             "clinician_class": "CPAT", 
             "source_code": "OS", 
-            "source_class": "WD", 
+            "source_class": "WD" 
             
         }, 
         { 
             "clinician_code": "WALCA", 
             "clinicain_class": "UNSP", 
             "source_code": "JO", 
-            "source_class": "WD", 
-            }
+            "source_class": "WD" 
+        }
     ]; 
 
 
     
     console.log("Post request received. ");
     console.log("Data: "+data);  
-    patient.insert(data); 
+    clinician.insert(data); 
     const html = `
     <html>
         <body>
