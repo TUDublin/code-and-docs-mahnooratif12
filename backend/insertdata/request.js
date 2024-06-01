@@ -35,9 +35,9 @@ export function insert(data) {
 }
 
 function getRequestInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
+    return `INSERT INTO request `+
     `(patient_id, clinician_id , dateofRequest, timeofRequest, dateofReceived, timeofReceived) `+ 
     `VALUES (${dataRecord['patient_id']}, ${dataRecord['clinician_id']}, '${dataRecord['dateofRequest']}', '${dataRecord['timeofRequest']}', '${dataRecord['dateofReceived']}', `+
-    `'${dataRecord['timeofReceived']}',)`; 
+    `'${dataRecord['timeofReceived']}')`; 
 }
 
