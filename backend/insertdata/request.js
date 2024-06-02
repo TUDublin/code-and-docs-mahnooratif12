@@ -40,4 +40,3 @@ function getRequestInsertQuery(dataRecord) {
     `VALUES (${dataRecord['patient_id']}, ${dataRecord['clinician_id']}, '${dataRecord['dateofRequest']}', '${dataRecord['timeofRequest']}', '${dataRecord['dateofReceived']}', `+
     `'${dataRecord['timeofReceived']}')`; 
 }
-

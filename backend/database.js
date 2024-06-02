@@ -31,10 +31,10 @@ const CREATE_REQUEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `request` (" +
     "`id` int(11) NOT NULL AUTO_INCREMENT," +
     "`patient_id` int(11) NOT NULL," +
     "`clinician_id` int(11) NOT NULL," +
-    "`dateofRequest` datetime NOT NULL," +
-    "`timeofRequest` timestamp NOT NULL," +
-    "`dateofReceived` datetime NOT NULL," +
-    "`timeofReceived` timestamp NOT NULL," +
+    "`dateofRequest` varchar(128) NOT NULL," +
+    "`timeofRequest` varchar(128) NOT NULL," +
+    "`dateofReceived` varchar(128) NOT NULL," +
+    "`timeofReceived` varchar(128) NULL," +
     "PRIMARY KEY (`id`))";
 const CREATE_CLINICIAN_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `clinician` (" +
     "`id` int(11) NOT NULL AUTO_INCREMENT," +
