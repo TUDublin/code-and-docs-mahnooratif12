@@ -36,8 +36,8 @@ export function insert(data) {
 
 function getTestInsertQuery(dataRecord) { 
     return `INSERT INTO test `+
-    `(Test_Req_ID, TCL, TFC, testnames, unit,) `+ 
+    `(Test_Req_ID, TCL, TFC, testnames, unit) `+ 
     `VALUES (${dataRecord['Test_Req_ID']}, '${dataRecord['TCL']}', '${dataRecord['TFC']}', '${dataRecord['testnames']}', `+
-    `'${dataRecord['unit']}',)`; 
+    `'${dataRecord['unit']}')`; 
 }
 

@@ -147,10 +147,91 @@ app.post('/upload/test', (req, res) => {
             "TCL":"RP",
             "TFC":"Na", 
             "testnames":"Sodium", 
-            "unit":"mmol/L",
+            "unit":"mmol/L"
             
             
-        }
+        },
+        { 
+            "Test_Req_ID": 2,
+            "TCL":"RP",
+            "TFC":"K", 
+            "testnames":"Potassium", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 2,
+            "TCL":"RP",
+            "TFC":"Urea", 
+            "testnames":"Urea", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 2,
+            "TCL":"RP",
+            "TFC":"Crea", 
+            "testnames":"Creatinine", 
+            "unit":"umol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 3,
+            "TCL":"CRP",
+            "TFC":"CRP", 
+            "testnames":"C Reactive Protein", 
+            "unit":"mg/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 4,
+            "TCL":"FLP",
+            "TFC":"Chol", 
+            "testnames":"Cholesterol", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 4,
+            "TCL":"FLP",
+            "TFC":"TRIG", 
+            "testnames":"Triglyceride", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 4,
+            "TCL":"FLP",
+            "TFC":"LDL", 
+            "testnames":"Low Density Lipoprotein - Cholesterol", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 4,
+            "TCL":"FLP",
+            "TFC":"HDL", 
+            "testnames":"High Density Lipoprotein - Cholesterol", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 4,
+            "TCL":"FLP",
+            "TFC":"nonH", 
+            "testnames":"nonHigh Density Lipoprotein - Cholesterol", 
+            "unit":"mmol/L"
+            
+            
+        },  { 
+            "Test_Req_ID": 5,
+            "TCL":"TFT",
+            "TFC":"FT4", 
+            "testnames":"Free thyroxine", 
+            "unit":"pmol/L"
+            
+            
+        },
     ]; 
 
 
