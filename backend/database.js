@@ -43,6 +43,16 @@ const CREATE_CLINICIAN_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `clinician` (" 
     "`source_code` varchar(128) NOT NULL," +
     "`source_class` varchar(128) NOT NULL," +
     "PRIMARY KEY (`id`))";
+
+const CREATE_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `test`(" +
+    "`Test_ID` INT NOT NULL AUTO_INCREMENT," +
+    "`Test_Req_ID` INT NOT NULL," +
+    "`TCL` VARCHAR(45) NOT NULL," +
+    "`TFC` VARCHAR(45) NOT NULL," +
+    "`testnames` VARCHAR(45) NOT NULL," +
+    "`unit` VARCHAR(45) NOT NULL," +
+    "PRIMARY KEY (`Test_ID`))";
+    
 const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `reference_test_result`( " +
     "`Request_Test_Result_ID` INT NOT NULL AUTO_INCREMENT," +
     "`Test_Request_ID` INT NOT NULL," +
@@ -54,14 +64,7 @@ const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
     "`Reference_Test_Result_ID` INT NOT NULL," +
     "`Test_Result` VARCHAR(255) NOT NULL," +
     "PRIMARY KEY (`Result_ID`))";
-const CREATE_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `test`(" +
-    "`Test_ID` INT NOT NULL AUTO_INCREMENT," +
-    "`Test_Req_ID` INT NOT NULL," +
-    "`TCL` VARCHAR(45) NOT NULL," +
-    "`TFC` VARCHAR(45) NOT NULL," +
-    "`testnames` VARCHAR(45) NOT NULL," +
-    "`unit` VARCHAR(45) NOT NULL," +
-    "PRIMARY KEY (`Test_ID`))";
+
 
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
     "`Reference_Id` INT NOT NULL AUTO_INCREMENT,"+

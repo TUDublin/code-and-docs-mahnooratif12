@@ -35,9 +35,9 @@ export function insert(data) {
 }
 
 function getTestInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
+    return `INSERT INTO test `+
     `(Test_Req_ID, TCL, TFC, testnames, unit,) `+ 
-    `VALUES (${dataRecord['Test_Req_ID']}, ${dataRecord['TCL']}, '${dataRecord['TFC']}', '${dataRecord['testnames']}', '${dataRecord['flaglimithigh']}', `+
+    `VALUES (${dataRecord['Test_Req_ID']}, '${dataRecord['TCL']}', '${dataRecord['TFC']}', '${dataRecord['testnames']}', `+
     `'${dataRecord['unit']}',)`; 
 }
 
