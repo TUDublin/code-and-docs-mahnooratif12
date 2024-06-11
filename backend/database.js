@@ -52,7 +52,7 @@ const CREATE_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `test`(" +
     "`testnames` VARCHAR(45) NOT NULL," +
     "`unit` VARCHAR(45) NOT NULL," +
     "PRIMARY KEY (`Test_ID`))";
-    
+
 const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `reference_test_result`( " +
     "`Request_Test_Result_ID` INT NOT NULL AUTO_INCREMENT," +
     "`Test_Request_ID` INT NOT NULL," +
@@ -69,13 +69,13 @@ const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
     "`Reference_Id` INT NOT NULL AUTO_INCREMENT,"+
     "`Test_Id` INT NOT NULL,"+
-    "`age_ref` INT NOT NULL,"+
-    "`ref_range` DECIMAL NOT NULL,"+
+    "`age_ref` VARCHAR(128) NOT NULL,"+
+    "`ref_range` VARCHAR(128) NOT NULL,"+
     "`flaglimitlow` DECIMAL NOT NULL,"+
     "`flaglimithigh` DECIMAL NOT NULL,"+
     "`Alertlimitlow` DECIMAL NOT NULL,"+
     "`Alertlimithigh` DECIMAL NOT NULL,"+
-    "`Referencecol` VARCHAR(45) NOT NULL,"+
+
     "PRIMARY KEY (`Reference_Id`))";
 const CREATE_AGE_REFERENCE_TEST_TABLE_QUERY = "CREATE TABLE `tuh`.`Age_reference` ( "+
     "`id` INT NOT NULL AUTO_INCREMENT, "+

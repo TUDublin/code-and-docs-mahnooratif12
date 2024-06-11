@@ -35,9 +35,9 @@ export function insert(data) {
 }
 
 function getReferenceInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
-    `(Test_Id, age_ref, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh, Referencecol,) `+ 
-    `VALUES (${dataRecord['Test_Id']}, ${dataRecord['age_ref']}, '${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
-    `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}', '${dataRecord['Referencecol']}',)`; 
+    return `INSERT INTO reference `+
+    `(Test_Id, age_ref, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
+    `VALUES (${dataRecord['Test_Id']}, '${dataRecord['age_ref']}', '${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
+    `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}')`; 
 }
 
