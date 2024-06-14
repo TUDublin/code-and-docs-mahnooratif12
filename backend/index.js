@@ -1310,6 +1310,83 @@ app.post('/upload/reference', (req, res) => {
             "Alertlimithigh":2.2,
             
             
+        },
+        { 
+            "Test_Id": 23, 
+            "age_ref": "Yes" , 
+            "ref_range": "0.9 - 1.9", 
+            "flaglimitlow": 0.9,
+            "flaglimithigh":1.9,
+            "Alertlimitlow":0.9,
+            "Alertlimithigh":1.9,
+            
+            
+        }, { 
+            "Test_Id": 23, 
+            "age_ref": "Yes" , 
+            "ref_range": "0.8 - 1.4", 
+            "flaglimitlow": 0.8,
+            "flaglimithigh":1.4,
+            "Alertlimitlow":0.5,
+            "Alertlimithigh":3.0,
+            
+            
+        }, 
+        
+        //Magnesium
+
+        { 
+            "Test_Id": 24, 
+            "age_ref": "No" , 
+            "ref_range": "0.1 - 1.00", 
+            "flaglimitlow": 0.7,
+            "flaglimithigh": 1,
+            "Alertlimitlow": 0.5,
+            "Alertlimithigh":1.2,
+            
+            
+        }, 
+        
+        // Vitamin D
+        
+        { 
+            "Test_Id": 25, 
+            "age_ref": "No" , 
+            "ref_range": " <30 - deficient \n 30-50 insufficient \n >50 normal ", 
+            "flaglimitlow": 0,
+            "flaglimithigh":0,
+            "Alertlimitlow": 0,
+            "Alertlimithigh":0,
+            
+            
+        },  
+        
+        // Troponin
+        
+        { 
+            "Test_Id": 26, 
+            "age_ref": "No" , 
+            "ref_range": " <14 ", 
+            "flaglimitlow": 0,
+            "flaglimithigh": 14,
+            "Alertlimitlow": 0,
+            "Alertlimithigh": 50,
+            
+            
+        },
+
+        //NT pro BNP
+
+        { 
+            "Test_Id": 27, 
+            "age_ref": "No" , 
+            "ref_range": " <300 ", 
+            "flaglimitlow": 0,
+            "flaglimithigh": 300,
+            "Alertlimitlow": 10,
+            "Alertlimithigh": 3000,
+            
+            
         }
     ]; 
 
