@@ -6,6 +6,7 @@ import * as request from './insertdata/request.js';
 import * as test from './insertdata/Test.js';
 import * as reference from './insertdata/reference.js';
 import * as age from './insertdata/age.js';
+import * as age_reference from './insertdata/age_reference.js';
 
 const PORT = 3061;  
 
@@ -135,6 +136,33 @@ app.post('/upload/request', (req, res) => {
     <html>
         <body>
             <h1>Request data entered successfully. </h1>
+        </body>
+    </html>`
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(html)
+});
+
+app.post('/upload/age_reference', (req, res) => {
+    var data = [
+        { 
+           "age_id": 1,
+           "reference_id": 2
+        },
+        { 
+            "age_id": 2,
+            "reference_id": 3
+        }
+    ]; 
+
+
+    
+    console.log("Post request received. ");
+    console.log("Data: "+data);  
+    age_reference.insert(data); 
+    const html = `
+    <html>
+        <body>
+            <h1>Age reference data entered successfully. </h1>
         </body>
     </html>`
     res.writeHead(200, {'Content-Type': 'text/html'})
@@ -2122,10 +2150,6 @@ app.post('/upload/age', (req, res) => {
             
         }
     ]; 
-
-
-    
-
 
     
     console.log("Post request received. ");
