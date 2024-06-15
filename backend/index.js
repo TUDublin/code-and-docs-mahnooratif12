@@ -5,6 +5,7 @@ import * as clinician from './insertdata/clinician.js';
 import * as request from './insertdata/request.js';
 import * as test from './insertdata/Test.js';
 import * as reference from './insertdata/reference.js';
+import * as age from './insertdata/age.js';
 
 const PORT = 3061;  
 
@@ -1392,6 +1393,9 @@ app.post('/upload/reference', (req, res) => {
 
 
     
+
+
+    
     console.log("Post request received. ");
     console.log("Data: "+data);  
     reference.insert(data); 
@@ -1399,6 +1403,738 @@ app.post('/upload/reference', (req, res) => {
     <html>
         <body>
             <h1>Reference data entered successfully. </h1>
+        </body>
+    </html>`
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(html)
+});
+
+
+app.post('/upload/age', (req, res) => {
+    var data = [
+        {  
+            // Sodium
+            "Reference_id": 1,
+            "Age": "No",
+            "ref": "0"
+            
+            
+        },
+        {  
+            // Potassium
+            "Reference_id": 2,
+            "Age": "Yes",
+            "ref": "4 days"
+            
+            
+        },
+        {  
+             
+            "Reference_id": 2,
+            "Age": "Yes",
+            "ref": "2y"
+            
+            
+        },{  
+            
+            "Reference_id": 2,
+            "Age": "Yes",
+            "ref": "12y"
+            
+            
+        },{  
+             
+            "Reference_id": 2,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+
+             //Urea
+        {  
+            
+            "Reference_id": 3,
+            "Age": "Yes",
+            "ref": "4 days"
+            
+            
+        },{  
+            
+            "Reference_id": 3,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 3,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //Crea
+        
+        {  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "1mth"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "11 mths"
+            
+            
+        },
+        {  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "2y"
+            
+            
+        },
+        {  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "4y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "6y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "8y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "10y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "12y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "F 200y"
+            
+            
+        },{  
+            
+            "Reference_id": 4,
+            "Age": "Yes",
+            "ref": "M 200y"
+            
+            
+        },
+        
+        //CRP
+        
+        {  
+            
+            "Reference_id": 5,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+
+        //Chol
+
+        {  
+            
+            "Reference_id": 6,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //Trig
+        
+        {  
+            
+            "Reference_id": 7,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },{  
+            
+            "Reference_id": 7,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //LDL
+        
+        {  
+            
+            "Reference_id": 8,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //HDL
+        
+        
+        {  
+            
+            "Reference_id": 9,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },{  
+            
+            "Reference_id": 9,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //nonH
+        
+        {  
+            
+            "Reference_id": 10,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //FT4
+        
+        {  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "5 d"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "2 m"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "11 m"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "5y"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        
+        //TSH
+        
+        {  
+            
+            "Reference_id": 12,
+            "Age": "Yes",
+            "ref": "5d "
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "2m"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "11m"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "5y"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "10y"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "19y"
+            
+            
+        },{  
+            
+            "Reference_id": 11,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //PROT
+        
+        {  
+            
+            "Reference_id": 12,
+            "Age": "Yes",
+            "ref": "4d"
+            
+            
+        },{  
+            
+            "Reference_id": 12,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        
+        //ALB
+        
+        {  
+            
+            "Reference_id": 13,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 13,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //TBIL
+        
+        {  
+            
+            "Reference_id": 14,
+            "Age": "Yes",
+            "ref": "2d"
+            
+            
+        },{  
+            
+            "Reference_id": 14,
+            "Age": "Yes",
+            "ref": "5d"
+            
+            
+        },{  
+            
+            "Reference_id": 14,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //ALKP
+        
+        {  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "1d"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "5d"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "6m"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "1y"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "3y"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "6y"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "12y"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "M 17"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "F 17"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "M 200"
+            
+            
+        },{  
+            
+            "Reference_id": 15,
+            "Age": "Yes",
+            "ref": "F 200"
+            
+            
+        },
+        
+        //ALT
+        
+        
+        {  
+            
+            "Reference_id": 16,
+            "Age": "Yes",
+            "ref": "2y"
+            
+            
+        },{  
+            
+            "Reference_id": 16,
+            "Age": "Yes",
+            "ref": "M 200"
+            
+            
+        },{  
+            
+            "Reference_id": 16,
+            "Age": "Yes",
+            "ref": "F 200"
+            
+            
+        },
+        
+        //GGT
+        
+        {  
+            
+            "Reference_id": 17,
+            "Age": "Yes",
+            "ref": "4d"
+            
+            
+        },{  
+            
+            "Reference_id": 17,
+            "Age": "Yes",
+            "ref": "11m"
+            
+            
+        },{  
+            
+            "Reference_id": 17,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 17,
+            "Age": "Yes",
+            "ref": "M 200y"
+            
+            
+        },{  
+            
+            "Reference_id": 17,
+            "Age": "Yes",
+            "ref": "F 200y"
+            
+            
+        },
+        
+        //PROT
+        
+        {  
+            
+            "Reference_id": 18,
+            "Age": "Yes",
+            "ref": "4d"
+            
+            
+        },{  
+            
+            "Reference_id": 18,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //ALB
+        
+        {  
+            
+            "Reference_id": 19,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 19,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        
+        //Ca
+        
+        {  
+            
+            "Reference_id": 20,
+            "Age": "Yes",
+            "ref": "4d"
+            
+            
+        },{  
+            
+            "Reference_id": 20,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 20,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        
+        //CCA
+        
+        {  
+            
+            "Reference_id": 21,
+            "Age": "Yes",
+            "ref": "4d"
+            
+            
+        },{  
+            
+            "Reference_id": 21,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 21,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        
+        //Phos
+        
+        {  
+            
+            "Reference_id": 22,
+            "Age": "Yes",
+            "ref": "12d"
+            
+            
+        },{  
+            
+            "Reference_id": 22,
+            "Age": "Yes",
+            "ref": "1.5y"
+            
+            
+        },{  
+            
+            "Reference_id": 22,
+            "Age": "Yes",
+            "ref": "14y"
+            
+            
+        },{  
+            
+            "Reference_id": 22,
+            "Age": "Yes",
+            "ref": "200y"
+            
+            
+        },
+        
+        //MG
+        
+        {  
+            
+            "Reference_id": 23,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        
+        //VID2
+        
+        {  
+            
+            "Reference_id": 24,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },{  
+            
+            "Reference_id": 24,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },{  
+            
+            "Reference_id": 24,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        
+        //TNHS
+        
+        {  
+            
+            "Reference_id": 25,
+            "Age": "No",
+            "ref": ""
+            
+            
+        },
+        
+        //NT pro BNP
+        
+        {  
+            
+            "Reference_id": 26,
+            "Age": "No",
+            "ref": ""
+            
+            
+        }
+    ]; 
+
+
+    
+
+
+    
+    console.log("Post request received. ");
+    console.log("Data: "+data);  
+    age.insert(data); 
+    const html = `
+    <html>
+        <body>
+            <h1>Age data entered successfully. </h1>
         </body>
     </html>`
     res.writeHead(200, {'Content-Type': 'text/html'})

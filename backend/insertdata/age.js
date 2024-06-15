@@ -19,7 +19,7 @@ export function insert(data) {
             console.log('Connected to MySQL');
             for (var i=0; i<data.length; i++) { 
                 console.log(data[i]); 
-                var query = getReferenceInsertQuery(data[i]); 
+                var query = getageInsertQuery(data[i]); 
                 console.log(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
@@ -34,10 +34,9 @@ export function insert(data) {
     });
 }
 
-function getReferenceInsertQuery(dataRecord) { 
-    return `INSERT INTO Reference `+
-    `(Test_Id, age_ref, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
-    `VALUES (${dataRecord['Test_Id']}, '${dataRecord['age_ref']}', '${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
-    `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}')`; 
+function getageInsertQuery(dataRecord) { 
+    return `INSERT INTO age `+
+    `(Reference_id, Age, ref) `+ 
+    `VALUES (${dataRecord['Reference_id']}, '${dataRecord['Age']}', '${dataRecord['ref']}')`; 
 }
 

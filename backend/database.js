@@ -85,10 +85,10 @@ const CREATE_AGE_REFERENCE_TEST_TABLE_QUERY = "CREATE TABLE `tuh`.`Age_reference
     // "FOREIGN KEY (`age_id`) REFERENCES `age_table_name`(`age_id`)
     // "FOREIGN KEY (`reference_id`) REFERENCES `reference_table_name`(`reference_id`))";
 
-const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age_result` ( "+
-    "`Age_result_id` INT NOT NULL,"+
+const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age` ( "+
+    "`Age_result_id` INT NOT NULL AUTO_INCREMENT,"+
     "`Reference_id` INT NOT NULL,"+
-    "`Age` INT NOT NULL,"+
+    "`Age` VARCHAR(45) NOT NULL,"+
     "`ref` VARCHAR(45) NOT NULL,"+
     "PRIMARY KEY (`Age_result_id`))";
 
