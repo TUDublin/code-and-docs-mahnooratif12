@@ -27,6 +27,7 @@ app.get('/upload', (req, res) => {
 });
 
 app.post('/upload/patient', (req, res) => {
+    /* 
     var data = [
         { 
             "lab_no": 1, 
@@ -57,20 +58,20 @@ app.post('/upload/patient', (req, res) => {
             "phone_no": 0
         }
     ]; 
-
-
-    
-    console.log("Post request received. ");
-    console.log("Data: "+data);  
-    patient.insert(data); 
-    const html = `
-    <html>
-        <body>
-            <h1>Patient data entered successfully. </h1>
-        </body>
-    </html>`
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.end(html)
+    */
+    req.on('data', function(data) { 
+        console.log("Post request received. ");
+        console.log("Data: "+data);  
+        patient.insert(JSON.parse(data)); 
+        const html = `
+        <html>
+            <body>
+                <h1>Patient data entered successfully. </h1>
+            </body>
+        </html>`
+        res.writeHead(200, {'Content-Type': 'text/html'})
+        res.end(html)
+    }); 
 });
 
 

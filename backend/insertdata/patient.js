@@ -11,6 +11,8 @@ export function insert(data) {
 
     console.log("data: "+data); 
 
+
+    
     //Establish MySQL connection
     connection.connect(function(err) {
         if (err) 
