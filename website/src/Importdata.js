@@ -59,21 +59,43 @@ function Importdata() {
     }
 
     function handleSubmit(event) {
+
+        console.log("Upload data. "); 
+
         event.preventDefault();
+
+        var data = [
+            { 
+                        "lab_no": 1, 
+                        "ocs_no": 1, 
+                        "mrn": "abc123", 
+                        "forename": "a", 
+                        "surname": "b", 
+                        "dob": "1/1/2000", 
+                        "gender": "Male",
+                        "age": "34",
+                        "address1": "c", 
+                        "address2": "d", 
+                        "address3": "e", 
+                        "phone_no": 0
+                    }
+            ]; 
     
-        if (!parsedData.length) {
+        if (!data.length) {
             setError('No data to upload');
             return;
         }
     
-        fetch('http://localhost:3060/upload-data', {
+        fetch('http://localhost:3061/upload/patient', {
             method: 'POST',
+            mode: 'no-cors', 
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json',                
             },
-            body: JSON.stringify(parsedData),
+            body: JSON.stringify(data),
         })
         .then((response) => {
+            console.log(response.data); 
             if (!response.ok) {
                 throw new Error('Failed to upload data');
             }

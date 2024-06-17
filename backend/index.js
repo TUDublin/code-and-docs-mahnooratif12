@@ -1,4 +1,5 @@
 import express from 'express'; 
+import cors from 'cors';
 import * as database from './database.js'; 
 import * as patient from './insertdata/patient.js'; 
 import * as clinician from './insertdata/clinician.js';
@@ -22,8 +23,9 @@ app.get('/upload', (req, res) => {
             <h1>Hello world</h1>
         </body>
     </html>`
-    res.writeHead(200, {'Content-Type': 'text/html'})
-    res.end(html)
+    res.set('Access-Control-Allow-Origin', '*');
+    res.writeHead(200, {'Content-Type': 'text/html'}); 
+    res.end(html); 
 });
 
 app.post('/upload/patient', (req, res) => {
@@ -63,14 +65,17 @@ app.post('/upload/patient', (req, res) => {
         console.log("Post request received. ");
         console.log("Data: "+data);  
         patient.insert(JSON.parse(data)); 
-        const html = `
-        <html>
-            <body>
-                <h1>Patient data entered successfully. </h1>
-            </body>
-        </html>`
-        res.writeHead(200, {'Content-Type': 'text/html'})
-        res.end(html)
+        // const html = `
+        // <html>
+        //     <body>
+        //         <h1>Patient data entered successfully. </h1>
+        //     </body>
+        // </html>`
+        res.set('Access-Control-Allow-Origin', '*');
+        res.writeHead(200); 
+
+            // , {'Content-Type': 'text/html'})
+        // res.end(html)
     }); 
 });
 
@@ -2166,7 +2171,7 @@ app.post('/upload/age', (req, res) => {
     res.end(html)
 });
 
-
+app.use(cors()); 
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
