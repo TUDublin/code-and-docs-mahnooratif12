@@ -1,21 +1,22 @@
 function Validation(values) {
-    let errors = {};
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+  let error = {};
+  const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Updated regex to include special characters
+  const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
   
-    if (!values.email) {
-      errors.email = "Email should not be empty";
-    } else if (!emailPattern.test(values.email)) {
-      errors.email = "Email is invalid";
-    }
-  
-    if (!values.password) {
-      errors.password = "Password should not be empty";
-    } else if (!passwordPattern.test(values.password)) {
-      errors.password = "Password must contain at least 8 characters, including uppercase, lowercase, and a number";
-    }
-  
-    return errors;
+  if (values.email === "") {
+      error.email = "Email should not be empty";
+  } else if (!email_pattern.test(values.email)) {
+      error.email = "Email didn't match the required pattern";
   }
-  
-  export default Validation;
+
+  if (values.password === "") {
+      error.password = "Password should not be empty";
+  } else if (!password_pattern.test(values.password)) {
+      error.password = "Password didn't match the required pattern";
+  }
+
+  return error;
+}
+
+export default Validation;

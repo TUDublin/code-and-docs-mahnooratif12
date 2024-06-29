@@ -1,53 +1,62 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Homepage() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Clear user authentication data (e.g., tokens)
+        localStorage.removeItem('userToken'); // If you are using local storage
+        // Clear any other user data as needed
+
+        // Redirect to the login page
+        navigate('/login');
+    };
+
     return (
         <div>    
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-                <link rel="style.css" type="style/css" href="style.css"></link>
-                <div class="container-fluid">
-                <a class="navbar-brand" href="./homepage"><img src="./TUH logo.jpg" alt="TUH Logo" class="img"/> </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center" id="mynavbar">
-                    <ul class="navbar-nav me-auto justify-content-center">
-                    <li class="nav-item justify-content-center ">
-                        <a class="nav-link justify-content-center " href="./Visualization">Visualization</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-center " href="./Importdata">Import Data</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link justify-content-center " href="./Help">Help</a>
-                    </li>
-                    </ul>
-                    <input type="text" id="searchInput" placeholder="Search..."></input>
-                    <button class="search-button bg-primary">
-                           <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        Search
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+                <link rel="stylesheet" type="text/css" href="style.css" />
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/homepage">
+                        <img src="./TUH logo.jpg" alt="TUH Logo" className="img" />
+                    </a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse justify-content-center" id="mynavbar">
+                        <ul className="navbar-nav me-auto justify-content-center">
+                            <li className="nav-item justify-content-center">
+                                <a className="nav-link justify-content-center" href="/visualization">Visualization</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link justify-content-center" href="/importdata">Import Data</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link justify-content-center" href="/help">Help</a>
+                            </li>
+                        </ul>
+                        <input type="text" id="searchInput" placeholder="Search..." className="form-control" />
+                        <button className="btn btn-primary ms-2">
+                            <svg className="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1.007 1.007 0 0 0-.115-.098zm-5.21 1.344a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+                            </svg>
                         </button>
-
-                    
-
-
-                </div>
+                        <button onClick={handleLogout} className="btn btn-danger ms-2">Logout</button>
+                    </div>
                 </div>
             </nav>
-            <div class="header">
-                <h1>Tallaght University Hopsital (TUH) Blood Results </h1>
+            <div className="header">
+                <h1>Tallaght University Hospital (TUH) Blood Results</h1>
                 <p></p>
             </div>
-            <footer className="Justify-content-center ">
-                <div className="text-white text-center bg-dark fixed-bottom Justify-content-center">
-                    TUH BLood Results 
+            <footer className="justify-content-center">
+                <div className="text-white text-center bg-dark fixed-bottom justify-content-center">
+                    TUH Blood Results
                 </div>
             </footer>
-            
         </div>  
-          
-    )
-  }
+    );
+ }
 
-  export default Homepage;
-
+export default Homepage;

@@ -92,6 +92,18 @@ const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age` ( "+
     "`ref` VARCHAR(45) NOT NULL,"+
     "PRIMARY KEY (`Age_result_id`))";
 
+
+//User table; 
+const CREATE_User_TABLE_QUERY = "CREATE TABLE `tuh`.`user` ( "+
+    "`User_id` INT NOT NULL AUTO_INCREMENT,"+
+    "`forename` VARCHAR(45) NOT NULL,"+
+    "`lastname` VARCHAR(45) NOT NULL,"+
+    "`user_name` VARCHAR(45) NOT NULL,"+
+    "`email` VARCHAR(45) NOT NULL,"+
+    "`password` VARCHAR(45) NOT NULL,"+
+    "PRIMARY KEY (`Age_result_id`))";
+
+
 export function connect() {
     var connection = mysql.createConnection({
         host: HOST,

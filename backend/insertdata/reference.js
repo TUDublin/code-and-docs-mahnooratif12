@@ -1,6 +1,6 @@
 import mysql from 'mysql';
 
-export function insert(data) { 
+export function insert() { 
     // Configure MySQL connection
     var connection = mysql.createConnection({
         host: 'localhost',

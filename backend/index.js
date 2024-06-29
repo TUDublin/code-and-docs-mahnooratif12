@@ -1,8 +1,9 @@
 import express from 'express'; 
 import cors from 'cors';
 import * as database from './database.js'; 
-import * as patient from './insertdata/patient.js'
-import * as clinician from './insertdata/clinician.js'
+import * as patient from './insertdata/patient.js';
+import * as clinician from './insertdata/clinician.js';
+import * as request from './insertdata/request.js';
 import * as datainserted from './datainserted.js'
 
 const PORT = 3061;  
@@ -95,6 +96,46 @@ app.post('/upload/clinician', (req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html'})
     res.end(html)
 });
+
+
+app.post('/upload/request', (req, res) => {
+    var data = [
+        { 
+            "patient_id": 2,
+            "clinician_id":22,
+            "dateofRequest": "2024-01-12", 
+            "timeofRequest": "11:17", 
+            "dateofReceived": "2024-01-12", 
+            "timeofReceived": "12:18"
+            
+        }, 
+        { 
+            "patient_id": 4,
+            "clinician_id":12,
+            "dateofRequest": "2024-01-13", 
+            "timeofRequest": "12:15", 
+            "dateofReceived": "2024-01-13", 
+            "timeofReceived": "13:18"
+        }
+    ]; 
+
+
+    
+    console.log("Post request received. ");
+    console.log("Data: "+data);  
+    request.insert(data); 
+    const html = `
+    <html>
+        <body>
+            <h1>Request data entered successfully. </h1>
+        </body>
+    </html>`
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(html)
+});
+
+
+
 
 
 console.log(data.price);
