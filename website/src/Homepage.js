@@ -20,9 +20,7 @@ function Homepage() {
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
                 <link rel="stylesheet" type="text/css" href="style.css" />
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/homepage">
-                        <img src="./TUH logo.jpg" alt="TUH Logo" className="img" />
-                    </a>
+                    <a className="navbar-brand" href="/homepage">Tallaght University Hospital - Database</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -50,7 +48,9 @@ function Homepage() {
             </nav>
             <div className="header">
                 <h1>Tallaght University Hospital (TUH) Blood Results</h1>
-                <p></p>
+                <p>
+                     <img src="/TUH%20logo.jpg" alt="TUH pic" className="img-fluid" style={{ width: '40px', height: '40px' }} />
+                </p>
             </div>
             <footer className="justify-content-center">
                 <div className="text-white text-center bg-dark fixed-bottom justify-content-center">
