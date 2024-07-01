@@ -10,8 +10,10 @@ function Homepage() {
         // Clear any other user data as needed
 
         // Redirect to the login page
-        navigate('/login');
+        navigate('/');
     };
+
+  
 
     return (
         <div>    
@@ -36,7 +38,7 @@ function Homepage() {
                                 <a className="nav-link justify-content-center" href="/help">Help</a>
                             </li>
                         </ul>
-                        <input type="text" id="searchInput" placeholder="Search..." className="form-control" />
+                        <input type="text" id="searchInput" placeholder="Search..." className="form-control form-control-sm w-auto" />
                         <button className="btn btn-primary ms-2">
                             <svg className="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fillRule="evenodd" d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1.007 1.007 0 0 0-.115-.098zm-5.21 1.344a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
@@ -57,6 +59,6 @@ function Homepage() {
             </footer>
         </div>  
     );
- }
+}
 
 export default Homepage;
