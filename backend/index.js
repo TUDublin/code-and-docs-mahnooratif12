@@ -138,7 +138,7 @@ const app = express();
 
 
 
-console.log(data.price);
+// console.log(data.price);
 
 app.use(cors()); 
 
