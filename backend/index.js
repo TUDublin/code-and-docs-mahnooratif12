@@ -4,7 +4,8 @@ import * as database from './database.js';
 import * as patient from './insertdata/patient.js';
 import * as clinician from './insertdata/clinician.js';
 import * as request from './insertdata/request.js';
-import * as datainserted from './datainserted.js'
+import * as datainserted from './datainserted.js';
+import * as user from './insertdata/user.js';
 
 const PORT = 3061;  
 
@@ -135,10 +136,40 @@ const app = express();
 // });
 
 
+app.post('/upload/user', (req, res) => {
+        
+        var data = [
+            { 
+                "forename": "Mahnoor", 
+                "lastname": "Atif", 
+                "user_name": "mahnur.123", 
+                "email": "abc@gmail.com", 
+                "password": "Abc@1234" 
+                
+            }
+        ]; 
+        
+        req.on('data', function(data) { 
+            console.log("Post request received. ");
+            console.log("Data: "+data);  
+            user.insert(JSON.parse(data)); 
+            const html = `
+            <html>
+                <body>
+                    <h1>User data entered successfully. </h1>
+                </body>
+            </html>`
+            res.set('Access-Control-Allow-Origin', '*');
+            res.writeHead(200); 
+    
+             //{'Content-Type': 'text/html'})
+            // res.end(html)
+        }); 
+    });
+    
 
 
-
-// console.log(data.price);
+//console.log(data.price);
 
 app.use(cors()); 
 

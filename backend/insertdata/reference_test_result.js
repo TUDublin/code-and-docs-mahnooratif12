@@ -35,7 +35,7 @@ export function insert(data) {
 }
 
 function getReference_test_resultInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
+    return `INSERT INTO Reference_Test_Result `+
     `(Test_Request_ID, Test_ID, Request_Test_Resultcol) `+ 
     `VALUES (${dataRecord['Test_Request_ID']}, ${dataRecord['Test_ID']}, '${dataRecord['Request_Test_Resultcol']}',)`; 
 }

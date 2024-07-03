@@ -100,9 +100,8 @@ const CREATE_User_TABLE_QUERY = "CREATE TABLE `tuh`.`user` ( "+
     "`lastname` VARCHAR(45) NOT NULL,"+
     "`user_name` VARCHAR(45) NOT NULL,"+
     "`email` VARCHAR(45) NOT NULL,"+
-    "`password` VARCHAR(45) NOT NULL,"+
-    "PRIMARY KEY (`Age_result_id`))";
-
+    "`password` VARCHAR(45) NOT NULL," + 
+    "PRIMARY KEY (`User_id`))";
 
 export function connect() {
     var connection = mysql.createConnection({
@@ -163,6 +162,8 @@ function createTables() {
         executeSQLQuery(connection, CREATE_AGE_RESULT_TABLE_QUERY);
         console.log("Creating Age Reference Test table if not exist"); 
         executeSQLQuery(connection,CREATE_AGE_REFERENCE_TEST_TABLE_QUERY);
+        console.log("Creating User table if not exist");
+        executeSQLQuery(connection, CREATE_User_TABLE_QUERY);
         // Add more table creation queries here if needed
     });
 }
