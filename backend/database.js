@@ -67,30 +67,19 @@ const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
 
 
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
-    "`Reference_Id` INT NOT NULL AUTO_INCREMENT,"+
-    "`Test_Id` INT NOT NULL,"+
-    "`age_ref` VARCHAR(128) NOT NULL,"+
+    "`id` INT NOT NULL AUTO_INCREMENT,"+
     "`ref_range` VARCHAR(128) NOT NULL,"+
     "`flaglimitlow` DECIMAL NOT NULL,"+
     "`flaglimithigh` DECIMAL NOT NULL,"+
     "`Alertlimitlow` DECIMAL NOT NULL,"+
     "`Alertlimithigh` DECIMAL NOT NULL,"+
-
-    "PRIMARY KEY (`Reference_Id`))";
-const CREATE_AGE_REFERENCE_TEST_TABLE_QUERY = "CREATE TABLE `tuh`.`Age_reference` ( "+
-    "`id` INT NOT NULL AUTO_INCREMENT, "+
-    "`age_id` INT NOT NULL, "+
-    "`reference_id` INT NOT NULL, "+
     "PRIMARY KEY (`id`))";
-    // "FOREIGN KEY (`age_id`) REFERENCES `age_table_name`(`age_id`)
-    // "FOREIGN KEY (`reference_id`) REFERENCES `reference_table_name`(`reference_id`))";
 
-const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age` ( "+
-    "`Age_result_id` INT NOT NULL AUTO_INCREMENT,"+
-    "`Reference_id` INT NOT NULL,"+
-    "`Age` VARCHAR(45) NOT NULL,"+
-    "`ref` VARCHAR(45) NOT NULL,"+
-    "PRIMARY KEY (`Age_result_id`))";
+    const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age` ( "+
+    "`id` INT NOT NULL AUTO_INCREMENT,"+
+    "`value` VARCHAR(45) NOT NULL,"+
+    "`period` INT NOT NULL,"+
+    "PRIMARY KEY (`id`))";
 
 
 //User table; 
@@ -160,8 +149,6 @@ function createTables() {
         executeSQLQuery(connection, CREATE_REFERENCE_TABLE_QUERY);
         console.log("Creating Age Result Table if not exit");
         executeSQLQuery(connection, CREATE_AGE_RESULT_TABLE_QUERY);
-        console.log("Creating Age Reference Test table if not exist"); 
-        executeSQLQuery(connection,CREATE_AGE_REFERENCE_TEST_TABLE_QUERY);
         console.log("Creating User table if not exist");
         executeSQLQuery(connection, CREATE_User_TABLE_QUERY);
         // Add more table creation queries here if needed

@@ -1,6 +1,11 @@
 import mysql from 'mysql';
 
 export function insert() { 
+
+    var refernceData = [
+        {"ref_range": "3.7-5.0", "flaglimitlow": 3.7, "flaglimithigh":5.0, "Alertlimitlow":3.0, "Alertlimithigh":5.3}
+    ]; 
+
     // Configure MySQL connection
     var connection = mysql.createConnection({
         host: 'localhost',
@@ -9,7 +14,7 @@ export function insert() {
         database: 'tuh'
     }); 
 
-    console.log("data: "+data); 
+    console.log("refernceData: "+refernceData); 
 
     //Establish MySQL connection
     connection.connect(function(err) {
@@ -17,9 +22,9 @@ export function insert() {
             throw err
         else {
             console.log('Connected to MySQL');
-            for (var i=0; i<data.length; i++) { 
-                console.log(data[i]); 
-                var query = getReferenceInsertQuery(data[i]); 
+            for (var i=0; i<refernceData.length; i++) { 
+                console.log(refernceData[i]); 
+                var query = getReferenceInsertQuery(refernceData[i]); 
                 console.log(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
@@ -35,9 +40,9 @@ export function insert() {
 }
 
 function getReferenceInsertQuery(dataRecord) { 
-    return `INSERT INTO Reference `+
-    `(Test_Id, age_ref, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
-    `VALUES (${dataRecord['Test_Id']}, '${dataRecord['age_ref']}', '${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
+    return `INSERT INTO reference `+
+    `(ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
+    `VALUES ('${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
     `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}')`; 
 }
 
