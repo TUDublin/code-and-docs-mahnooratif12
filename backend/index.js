@@ -15,7 +15,7 @@ database.connect();
 const app = express(); 
 
 age.insert(); 
-reference.insert(); 
+// reference.insert(); 
 
 
 // app.post('/upload/patient', (req, res) => {

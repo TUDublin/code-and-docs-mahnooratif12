@@ -76,7 +76,7 @@ const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
     "PRIMARY KEY (`id`))";
 
     const CREATE_AGE_RESULT_TABLE_QUERY = "CREATE TABLE `tuh`.`age` ( "+
-    "`id` INT NOT NULL AUTO_INCREMENT,"+
+    "`id` INT NOT NULL,"+
     "`value` VARCHAR(45) NOT NULL,"+
     "`period` INT NOT NULL,"+
     "PRIMARY KEY (`id`))";
