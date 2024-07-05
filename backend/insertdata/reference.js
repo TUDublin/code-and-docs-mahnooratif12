@@ -125,9 +125,9 @@ export function insert() {
 }
 
 function getReferenceInsertQuery(dataRecord) { 
-    return `INSERT INTO reference `+
-    `(ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
-    `VALUES ('${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
+    return `INSERT IGNORE INTO reference `+
+    `(id, ref_range, flaglimitlow, flaglimithigh, Alertlimitlow, Alertlimithigh) `+ 
+    `VALUES (${dataRecord['id']},'${dataRecord['ref_range']}', '${dataRecord['flaglimitlow']}', '${dataRecord['flaglimithigh']}', `+
     `'${dataRecord['Alertlimitlow']}', '${dataRecord['Alertlimithigh']}')`; 
 }
 

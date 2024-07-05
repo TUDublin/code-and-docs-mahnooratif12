@@ -67,7 +67,7 @@ const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
 
 
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
-    "`id` INT NOT NULL AUTO_INCREMENT,"+
+    "`id` INT NOT NULL,"+
     "`ref_range` VARCHAR(128) NOT NULL,"+
     "`flaglimitlow` DECIMAL NOT NULL,"+
     "`flaglimithigh` DECIMAL NOT NULL,"+
