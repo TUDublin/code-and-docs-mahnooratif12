@@ -48,10 +48,10 @@ const CREATE_PATIENT_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient_tes
     "`id` INT NOT NULL," +
     "`age_id` INT NOT NULL," +
     "`reference_id` INT NOT NULL," +
-    "`age_reference` BOOLEAN NOT NULL" +
+    "`age_reference` BOOLEAN NOT NULL," +
     "`TCL` VARCHAR(45) NOT NULL," +
     "`TFC` VARCHAR(45) NOT NULL," +
-    "`test_names` VARCHAR(45) NOT NULL," +
+    "`test_name` VARCHAR(45) NOT NULL," +
     "`unit` VARCHAR(45) NOT NULL," +
     "PRIMARY KEY (`id`))";
 

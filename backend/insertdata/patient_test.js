@@ -116,7 +116,7 @@ export function insert(data) {
 
 function getTestInsertQuery(dataRecord) { 
     return `INSERT INTO patient_test `+
-    `(id, age_id,reference_id, age_reference,TCL,TFC, testnames, unit) `+ 
+    `(id, age_id,reference_id, age_reference,TCL,TFC, test_name, unit) `+ 
     `VALUES (${dataRecord['id']}, ${dataRecord['age_id']}, ${dataRecord['reference_id']}, ${dataRecord['age_reference']},'${dataRecord['TCL']}', '${dataRecord['TFC']}', '${dataRecord['test_names']}', `+
     `'${dataRecord['unit']}')`; 
 }
