@@ -4,9 +4,9 @@ import * as database from './database.js';
 import * as patient from './insertdata/patient.js';
 import * as clinician from './insertdata/clinician.js';
 import * as request from './insertdata/request.js';
-import * as datainserted from './datainserted.js'
 import * as age from './insertdata/age.js'
 import * as reference from './insertdata/reference.js'
+import * as patient_test from './insertdata/patient_test.js'
 
 const PORT = 3061;  
 
@@ -15,7 +15,8 @@ database.connect();
 const app = express(); 
 
 age.insert(); 
-// reference.insert(); 
+reference.insert(); 
+patient_test.insert(); 
 
 
 // app.post('/upload/patient', (req, res) => {

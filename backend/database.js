@@ -44,14 +44,16 @@ const CREATE_CLINICIAN_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `clinician` (" 
     "`source_class` varchar(128) NOT NULL," +
     "PRIMARY KEY (`id`))";
 
-const CREATE_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `test`(" +
-    "`Test_ID` INT NOT NULL AUTO_INCREMENT," +
-    "`Test_Req_ID` INT NOT NULL," +
+const CREATE_PATIENT_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient_test`(" +
+    "`id` INT NOT NULL," +
+    "`age_id` INT NOT NULL," +
+    "`reference_id` INT NOT NULL," +
+    "`age_reference` BOOLEAN NOT NULL" +
     "`TCL` VARCHAR(45) NOT NULL," +
     "`TFC` VARCHAR(45) NOT NULL," +
-    "`testnames` VARCHAR(45) NOT NULL," +
+    "`test_names` VARCHAR(45) NOT NULL," +
     "`unit` VARCHAR(45) NOT NULL," +
-    "PRIMARY KEY (`Test_ID`))";
+    "PRIMARY KEY (`id`))";
 
 const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `reference_test_result`( " +
     "`Request_Test_Result_ID` INT NOT NULL AUTO_INCREMENT," +
@@ -143,8 +145,8 @@ function createTables() {
         executeSQLQuery(connection, CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY);
         console.log("Creating Result Table if not exit");
         executeSQLQuery(connection, CREATE_RESULT_TABLE_QUERY);
-        console.log("Creating Test Table if not exit");
-        executeSQLQuery(connection, CREATE_TEST_TABLE_QUERY);
+        console.log("Creating PATIENT_TEST Table if not exit");
+        executeSQLQuery(connection, CREATE_PATIENT_TEST_TABLE_QUERY);
         console.log("Creating Reference Table if not exit");
         executeSQLQuery(connection, CREATE_REFERENCE_TABLE_QUERY);
         console.log("Creating Age Result Table if not exit");

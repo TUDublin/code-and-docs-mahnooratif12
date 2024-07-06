@@ -3,7 +3,7 @@ import mysql from 'mysql';
 export function insert() { 
 
     var refernceData = [
-        {"id": 1," ref_range": "3.7-5.0", "flaglimitlow": 3.7, "flaglimithigh":5.0, "Alertlimitlow":3.0, "Alertlimithigh":5.3},
+        {"id": 1,"ref_range": "135-145","flaglimitlow": 135,"flaglimithigh":145,"Alertlimitlow":128,"Alertlimithigh":149}, 
         { "id": 2,"ref_range": "3.7 - 5.0","flaglimitlow": 3.7,"flaglimithigh": 5.0,"Alertlimitlow": 3.0,"Alertlimithigh": 5.3},
         {"id": 3, "ref_range": "4.1 - 5.3","flaglimitlow": 4.1,"flaglimithigh":5.3,"Alertlimitlow":3.0,"Alertlimithigh":5.3}, 
         {"id": 4,"ref_range": "3.4 - 5.0","flaglimitlow": 3.4,"flaglimithigh":5.0,"Alertlimitlow":3.0,"Alertlimithigh":5.3},
@@ -22,7 +22,6 @@ export function insert() {
         {"id": 17,"ref_range": "40 - 68","flaglimitlow": 40,"flaglimithigh":68,"Alertlimitlow":0,"Alertlimithigh":100}, 
         {"id": 18,"ref_range": "59 - 104","flaglimitlow": 59,"flaglimithigh":104,"Alertlimitlow":0,"Alertlimithigh":200}, 
         {"id": 19,"ref_range": "45 - 85","flaglimitlow": 45,"flaglimithigh":84,"Alertlimitlow":0,"Alertlimithigh":200},
-        {"id": 20,"ref_range": "135-145","flaglimitlow": 135,"flaglimithigh":145,"Alertlimitlow":128,"Alertlimithigh":149}, 
         {"id": 21,"ref_range": "0 - 5","flaglimitlow": 0,"flaglimithigh":5,"Alertlimitlow":0,"Alertlimithigh":300}, 
         {"id": 22,"ref_range": "< 5","flaglimitlow": 0,"flaglimithigh":5,"Alertlimitlow":2.0,"Alertlimithigh":8.0}, 
         {"id": 23,"ref_range": "<1.7 (fasting)","flaglimitlow": 0,"flaglimithigh":1.7,"Alertlimitlow":0.0,"Alertlimithigh":8.0}, 
