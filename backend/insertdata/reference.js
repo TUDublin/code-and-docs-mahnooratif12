@@ -81,7 +81,7 @@ export function insert() {
         {"id": 78,"ref_range": "1.2 - 2.2","flaglimitlow": 1.2,"flaglimithigh":2.2,"Alertlimithigh":2.2},
         {"id": 79,"ref_range": "0.9 - 1.9","flaglimitlow": 0.9,"flaglimithigh":1.9,"Alertlimitlow":0.9,"Alertlimithigh":1.9}, 
         {"id": 80,"ref_range": "0.8 - 1.4", "flaglimitlow": 0.8,"flaglimithigh":1.4,"Alertlimitlow":0.5,"Alertlimithigh":3.0}, 
-        {"id": 81,"ref_range": "0.1 - 1.00", "flaglimitlow": 0.7,"flaglimithigh": 1,"Alertlimitlow": 0.5,"Alertlimithigh":1.2},
+        {"id": 81,"ref_range": "0.7 - 1.00", "flaglimitlow": 0.7,"flaglimithigh": 1,"Alertlimitlow": 0.5,"Alertlimithigh":1.2},
         {"id": 82,"ref_range": " <30 - deficient \n 30-50 insufficient \n >50 normal ", "flaglimitlow": 0,"flaglimithigh":0,"Alertlimitlow": 0,"Alertlimithigh":0},
         {"id": 83,"ref_range": " <14 ","flaglimitlow": 0,"flaglimithigh": 14,"Alertlimitlow": 0,"Alertlimithigh": 50},
         {"id": 84,"ref_range": " <300 ", "flaglimitlow": 0,"flaglimithigh": 300,"Alertlimitlow": 10,"Alertlimithigh": 3000}
