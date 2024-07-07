@@ -18,23 +18,37 @@ age.insert();
 reference.insert(); 
 patient_test.insert(); 
 
+function getStringValue(str) { 
+    if (str) { 
+        return str; 
+    }
+    return ""; 
+}
+
+function getIntValue(num) { 
+    if (isNaN(parseInt(num))) { 
+        return 0; 
+    }
+    return parseInt(num); 
+}
+
 function parsePatient(dataRecord) { 
 
     console.log("Parse patient data: ["+JSON.stringify(dataRecord)+"]"); 
 
     var patientRecord = {}; 
-    patientRecord['lab_no'] = dataRecord['lab_no']; 
-    patientRecord['ocs_no'] = dataRecord['ocs_no']; 
-    patientRecord['mrn'] = dataRecord['mrn']; 
-    patientRecord['forename'] = ""; // dataRecord['forename']; 
-    patientRecord['surname'] = ""; // dataRecord['surname']; 
-    patientRecord['dob'] = dataRecord['dob']; 
-    patientRecord['gender'] = dataRecord['gender']; 
-    patientRecord['age'] = dataRecord['age']; 
-    patientRecord['address1'] = dataRecord['address1']; 
-    patientRecord['address2'] = dataRecord['address2']; 
-    patientRecord['address3'] = dataRecord['address3']; 
-    patientRecord['phone_no'] = dataRecord['phone_no']; 
+    patientRecord['lab_no'] = getStringValue(dataRecord['lab_no']); 
+    patientRecord['ocs_no'] = getStringValue(dataRecord['ocs_no']); 
+    patientRecord['mrn'] = getStringValue(dataRecord['mrn']); 
+    patientRecord['forename'] = getStringValue(dataRecord['forename']); 
+    patientRecord['surname'] = getStringValue(dataRecord['surname']); 
+    patientRecord['dob'] = getStringValue(dataRecord['dob']); 
+    patientRecord['gender'] = getStringValue(dataRecord['gender']); 
+    patientRecord['age'] = getIntValue(dataRecord['age']); 
+    patientRecord['address1'] = getStringValue(dataRecord['address1']); 
+    patientRecord['address2'] = getStringValue(dataRecord['address2']); 
+    patientRecord['address3'] = getStringValue(dataRecord['address3']); 
+    patientRecord['phone_no'] = getStringValue(dataRecord['phone_no']); 
 
     console.log("Patient: "+JSON.stringify(patientRecord)); 
 
