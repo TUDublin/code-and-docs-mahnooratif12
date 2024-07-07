@@ -38,9 +38,29 @@ function parsePatient(dataRecord) {
 
     console.log("Patient: "+JSON.stringify(patientRecord)); 
 
-    return patientRecord; 
+    return patientRecord = {};
+
+
+   
+
 }
 
+
+function parseClinicain(dataRecord) {
+    
+    Console.log("Parse Clinician data: ["+JSON.stringify(dataRecord)+"]");
+
+    var clinicianRecord = {}; 
+
+    clinicianRecord['clinician_code'] = dataRecord['clinician_code']; 
+    clinicianRecord['clinician_class'] = dataRecord['clinician_class']; 
+    clinicianRecord['source_code'] = dataRecord['source_code']; 
+    clinicianRecord['source_class'] = dataRecord['source_class']; 
+
+    console.log("Clincian "+JSON.stringify(clinicianRecord)); 
+
+
+}
 
 app.post('/upload/patient', (req, res) => {
     req.on('data', function(data) { 
@@ -52,37 +72,15 @@ app.post('/upload/patient', (req, res) => {
 });
 
 
-// app.post('/upload/clinician', (req, res) => {
-//     var data = [
-//         { 
-//             "clinician_code": "BORG", 
-//             "clinician_class": "CPAT", 
-//             "source_code": "OS", 
-//             "source_class": "WD" 
-            
-//         }, 
-//         { 
-//             "clinician_code": "WALCA", 
-//             "clinicain_class": "UNSP", 
-//             "source_code": "JO", 
-//             "source_class": "WD" 
-//         }
-//     ]; 
-
-
-    
-//     console.log("Post request received. ");
-//     console.log("Data: "+data);  
-//     clinician.insert(data); 
-//     const html = `
-//     <html>
-//         <body>
-//             <h1>Clinicain data entered successfully. </h1>
-//         </body>
-//     </html>`
-//     res.writeHead(200, {'Content-Type': 'text/html'})
-//     res.end(html)
-// });
+app.post('/upload/clinician', (req, res) => {
+    req.on('data', function(data){
+             // console.log("Post request received. ");
+        console.log("Data:"+data);
+        clinician.insert(parseClinicain(JSON.parse(data)));
+        res.sendStatus(200); 
+        
+    } );
+});
 
 
 // app.post('/upload/request', (req, res) => {
