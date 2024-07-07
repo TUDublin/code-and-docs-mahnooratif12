@@ -18,13 +18,36 @@ age.insert();
 reference.insert(); 
 patient_test.insert(); 
 
+function parsePatient(dataRecord) { 
+
+    console.log("Parse patient data: ["+JSON.stringify(dataRecord)+"]"); 
+
+    var patientRecord = {}; 
+    patientRecord['lab_no'] = dataRecord['lab_no']; 
+    patientRecord['ocs_no'] = dataRecord['ocs_no']; 
+    patientRecord['mrn'] = dataRecord['mrn']; 
+    patientRecord['forename'] = ""; // dataRecord['forename']; 
+    patientRecord['surname'] = ""; // dataRecord['surname']; 
+    patientRecord['dob'] = dataRecord['dob']; 
+    patientRecord['gender'] = dataRecord['gender']; 
+    patientRecord['age'] = dataRecord['age']; 
+    patientRecord['address1'] = dataRecord['address1']; 
+    patientRecord['address2'] = dataRecord['address2']; 
+    patientRecord['address3'] = dataRecord['address3']; 
+    patientRecord['phone_no'] = dataRecord['phone_no']; 
+
+    console.log("Patient: "+JSON.stringify(patientRecord)); 
+
+    return patientRecord; 
+}
+
 
 app.post('/upload/patient', (req, res) => {
     req.on('data', function(data) { 
-        console.log("Post request received. ");
+        // console.log("Post request received. ");
         console.log("Data: "+data);  
-        patient.insert(JSON.parse(data)); 
-        res.status(201).send("Patient data entered. ");         
+        patient.insert(parsePatient(JSON.parse(data))); 
+        res.sendStatus(200); 
     }); 
 });
 

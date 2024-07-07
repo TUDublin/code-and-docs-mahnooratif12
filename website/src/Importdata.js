@@ -40,6 +40,7 @@ function Importdata() {
     }
 
     function parseData(data) {
+        console.log("1- data ["+data+"]"); 
         const rows = data.split(NEWLINE);
         const header = rows.shift().trim().split(DELIMITER);
 
@@ -61,30 +62,35 @@ function Importdata() {
     function handleSubmit(event) {
 
         console.log("Upload data. "); 
+        // console.log("Parsed data ["+JSON.stringify(parsedData)+"]"); 
 
         event.preventDefault();
 
-        var data = [
-            { 
-                        "lab_no": 1, 
-                        "ocs_no": 1, 
-                        "mrn": "abc123", 
-                        "forename": "a", 
-                        "surname": "b", 
-                        "dob": "1/1/2000", 
-                        "gender": "Male",
-                        "age": "34",
-                        "address1": "c", 
-                        "address2": "d", 
-                        "address3": "e", 
-                        "phone_no": 0
-                    }
-            ]; 
+        // var data = [
+        //     { 
+        //                 "lab_no": 1, 
+        //                 "ocs_no": 1, 
+        //                 "mrn": "abc123", 
+        //                 "forename": "a", 
+        //                 "surname": "b", 
+        //                 "dob": "1/1/2000", 
+        //                 "gender": "Male",
+        //                 "age": "34",
+        //                 "address1": "c", 
+        //                 "address2": "d", 
+        //                 "address3": "e", 
+        //                 "phone_no": 0
+        //             }
+        //     ];
+        
+        
+        var data  = parsedData[0]; 
+        console.log("Send to backend ["+JSON.stringify(data)); 
     
-        if (!data.length) {
-            setError('No data to upload');
-            return;
-        }
+        // if (!data.length) {
+        //     setError('No data to upload');
+        //     return;
+        // }
     
         fetch('http://localhost:3061/upload/patient', {
             method: 'POST',
@@ -94,13 +100,13 @@ function Importdata() {
             },
             body: JSON.stringify(data),
         })
-        .then((response) => {
-            console.log(response.data); 
-            if (!response.ok) {
-                throw new Error('Failed to upload data');
-            }
-            return response.json();
-        })
+        // .then((response) => {
+        //     // console.log(response.data); 
+        //     if (!response.ok) {
+        //         throw new Error('Failed to upload data');
+        //     }
+        //     return response.json();
+        // })
         .then((data) => {
             if (data.error) {
                 setError(data.error);
