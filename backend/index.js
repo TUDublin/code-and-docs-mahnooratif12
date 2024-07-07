@@ -58,7 +58,7 @@ function parsePatient(dataRecord) {
 
 function parseClinicain(dataRecord) {
     
-    Console.log("Parse Clinician data: ["+JSON.stringify(dataRecord)+"]");
+    console.log("Parse Clinician data: ["+JSON.stringify(dataRecord)+"]");
 
     var clinicianRecord = {}; 
 

@@ -1,6 +1,6 @@
 import mysql from 'mysql';
 
-export function insert(data) { 
+export function insert(dataRecord) { 
     // Configure MySQL connection
     var connection = mysql.createConnection({
         host: 'localhost',
@@ -9,7 +9,7 @@ export function insert(data) {
         database: 'tuh'
     }); 
 
-    console.log("data: "+data); 
+    console.log("data: "+dataRecord); 
 
     //Establish MySQL connection
     connection.connect(function(err) {
@@ -17,19 +17,16 @@ export function insert(data) {
             throw err
         else {
             console.log('Connected to MySQL');
-            for (var i=0; i<data.length; i++) { 
-                console.log(data[i]); 
-                var query = getClinicianInsertQuery(data[i]); 
-                console.log(query); 
-                connection.query(query, function(err, result){ 
-                    if(err) { 
-                        console.log(err); 
-                    } else { 
-                        console.log("Data entered! "); 
-                    }
-                }); 
-            }
-            
+            console.log(dataRecord); 
+            var query = getClinicianInsertQuery(dataRecord); 
+            console.log(query); 
+            connection.query(query, function(err, result){ 
+                if(err) { 
+                    console.log(err); 
+                } else { 
+                    console.log("Data entered! "); 
+                }
+            }); 
         }
     });
 }
