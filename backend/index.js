@@ -1,16 +1,16 @@
 import express from 'express'; 
 import cors from 'cors';
-import * as database from './database.js'; 
-import * as patient from './insertdata/patient.js';
-import * as clinician from './insertdata/clinician.js';
-import * as request from './insertdata/request.js';
-import * as age from './insertdata/age.js'
-import * as reference from './insertdata/reference.js'
-import * as patient_test from './insertdata/patient_test.js'
+import * as table from './database/createTable.js'; 
+import * as patient from './database/patient.js';
+import * as clinician from './database/clinician.js';
+import * as request from './database/request.js';
+import * as age from './database/age.js'
+import * as reference from './database/reference.js'
+import * as patient_test from './database/patient_test.js'
 
 const PORT = 3061;  
 
-database.connect(); 
+table.connect(); 
 
 const app = express(); 
 
