@@ -72,6 +72,26 @@ function parseClinicain(dataRecord) {
     return clinicianRecord; 
 }
 
+function parseRequest(dataRecord){
+
+    console.log("Parse Request data: ["+JSON.stringify(dataRecord)+"]");
+
+    var requestRecord = {};
+
+    requestRecord['patient_id'] = dataRecord['patient_id']; 
+    requestRecord['clinician_id'] = dataRecord['clinician_id']; 
+    requestRecord['dateofRequest'] = dataRecord['dateofRequest']; 
+    requestRecord['timeofRequest'] = dataRecord['timeofRequest']; 
+    requestRecord['dateofReceived'] = dataRecord['dateofReceived']; 
+    requestRecord['timeofReceived'] = dataRecord['timeofReceived']; 
+
+    console.log("Request "+JSON.stringify(requestRecord));
+    return requestRecord = {};     
+
+}
+
+
+
 app.post('/upload/patient', (req, res) => {
     req.on('data', function(data) { 
         // console.log("Post request received. ");
