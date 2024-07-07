@@ -61,6 +61,7 @@ const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `re
     "`Test_ID` INT NOT NULL," +
     "`Request_Test_Resultcol` VARCHAR(45) NOT NULL," +
     "PRIMARY KEY (`Request_Test_Result_ID`))";
+    
 const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
     "`Result_ID` INT NOT NULL AUTO_INCREMENT," +
     "`Reference_Test_Result_ID` INT NOT NULL," +

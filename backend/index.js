@@ -19,7 +19,7 @@ reference.insert();
 patient_test.insert(); 
 
 function getStringValue(str) { 
-    if (str) { 
+    if (str && typeof(str) !== "undefined" && str !== null) { 
         return str; 
     }
     return ""; 
@@ -78,19 +78,17 @@ function parseRequest(dataRecord){
 
     var requestRecord = {};
 
-    requestRecord['patient_id'] = dataRecord['patient_id']; 
-    requestRecord['clinician_id'] = dataRecord['clinician_id']; 
-    requestRecord['dateofRequest'] = dataRecord['dateofRequest']; 
-    requestRecord['timeofRequest'] = dataRecord['timeofRequest']; 
-    requestRecord['dateofReceived'] = dataRecord['dateofReceived']; 
-    requestRecord['timeofReceived'] = dataRecord['timeofReceived']; 
+    requestRecord['patient_id'] = getIntValue(dataRecord['patient_id']); 
+    requestRecord['clinician_id'] = getIntValue(dataRecord['clinician_id']); 
+    requestRecord['dateofRequest'] = getStringValue(dataRecord['dateofRequest']); 
+    requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
+    requestRecord['dateofReceived'] = getStringValue(dataRecord['dateofReceived']); 
+    requestRecord['timeofReceived'] = getStringValue(dataRecord['timeofReceived']); 
 
     console.log("Request "+JSON.stringify(requestRecord));
-    return requestRecord = {};     
+    return requestRecord; 
 
 }
-
-
 
 app.post('/upload/patient', (req, res) => {
     req.on('data', function(data) { 
@@ -99,51 +97,10 @@ app.post('/upload/patient', (req, res) => {
         data = JSON.parse(data);   
         patient.insert(parsePatient(data)); 
         clinician.insert(parseClinicain(data)); 
-        request.insert(parsePatient(JSON.parse(data))); 
+        request.insert(parseRequest(data)); 
         res.sendStatus(200); 
     }); 
 });
-
-
-// app.post('/upload/request', (req, res) => {
-//     var data = [
-//         { 
-//             "patient_id": 2,
-//             "clinician_id":22,
-//             "dateofRequest": "2024-01-12", 
-//             "timeofRequest": "11:17", 
-//             "dateofReceived": "2024-01-12", 
-//             "timeofReceived": "12:18"
-            
-//         }, 
-//         { 
-//             "patient_id": 4,
-//             "clinician_id":12,
-//             "dateofRequest": "2024-01-13", 
-//             "timeofRequest": "12:15", 
-//             "dateofReceived": "2024-01-13", 
-//             "timeofReceived": "13:18"
-//         }
-//     ]; 
-
-
-    
-//     console.log("Post request received. ");
-//     console.log("Data: "+data);  
-//     request.insert(data); 
-//     const html = `
-//     <html>
-//         <body>
-//             <h1>Request data entered successfully. </h1>
-//         </body>
-//     </html>`
-//    fghuyrtresmxhjsjax,wlxe 6dgde 6ynmncc 7uytbc rteychgnvbm tttt4,bkkjvjnvvgfhfjghfncnhhfhbvnhhvgh hhvjhhvg nvvhn[]\\\mnk4fdggyewuhxhdfhgbcbndfhde kkc.
-
-
-
-
-
-// console.log(data.price);
 
 app.use(cors()); 
 
