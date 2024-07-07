@@ -52,11 +52,7 @@ function parsePatient(dataRecord) {
 
     console.log("Patient: "+JSON.stringify(patientRecord)); 
 
-    return patientRecord = {};
-
-
-   
-
+    return patientRecord; 
 }
 
 
@@ -66,43 +62,64 @@ function parseClinicain(dataRecord) {
 
     var clinicianRecord = {}; 
 
-    clinicianRecord['clinician_code'] = dataRecord['clinician_code']; 
-    clinicianRecord['clinician_class'] = dataRecord['clinician_class']; 
-    clinicianRecord['source_code'] = dataRecord['source_code']; 
-    clinicianRecord['source_class'] = dataRecord['source_class']; 
+    clinicianRecord['clinician_code'] = getStringValue(dataRecord['clinician_code']); 
+    clinicianRecord['clinician_class'] = getStringValue(dataRecord['clinician_class']); 
+    clinicianRecord['source_code'] = getStringValue(dataRecord['source_code']); 
+    clinicianRecord['source_class'] = getStringValue(dataRecord['source_class']); 
 
     console.log("Clincian "+JSON.stringify(clinicianRecord)); 
 
-
-}
-
-function parseRequest(dataRecord){
-
-    Console.log("Parse Request data: ["+JSON.stringify(dataRecord)+"]");
-
-    var requestRecord = {};
-
-    requestRecord['patient_id'] = dataRecord['patient_id']; 
-    requestRecord['clinician_id'] = dataRecord['clinician_id']; 
-    requestRecord['dateofRequest'] = dataRecord['dateofRequest']; 
-    requestRecord['timeofRequest'] = dataRecord['timeofRequest']; 
-    requestRecord['dateofReceived'] = dataRecord['dateofReceived']; 
-    requestRecord['timeofReceived'] = dataRecord['timeofReceived']; 
-
-    console.log("Request "+JSON.stringify(requestRecord));
-    return requestRecord = {};     
-
+    return clinicianRecord; 
 }
 
 app.post('/upload/patient', (req, res) => {
     req.on('data', function(data) { 
         // console.log("Post request received. ");
-        console.log("Data: "+data);  
-        patient.insert(parsePatient(JSON.parse(data))); 
+        console.log("Data: "+data);
+        data = JSON.parse(data);   
+        patient.insert(parsePatient(data)); 
+        clinician.insert(parseClinicain(data)); 
         request.insert(parsePatient(JSON.parse(data))); 
         res.sendStatus(200); 
     }); 
 });
+
+
+// app.post('/upload/request', (req, res) => {
+//     var data = [
+//         { 
+//             "patient_id": 2,
+//             "clinician_id":22,
+//             "dateofRequest": "2024-01-12", 
+//             "timeofRequest": "11:17", 
+//             "dateofReceived": "2024-01-12", 
+//             "timeofReceived": "12:18"
+            
+//         }, 
+//         { 
+//             "patient_id": 4,
+//             "clinician_id":12,
+//             "dateofRequest": "2024-01-13", 
+//             "timeofRequest": "12:15", 
+//             "dateofReceived": "2024-01-13", 
+//             "timeofReceived": "13:18"
+//         }
+//     ]; 
+
+
+    
+//     console.log("Post request received. ");
+//     console.log("Data: "+data);  
+//     request.insert(data); 
+//     const html = `
+//     <html>
+//         <body>
+//             <h1>Request data entered successfully. </h1>
+//         </body>
+//     </html>`
+//    fghuyrtresmxhjsjax,wlxe 6dgde 6ynmncc 7uytbc rteychgnvbm tttt4,bkkjvjnvvgfhfjghfncnhhfhbvnhhvgh hhvjhhvg nvvhn[]\\\mnk4fdggyewuhxhdfhgbcbndfhde kkc.
+
+
 
 
 
