@@ -103,7 +103,7 @@ export function insert(data) {
         {"id": 80, "age_id":0, "reference_id":81, "age_reference":false, "TCL":"MG","TFC":"MG","test_name":"Magnesium", "unit":"mmol/L"},
         {"id": 81, "age_id":0, "reference_id":82, "age_reference":false, "TCL":"VID","TFC":"VID2","test_name":"Vitamin D", "unit":"nmol/L"},
         {"id": 84, "age_id":0, "reference_id":83, "age_reference":false, "TCL":"TNX1","TFC":"TNHS","test_name":"Troponin", "unit":"ng/L"},
-        {"id": 84, "age_id":0, "reference_id":84, "age_reference":false, "TCL":"BNPL","TFC":"","test_name":"NT pro BNP", "unit":"pg/L"},
+        {"id": 85, "age_id":0, "reference_id":84, "age_reference":false, "TCL":"BNPL","TFC":"","test_name":"NT pro BNP", "unit":"pg/L"},
 
 
     ];        
