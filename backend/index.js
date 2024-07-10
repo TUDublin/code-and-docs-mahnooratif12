@@ -14,6 +14,7 @@ table.connect();
 
 const app = express(); 
 
+
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 
@@ -103,6 +104,37 @@ app.post('/upload/patient', (req, res) => {
         res.sendStatus(200); 
     }); 
 });
+
+
+// app.post('/api/forgot-password', (req, res) => {
+//     const email = req.body.email;
+
+//     // Here, you'd typically check if the email exists in your database
+//     // Generate a password reset token and save it to the database
+
+//     // Send the password reset email
+//     const transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         auth: {
+//             user: 'your-email@gmail.com',
+//             pass: 'your-email-password'
+//         }
+//     });
+
+//     const mailOptions = {
+//         from: 'your-email@gmail.com',
+//         to: email,
+//         subject: 'Password Reset',
+//         text: 'Click this link to reset your password: http://example.com/reset-password?token=YOUR_GENERATED_TOKEN'
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//             return res.json({ success: false, message: 'Error sending email' });
+//         }
+//         res.json({ success: true, message: 'Password reset link sent' });
+//     });
+// });
 
 app.use(cors()); 
 

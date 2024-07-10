@@ -4,7 +4,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Homepage from "./Homepage";
 import Importdata from "./Importdata";
-import forgetpassword from "./forgetpassword";
+// import Forgetpassword from "./Forgetpassword";
 // import Visualization from './Visualization';;
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/Homepage" element={<Homepage />}></Route>
           {/* <Route path="/Visualization" element={<Visualization />}></Route> */}
           <Route path="/Importdata" element={<Importdata />}></Route>
-          <Route path="/forgetpassword" element={<forgetpassword />}></Route>
+          {/* <Route path="/Forgetpassword" element={<Forgetpassword />}></Route> */}
         </Routes>
       </BrowserRouter>
     </div>
