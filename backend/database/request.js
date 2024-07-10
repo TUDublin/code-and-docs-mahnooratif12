@@ -1,34 +1,7 @@
-import mysql from 'mysql';
+import * as dbexecutor from './dbexecutor.js';
 
 export function insert(dataRecord) { 
-    // Configure MySQL connection
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database: 'tuh'
-    }); 
-
-    console.log("data: "+dataRecord); 
-
-    //Establish MySQL connection
-    connection.connect(function(err) {
-        if (err) 
-            throw err
-        else {
-            console.log('Connected to MySQL');
-            console.log(dataRecord); 
-            var query = getRequestInsertQuery(dataRecord); 
-            console.log(query); 
-            connection.query(query, function(err, result){ 
-                if(err) { 
-                    console.log(err); 
-                } else { 
-                    console.log("Data entered! "); 
-                }
-            }); 
-        }
-    });
+    dbexecutor.executeQuery(getRequestInsertQuery(dataRecord));     
 }
 
 function getRequestInsertQuery(dataRecord) { 

@@ -1,40 +1,23 @@
-import mysql from 'mysql';
+import * as dbexecutor from './dbexecutor.js'; 
 
 export function insert(dataRecord) { 
-    // Configure MySQL connection
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database: 'tuh'
-    }); 
-
-    console.log("data: "+dataRecord); 
-
-    //Establish MySQL connection
-    connection.connect(function(err) {
-        if (err) 
-            throw err
-        else {
-            console.log('Connected to MySQL');
-            console.log(dataRecord); 
-            var query = getPatientInsertQuery(dataRecord); 
-            console.log(query); 
-            connection.query(query, function(err, result){ 
-                if(err) { 
-                    console.log(err); 
-                } else { 
-                    console.log("Data entered! "); 
-                }
-            }); 
-        }
-    });
+    dbexecutor.executeQuery(getPatientInsertQuery(dataRecord)); 
 }
 
 function getPatientInsertQuery(dataRecord) { 
-    return `INSERT INTO patient `+
-    `(lab_no, ocs_no, mrn, forename, surname, dob, gender, age, address1, address2, address3, phone_no) `+ 
+    return `INSERT INTO patient (lab_no, ocs_no, mrn, forename, surname, dob, gender, age, address1, address2, address3, phone_no) `+ 
     `VALUES (${dataRecord['lab_no']}, ${dataRecord['ocs_no']}, '${dataRecord['mrn']}', '${dataRecord['forename']}', '${dataRecord['surname']}', `+
-    `'${dataRecord['dob']}', '${dataRecord['gender']}', '${dataRecord['age']}','${dataRecord['address1']}', '${dataRecord['address2']}', '${dataRecord['address3']}', '${dataRecord['phone_no']}')`; 
+    `'${dataRecord['dob']}', '${dataRecord['gender']}', '${dataRecord['age']}','${dataRecord['address1']}', '${dataRecord['address2']}', ` +
+    `'${dataRecord['address3']}', '${dataRecord['phone_no']}')`; 
 }
 
+export function getPatientIdByMRN(mrn) { 
+
+    var sqlQuery = getQueryPatientIdByMRN(mrn); 
+    var result = dbexecutor.executeQuery(sqlQuery); 
+    return result[0].id; 
+}
+
+function getQueryPatientIdByMRN(mrn) { 
+    return `SELECT id FROM patient WHERE mrn=${mrn}`; 
+}

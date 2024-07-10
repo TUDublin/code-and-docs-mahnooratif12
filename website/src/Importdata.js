@@ -71,7 +71,7 @@ function Importdata() {
         }
 
         for (var i = 0; i<parsedData.length; i++ ) { 
-            var data  = parsedData[0]; 
+            var data  = parsedData[i]; 
             console.log("Send to backend ["+JSON.stringify(data)); 
             fetch('http://localhost:3061/upload/patient', {
                 method: 'POST',

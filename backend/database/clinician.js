@@ -1,34 +1,7 @@
-import mysql from 'mysql';
+import * as dbexecutor from './dbexecutor.js'; 
 
 export function insert(dataRecord) { 
-    // Configure MySQL connection
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database: 'tuh'
-    }); 
-
-    console.log("data: "+dataRecord); 
-
-    //Establish MySQL connection
-    connection.connect(function(err) {
-        if (err) 
-            throw err
-        else {
-            console.log('Connected to MySQL');
-            console.log(dataRecord); 
-            var query = getClinicianInsertQuery(dataRecord); 
-            console.log(query); 
-            connection.query(query, function(err, result){ 
-                if(err) { 
-                    console.log(err); 
-                } else { 
-                    console.log("Data entered! "); 
-                }
-            }); 
-        }
-    });
+    dbexecutor.executeQuery(getClinicianInsertQuery(dataRecord)); 
 }
 
 function getClinicianInsertQuery(dataRecord) { 
@@ -37,3 +10,12 @@ function getClinicianInsertQuery(dataRecord) {
     `VALUES ('${dataRecord['clinician_code']}', '${dataRecord['clinician_class']}', '${dataRecord['source_code']}', '${dataRecord['source_class']}')`; 
 }
 
+export function getClinicianIdByCode(clinician_code) { 
+    var sqlQuery = getQueryClinicianIdByCode(clinician_code); 
+    var result = dbexecutor.executeQuery(sqlQuery); 
+    return result[0].id; 
+}
+
+function getQueryClinicianIdByCode(clinician_code) { 
+    return `SELECT id FROM clinician WHERE clinician_code='${clinician_code}'`; 
+}
