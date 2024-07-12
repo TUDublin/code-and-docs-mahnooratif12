@@ -4,9 +4,10 @@ import * as table from './database/createTable.js';
 import * as patient from './database/patient.js';
 import * as clinician from './database/clinician.js';
 import * as request from './database/request.js';
-import * as age from './database/age.js'
-import * as reference from './database/reference.js'
-import * as patient_test from './database/patient_test.js'
+import * as age from './database/age.js';
+import * as reference from './database/reference.js';
+import * as patient_test from './database/patient_test.js';
+import userRoutes from './database/user.js';
 
 const PORT = 3061;  
 
@@ -14,7 +15,7 @@ table.connect();
 
 const app = express(); 
 
-
+app.use(userRoutes);
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 

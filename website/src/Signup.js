@@ -1,108 +1,50 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Validation from "./SignupValidation";
+import React, { useState } from 'react';
 
-function Signup() {
-    const [values, setValues] = useState({
-        forename: '',
-        lastname: '',
-        username: '',
-        email: '',
-        password: ''
+const Signup = () => {
+  const [forename, setForename] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch('http://localhost:3000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ forename, lastname, username, email, password }),
     });
 
-    const [errors, setErrors] = useState({});
+    const result = await response.text();
+    alert(result);
+  };
 
-    const handleInput = (event) => {
-        const { name, value } = event.target;
-        setValues({
-            ...values,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const validationErrors = Validation(values);
-        setErrors(validationErrors);
-
-        if (Object.keys(validationErrors).every(key => validationErrors[key] === "")) {
-            // Handle successful form submission, e.g., send data to the server
-        }
-    };
-
-    return (
-        <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-            <div className="bg-white p-3 rounded w-25">
-                <form onSubmit={handleSubmit}>
-                    <h2>Sign-Up</h2>
-                    <div className="mb-3">
-                        <label htmlFor="forename"><strong>Forename</strong></label>
-                        <input
-                            type="text"
-                            placeholder="Enter Forename"
-                            name="forename"
-                            value={values.forename}
-                            onChange={handleInput}
-                            className="form-control rounded-0"
-                        />
-                        {errors.forename && <span className="text-danger">{errors.forename}</span>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="lastname"><strong>Lastname</strong></label>
-                        <input
-                            type="text"
-                            placeholder="Enter Lastname"
-                            name="lastname"
-                            value={values.lastname}
-                            onChange={handleInput}
-                            className="form-control rounded-0"
-                        />
-                        {errors.lastname && <span className="text-danger">{errors.lastname}</span>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="username"><strong>Username</strong></label>
-                        <input
-                            type="text"
-                            placeholder="Enter Username"
-                            name="username"
-                            value={values.username}
-                            onChange={handleInput}
-                            className="form-control rounded-0"
-                        />
-                        {errors.username && <span className="text-danger">{errors.username}</span>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="email"><strong>Email</strong></label>
-                        <input
-                            type="email"
-                            placeholder="Enter Email"
-                            name="email"
-                            value={values.email}
-                            onChange={handleInput}
-                            className="form-control rounded-0"
-                        />
-                        {errors.email && <span className="text-danger">{errors.email}</span>}
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="password"><strong>Password</strong></label>
-                        <input
-                            type="password"
-                            placeholder="Enter Password"
-                            name="password"
-                            value={values.password}
-                            onChange={handleInput}
-                            className="form-control rounded-0"
-                        />
-                        {errors.password && <span className="text-danger">{errors.password}</span>}
-                    </div>
-                    <button type="submit" className="btn btn-success w-100 rounded-0">Sign up</button>
-                    <p className="checklist">Do you agree to our terms & policies?</p>
-                    <Link to="/" className="btn btn-default border w-100 bg-white rounded-0 text-decoration-none">Login</Link>
-                </form>
-            </div>
-        </div>
-    );
-}
+  return (
+    <div>
+      <h1>Sing Up</h1>
+      <form onSubmit={handleSubmit} >
+        <label htmlFor="forename">Forename:</label>
+        <input type="text" id="forename" value={forename} onChange={(e) => setForename(e.target.value)} required />
+        <br />
+        <label htmlFor="lastname">Lastname:</label>
+        <input type="text" id="lastname" value={lastname} onChange={(e) => setLastname(e.target.value)} required />
+        <br />
+        <label htmlFor="username">Username:</label>
+        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <br />
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <br />
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <br />
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
+  );
+};
 
 export default Signup;

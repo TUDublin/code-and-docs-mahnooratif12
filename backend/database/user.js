@@ -1,42 +1,37 @@
+import { Router } from 'express';
 import mysql from 'mysql';
 
-export function insert(data) { 
-    // Configure MySQL connection
-    var connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database: 'tuh'
-    }); 
+const router = Router();
 
-    console.log("data: "+data); 
+// Create a MySQL connection
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'tuh'
+});
 
-    //Establish MySQL connection
-    connection.connect(function(err) {
-        if (err) 
-            throw err
-        else {
-            console.log('Connected to MySQL');
-            for (var i=0; i<data.length; i++) { 
-                console.log(data[i]); 
-                var query = getuserInsertQuery(data[i]); 
-                console.log(query); 
-                connection.query(query, function(err, result){ 
-                    if(err) { 
-                        console.log(err); 
-                    } else { 
-                        console.log("Data entered! "); 
-                    }
-                }); 
-            }
-            
+connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+        return;
+    }
+    console.log('Connected to the MySQL database');
+});
+
+// Endpoint to create a new user
+router.post('/signup', (req, res) => {
+    const { forename, lastname, username, email, password } = req.body;
+    const insertUserQuery = 'INSERT INTO users (forename, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)';
+    
+    connection.query(insertUserQuery, [forename, lastname, username, email, password], (err, result) => {
+        if (err) {
+            console.error('Error inserting user:', err);
+            res.status(500).send('Error creating account');
+            return;
         }
+        res.send('Account created successfully');
     });
-}
+});
 
-function getuserInsertQuery(dataRecord) { 
-    return `INSERT INTO User `+
-    `(User_id,forename, lastname,user_name,email,password) `+ 
-    `VALUES (${dataRecord['User_id']}, ${dataRecord['forename']}, ${dataRecord['lastname']}, ${dataRecord['user_name']}, ${dataRecord['email']}, ${dataRecord['password']})`; 
-}
-
+export default router;
