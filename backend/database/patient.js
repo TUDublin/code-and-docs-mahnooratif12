@@ -21,3 +21,13 @@ export function getPatientIdByMRN(mrn) {
 function getQueryPatientIdByMRN(mrn) { 
     return `SELECT id FROM patient WHERE mrn=${mrn}`; 
 }
+
+export function getAllPatient() { 
+    var sqlQuery = getQueryAllPatient(); 
+    var result = dbexecutor.executeQuery(sqlQuery); 
+    return result;
+}
+
+function getQueryAllPatient() { 
+    return `SELECT * FROM patient`; 
+}

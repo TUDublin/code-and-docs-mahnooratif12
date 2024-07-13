@@ -106,6 +106,13 @@ app.post('/upload/patient', (req, res) => {
     }); 
 });
 
+app.get('/patient', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    var result = patient.getAllPatient(); 
+    console.log("Result: "+ JSON.stringify(result)); 
+    res.end(JSON.stringify(result)); 
+});
+
 
 // app.post('/api/forgot-password', (req, res) => {
 //     const email = req.body.email;
