@@ -1,8 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+        
+
+
+function getPData() { 
+          
+}
 
 function Homepage() {
     const navigate = useNavigate();
+    const [patients, setPatients] = useState([]); 
 
     const handleLogout = () => {
         // Clear user authentication data (e.g., tokens)
@@ -13,7 +23,16 @@ function Homepage() {
         navigate('/');
     };
 
-  
+    useEffect(()=> { 
+        axios.get(`http://localhost:3061/patient`, {    
+            method: 'GET',
+            mode: 'no-cors'
+        }).then(res => {
+            console.log('patients: '+ JSON.stringify(res.data)); 
+            setPatients(res.data); 
+        }); 
+    }, []); 
+    
 
     return (
         <div>    
@@ -45,6 +64,20 @@ function Homepage() {
                     
                 </p>
             </div>
+            <DataTable value={patients}  tableStyle={{ minWidth: '50rem' }}>
+                <Column field="lab_no" header="Lab #"></Column>
+                <Column field="ocs_no" header="OCS #"></Column>
+                <Column field="mrn" header="MRN"></Column>
+                <Column field="forename" header="Forename"></Column>
+                <Column field="surname" header="Surname"></Column>
+                <Column field="dob" header="dob"></Column>
+                <Column field="gender" header="gender"></Column>
+                <Column field="age" header="age"></Column>
+                <Column field="address1" header="address1"></Column>
+                <Column field="address2" header="address2"></Column>
+                <Column field="address3" header="address3"></Column>
+                <Column field="phone_no" header="phone_no"></Column>
+            </DataTable>
             <footer className="justify-content-center">
                 <div className="text-white text-center bg-dark fixed-bottom justify-content-center">
                     TUH Blood Results
