@@ -3,21 +3,32 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import 'primereact/resources/themes/nova/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import { InputText } from 'primereact/inputtext';
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
+import { Dropdown } from 'primereact/dropdown';
+import { MultiSelect } from 'primereact/multiselect';
+import { Tag } from 'primereact/tag';
+import { TriStateCheckbox } from 'primereact/tristatecheckbox';
         
-
-
-function getPData() { 
-          
-}
-
-
 
 function Homepage() {
     const navigate = useNavigate();
     const [patients, setPatients] = useState([]); 
+    const [filters, setFilters] = useState({
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+        'country.name': { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+        representative: { value: null, matchMode: FilterMatchMode.IN },
+        status: { value: null, matchMode: FilterMatchMode.EQUALS },
+        verified: { value: null, matchMode: FilterMatchMode.EQUALS }
+    });
+    const [loading, setLoading] = useState(true);
+    const [globalFilterValue, setGlobalFilterValue] = useState('');
 
     const handleLogout = () => {
         // Clear user authentication data (e.g., tokens)
@@ -37,6 +48,30 @@ function Homepage() {
             setPatients(res.data); 
         }); 
     }, []); 
+
+    const onGlobalFilterChange = (e) => {
+        const value = e.target.value;
+        let _filters = { ...filters };
+
+        _filters['global'].value = value;
+
+        setFilters(_filters);
+        setGlobalFilterValue(value);
+    };
+
+    const renderHeader = () => {
+        return (
+            <div className="flex justify-content-end">
+                <IconField iconPosition="left">
+                    <InputIcon className="pi pi-search" />
+                    <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Keyword Search" />
+                </IconField>
+            </div>
+        );
+    };
+    
+
+    const header = renderHeader();
     
 
     return (
@@ -70,7 +105,9 @@ function Homepage() {
                 </p>
             </div>
             <div className='card'> 
-                <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+                <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
+                 filters={filters} filterDisplay="row" 
+                 globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No customers found.">
                     <Column field="lab_no" header="Lab" sortable style={{ width: '25%' }}></Column>
                     <Column field="ocs_no" header="OCS" sortable style={{ width: '25%' }}></Column>
                     <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
