@@ -64,20 +64,23 @@ function Homepage() {
                     
                 </p>
             </div>
-            <DataTable value={patients}  tableStyle={{ minWidth: '50rem' }}>
-                <Column field="lab_no" header="Lab #"></Column>
-                <Column field="ocs_no" header="OCS #"></Column>
-                <Column field="mrn" header="MRN"></Column>
-                <Column field="forename" header="Forename"></Column>
-                <Column field="surname" header="Surname"></Column>
-                <Column field="dob" header="dob"></Column>
-                <Column field="gender" header="gender"></Column>
-                <Column field="age" header="age"></Column>
-                <Column field="address1" header="address1"></Column>
-                <Column field="address2" header="address2"></Column>
-                <Column field="address3" header="address3"></Column>
-                <Column field="phone_no" header="phone_no"></Column>
-            </DataTable>
+            <div className='card'> 
+                <DataTable value={patients} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+                    <Column field="lab_no" header="Lab #"></Column>
+                    <Column field="ocs_no" header="OCS #"></Column>
+                    <Column field="mrn" header="MRN"></Column>
+                    <Column field="forename" header="Forename"></Column>
+                    <Column field="surname" header="Surname"></Column>
+                    <Column field="dob" header="dob"></Column>
+                    <Column field="gender" header="gender"></Column>
+                    <Column field="age" header="age"></Column>
+                    <Column field="address1" header="address1"></Column>
+                    <Column field="address2" header="address2"></Column>
+                    <Column field="address3" header="address3"></Column>
+                    <Column field="phone_no" header="phone_no"></Column>
+                </DataTable>
+            </div>    
+            
             <footer className="justify-content-center">
                 <div className="text-white text-center bg-dark fixed-bottom justify-content-center">
                     TUH Blood Results
