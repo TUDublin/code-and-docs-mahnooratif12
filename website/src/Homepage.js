@@ -3,12 +3,17 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import 'primereact/resources/themes/nova/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
         
 
 
 function getPData() { 
           
 }
+
+
 
 function Homepage() {
     const navigate = useNavigate();
@@ -65,7 +70,7 @@ function Homepage() {
                 </p>
             </div>
             <div className='card'> 
-                <DataTable value={patients} paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
+                <DataTable value={patients} showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}>
                     <Column field="lab_no" header="Lab #"></Column>
                     <Column field="ocs_no" header="OCS #"></Column>
                     <Column field="mrn" header="MRN"></Column>
