@@ -70,12 +70,13 @@ function Homepage() {
         );
     };
     
+   
     const onRowExpand = (event) => {
-        toast.current.show({ severity: 'info', summary: 'Product Expanded', detail: event.data.mrn, life: 3000 });
+        toast.current.show({ severity: 'info', summary: 'Patient Expanded', detail: event.data.mrn, life: 3000 });
     };
 
     const onRowCollapse = (event) => {
-        toast.current.show({ severity: 'success', summary: 'Product Collapsed', detail: event.data.mrn, life: 3000 });
+        toast.current.show({ severity: 'success', summary: 'Patient Collapsed', detail: event.data.mrn, life: 3000 });
     };
 
     const expandAll = () => {
@@ -100,7 +101,7 @@ function Homepage() {
     
     function allowExpansion(someArray) {
         console.log('someArray:', someArray);
-        if (Array.isArray(someArray) && someArray.length > 0) {
+        if (Array.isArray(JSON.stringify(someArray)) && someArray.length > 0) {
           // Do something
         }
       }
@@ -151,10 +152,12 @@ function Homepage() {
                 <h1>Tallaght University Hospital (TUH) Blood Test Database</h1>
             </div>
             <div className='card'> 
+                <Toast ref={toast} />
                 <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
                  filters={filters} filterDisplay="row" globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No customers found."
-                 expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} onRowExpand={onRowExpand} onRowCollapse={onRowCollapse} rowExpansionTemplate={rowExpansionTemplate} dataKey="id" header_expand={header_expand}>
-                <Column expander={allowExpansion} style={{ width: '5rem' }} />
+                 expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} onRowExpand={onRowExpand} onRowCollapse={onRowCollapse} rowExpansionTemplate={rowExpansionTemplate} dataKey="id">
+                <Column expander style={{ width: '5rem' }} />
+                <Column field="lab_no" header="Lab_No" sortable />
                     <Column field="lab_no" header="Lab" sortable style={{ width: '25%' }}></Column>
                     <Column field="ocs_no" header="OCS" sortable style={{ width: '25%' }}></Column>
                     <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
