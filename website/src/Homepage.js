@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { DataTable } from 'primereact/datatable';
@@ -10,11 +10,9 @@ import 'primeicons/primeicons.css';
 import { InputText } from 'primereact/inputtext';
 import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
-import { Dropdown } from 'primereact/dropdown';
-import { MultiSelect } from 'primereact/multiselect';
+import { Button } from 'primereact/button';
 import { Tag } from 'primereact/tag';
-import { TriStateCheckbox } from 'primereact/tristatecheckbox';
-        
+import { Toast } from 'primereact/toast';        
 
 function Homepage() {
     const navigate = useNavigate();
@@ -29,6 +27,8 @@ function Homepage() {
     });
     const [loading, setLoading] = useState(true);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
+    const [expandedRows, setExpandedRows] = useState(null);
+    const toast = useRef(null);
 
     const handleLogout = () => {
         // Clear user authentication data (e.g., tokens)
@@ -70,6 +70,55 @@ function Homepage() {
         );
     };
     
+    const onRowExpand = (event) => {
+        toast.current.show({ severity: 'info', summary: 'Product Expanded', detail: event.data.mrn, life: 3000 });
+    };
+
+    const onRowCollapse = (event) => {
+        toast.current.show({ severity: 'success', summary: 'Product Collapsed', detail: event.data.mrn, life: 3000 });
+    };
+
+    const expandAll = () => {
+        let _expandedRows = {};
+
+        patients.forEach((p) => (_expandedRows[`${p.id}`] = true));
+
+        setExpandedRows(_expandedRows);
+    };
+    
+
+    const collapseAll = () => {
+        setExpandedRows(null);
+    };
+    const header_expand = (
+        <div className="flex flex-wrap justify-content-end gap-2">
+            <Button icon="pi pi-plus" label="Expand All" onClick={expandAll} text />
+            <Button icon="pi pi-minus" label="Collapse All" onClick={collapseAll} text />
+        </div>
+    );
+
+    
+    function allowExpansion(someArray) {
+        console.log('someArray:', someArray);
+        if (Array.isArray(someArray) && someArray.length > 0) {
+          // Do something
+        }
+      }
+      
+
+    const rowExpansionTemplate = (data) => {
+        return (
+            <div className="p-3">
+                <h5>Patient {data.mrn}</h5>
+                <DataTable value={data.mrn}>
+                    <Column field="lab_no" header="Lab" sortable></Column>
+                    <Column field="ocs_no" header="OCS" sortable></Column>
+                    <Column field="mrn" header="MRN" sortable></Column>
+                </DataTable>
+            </div>
+        );
+    };
+    
 
     const header = renderHeader();
     
@@ -100,14 +149,12 @@ function Homepage() {
             </nav>
             <div className="header">
                 <h1>Tallaght University Hospital (TUH) Blood Test Database</h1>
-                <p>
-                    
-                </p>
             </div>
             <div className='card'> 
                 <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
-                 filters={filters} filterDisplay="row" 
-                 globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No customers found.">
+                 filters={filters} filterDisplay="row" globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No customers found."
+                 expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} onRowExpand={onRowExpand} onRowCollapse={onRowCollapse} rowExpansionTemplate={rowExpansionTemplate} dataKey="id" header_expand={header_expand}>
+                <Column expander={allowExpansion} style={{ width: '5rem' }} />
                     <Column field="lab_no" header="Lab" sortable style={{ width: '25%' }}></Column>
                     <Column field="ocs_no" header="OCS" sortable style={{ width: '25%' }}></Column>
                     <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
