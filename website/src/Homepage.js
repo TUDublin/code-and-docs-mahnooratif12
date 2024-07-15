@@ -47,7 +47,7 @@ function Homepage() {
                     <div className="collapse navbar-collapse justify-content-center" id="mynavbar">
                         <ul className="navbar-nav me-auto justify-content-center">
                             <li className="nav-item justify-content-center">
-                                <a className="nav-link justify-content-center" href="/Homepage">Homepage</a>
+                                <a className="nav-link justify-content-center" href="/Homepage">Home</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link justify-content-center" href="/importdata">Import Data</a>

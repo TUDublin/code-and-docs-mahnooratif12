@@ -59,7 +59,7 @@ function Login() {
                     </div>
                     <button type="submit" className="btn btn-success w-100 rounded-0">Log in</button>
                     <p className="checklist">Do you agree to our terms & policies?</p>
-                    <Link to="/signup" className="btn btn-default border w-100 bg-primary rounded-0 text-decoration-none">Create Account</Link>
+                    <Link to="/signup" className="btn btn-default border w-100 bg-dark rounded-0 text-decoration-none text-white">Create Account</Link>
                 </form>
             </div>
         </div>
