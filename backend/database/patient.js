@@ -29,5 +29,7 @@ export function getAllPatient() {
 }
 
 function getQueryAllPatient() { 
-    return `SELECT * FROM patient`; 
+    return `SELECT * FROM tuh.request as req `+
+        `LEFT JOIN tuh.patient as patient on req.patient_id = patient.id ` + 
+        `LEFT JOIN tuh.clinician as clinician on req.clinician_id = clinician.id `; 
 }
