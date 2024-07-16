@@ -22,16 +22,8 @@ reference.insert();
 patient_test.insert(); 
 
 const patient_test_names = patient_test.getAllPatientTestNames(); 
-console.log("patient_test_names", JSON.stringify(patient_test_names)); 
-console.log("patient_test_names keys", JSON.stringify(Object.keys(patient_test_names))); 
-
-function getTestIdByName(name) { 
-    return patient_test_names[name]; 
-}
-
-function getTestKeys() { 
-    return Object.keys(patient_test_names); 
-}
+console.debug("patient_test_names", JSON.stringify(patient_test_names)); 
+console.debug("patient_test_names keys", JSON.stringify(Object.keys(patient_test_names))); 
 
 function inverse(obj){ 
     var retobj = {}; 
@@ -43,9 +35,21 @@ function inverse(obj){
 
 var patient_test_names_inverse = inverse(patient_test_names); 
 
+
+function getTestIdByName(name) { 
+    return patient_test_names[name]; 
+}
+
 function getTestNameById(id) { 
     return patient_test_names_inverse[id]; 
 }
+
+function getAllTestNames() { 
+    return Object.keys(patient_test_names); 
+}
+
+
+
 
 var patientId; 
 var clinicianId; 
@@ -139,37 +143,19 @@ function parseResult(dataRecord){
 
     requestRecord['request_id'] = getIntValue(requestId); 
 
-    var testNames = Object.keys(patient_test_names); 
-    console.log("patient_test_names keys", testNames); 
-    for (var i = 0; i< getTestKeys.length; i++) { 
-        var key = testNames[i]; 
-        var value = getStringValue(dataRecord[testNames[i]]); 
-        // console.log(key+": "+value+": "+isString(key)+": "+isString(value)); 
-        // if (isString(key) && isString(value)) { 
-        //     console.log("Test id: "+patient_test_names[key]); 
-        // }
-        if (isString(key) && isString(value)) { 
-            requestRecord['patient_test_id'] = patient_test_names[key]; 
+    var testNames = getAllTestNames(); 
+    console.log("Patient test names: ", testNames); 
+
+    testNames.forEach(function(testName) { 
+        var value = getStringValue(dataRecord[testName]); 
+        console.debug("key: "+testName+", Value: "+value); 
+        if (isString(testName) && isString(value)) { 
+            requestRecord['patient_test_id'] = getTestIdByName(testName); 
             requestRecord['value'] = value; 
             result.insert(requestRecord); 
         }
-    }
-
-
-
-
-    requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
-
-
-    requestRecord['value'] = getIntValue(patientId); 
-    requestRecord['clinician_id'] = getIntValue(clinicianId); 
-    requestRecord['dateofRequest'] = getStringValue(dataRecord['dateofRequest']); 
-    requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
-    requestRecord['dateofReceived'] = getStringValue(dataRecord['dateofReceived']); 
-    requestRecord['timeofReceived'] = getStringValue(dataRecord['timeofReceived']); 
-
-    console.log("Request "+JSON.stringify(requestRecord));
-    return requestRecord; 
+    }); 
+ 
 }
 
 app.post('/upload/patient', (req, res) => {
