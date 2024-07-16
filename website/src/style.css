@@ -126,5 +126,8 @@ table th {
     border-radius: 10px;
     margin-bottom: 2rem;
 }
-
+.p-3 {
+  background-color: lightgrey;
+  text-decoration: black;
+}
     
