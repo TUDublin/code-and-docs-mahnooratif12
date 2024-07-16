@@ -177,11 +177,11 @@ app.get('/patient', (req, res) => {
     var patients = patient.getAllPatient(); 
 
     patients.forEach(element => {
-        console.log(element['id']); 
+        console.log(element['patient_test_id']); 
         var testResults = result.getResultByRequestId(element['id']); 
         console.log("Test results: "+testResults); 
         testResults.forEach(tr=> { 
-            element[getTestNameById(tr['id'])] = tr['value']; 
+            element[getTestNameById(tr['patient_test_id'])] = tr['value']; 
         }); 
     });
     console.debug("Result: "+ JSON.stringify(patients)); 
