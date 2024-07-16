@@ -9,23 +9,23 @@ export function insert(data) {
         database: 'tuh'
     }); 
 
-    console.log("data: "+data); 
+    console.debug("data: "+data); 
 
     //Establish MySQL connection
     connection.connect(function(err) {
         if (err) 
             throw err
         else {
-            console.log('Connected to MySQL');
+            console.debug('Connected to MySQL');
             for (var i=0; i<data.length; i++) { 
-                console.log(data[i]); 
+                console.debug(data[i]); 
                 var query = getReference_test_resultInsertQuery(data[i]); 
-                console.log(query); 
+                console.debug(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
-                        console.log(err); 
+                        console.error(err); 
                     } else { 
-                        console.log("Data entered! "); 
+                        console.debug("Data entered! "); 
                     }
                 }); 
             }

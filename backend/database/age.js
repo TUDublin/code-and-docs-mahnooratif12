@@ -76,7 +76,7 @@ export function insert() {
         database: 'tuh'
     }); 
 
-    console.log("ageData: "+ageData); 
+    console.debug("ageData: "+ageData); 
 
     //Establish MySQL connection
     connection.connect(function(err) {
@@ -85,22 +85,20 @@ export function insert() {
         else {
             console.log('Connected to MySQL');
             for (var i=0; i<ageData.length; i++) { 
-                console.log(ageData[i]); 
+                console.debug(ageData[i]); 
                 var query = getageInsertQuery(ageData[i]); 
-                console.log(query); 
+                console.debug(query); 
                 connection.query(query, function(err, result){ 
                     if(err) { 
                         console.log(err); 
                     } else { 
-                        console.log("Data entered! "); 
+                        console.debug("Data entered! "); 
                     }
                 }); 
             }
-            
         }
     });
 }
-
 
 function getageInsertQuery(dataRecord) { 
     return `INSERT IGNORE INTO age(id, value, period) `+ 

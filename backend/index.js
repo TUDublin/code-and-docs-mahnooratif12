@@ -1,4 +1,4 @@
-import express from 'express'; 
+import express, { json } from 'express'; 
 import cors from 'cors';
 import * as table from './database/createTable.js'; 
 import * as patient from './database/patient.js';
@@ -7,6 +7,7 @@ import * as request from './database/request.js';
 import * as age from './database/age.js';
 import * as reference from './database/reference.js';
 import * as patient_test from './database/patient_test.js';
+import * as result from './database/result.js';
 import userRoutes from './database/user.js';
 
 const PORT = 3061;  
@@ -20,8 +21,41 @@ age.insert();
 reference.insert(); 
 patient_test.insert(); 
 
+const patient_test_names = patient_test.getAllPatientTestNames(); 
+console.log("patient_test_names", JSON.stringify(patient_test_names)); 
+console.log("patient_test_names keys", JSON.stringify(Object.keys(patient_test_names))); 
+
+function getTestIdByName(name) { 
+    return patient_test_names[name]; 
+}
+
+function getTestKeys() { 
+    return Object.keys(patient_test_names); 
+}
+
+function inverse(obj){ 
+    var retobj = {}; 
+    for(var key in obj){ 
+      retobj[obj[key]] = key; 
+    } 
+    return retobj; 
+}
+
+var patient_test_names_inverse = inverse(patient_test_names); 
+
+function getTestNameById(id) { 
+    return patient_test_names_inverse[id]; 
+}
+
+var patientId; 
+var clinicianId; 
+
+function isString(str) { 
+    return str && typeof(str) !== "undefined" && str !== null; 
+}
+
 function getStringValue(str) { 
-    if (str && typeof(str) !== "undefined" && str !== null) { 
+    if (isString(str)) { 
         return str; 
     }
     return ""; 
@@ -78,12 +112,56 @@ function parseRequest(dataRecord){
     
     var requestRecord = {};
 
-    var patientId = patient.getPatientIdByMRN(dataRecord['mrn']); 
+    patientId = patient.getPatientIdByMRN(dataRecord['mrn']); 
     console.log("Patient Id: "+patientId); 
-    var clinicianId = clinician.getClinicianIdByCode(dataRecord['clinician_code']);
+    clinicianId = clinician.getClinicianIdByCode(dataRecord['clinician_code']);
     console.log("Clinician Id: "+clinicianId); 
 
     requestRecord['patient_id'] = getIntValue(patientId); 
+    requestRecord['clinician_id'] = getIntValue(clinicianId); 
+    requestRecord['dateofRequest'] = getStringValue(dataRecord['dateofRequest']); 
+    requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
+    requestRecord['dateofReceived'] = getStringValue(dataRecord['dateofReceived']); 
+    requestRecord['timeofReceived'] = getStringValue(dataRecord['timeofReceived']); 
+
+    console.log("Request "+JSON.stringify(requestRecord));
+    return requestRecord; 
+}
+
+function parseResult(dataRecord){
+    
+    var requestRecord = {};
+
+    console.log("Patient Id: "+patientId); 
+    console.log("Clinician Id: "+clinicianId); 
+
+    var requestId = request.getRequestIdByPatientIdClinicianId(patientId, clinicianId); 
+
+    requestRecord['request_id'] = getIntValue(requestId); 
+
+    var testNames = Object.keys(patient_test_names); 
+    console.log("patient_test_names keys", testNames); 
+    for (var i = 0; i< getTestKeys.length; i++) { 
+        var key = testNames[i]; 
+        var value = getStringValue(dataRecord[testNames[i]]); 
+        // console.log(key+": "+value+": "+isString(key)+": "+isString(value)); 
+        // if (isString(key) && isString(value)) { 
+        //     console.log("Test id: "+patient_test_names[key]); 
+        // }
+        if (isString(key) && isString(value)) { 
+            requestRecord['patient_test_id'] = patient_test_names[key]; 
+            requestRecord['value'] = value; 
+            result.insert(requestRecord); 
+        }
+    }
+
+
+
+
+    requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
+
+
+    requestRecord['value'] = getIntValue(patientId); 
     requestRecord['clinician_id'] = getIntValue(clinicianId); 
     requestRecord['dateofRequest'] = getStringValue(dataRecord['dateofRequest']); 
     requestRecord['timeofRequest'] = getStringValue(dataRecord['timeofRequest']); 
@@ -102,6 +180,7 @@ app.post('/upload/patient', (req, res) => {
         patient.insert(parsePatient(data)); 
         clinician.insert(parseClinicain(data)); 
         request.insert(parseRequest(data)); 
+        parseResult(data); 
         res.sendStatus(200); 
     }); 
 });
@@ -109,9 +188,18 @@ app.post('/upload/patient', (req, res) => {
 app.get('/patient', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*'); 
-    var result = patient.getAllPatient(); 
-    console.log("Result: "+ JSON.stringify(result)); 
-    res.end(JSON.stringify(result)); 
+    var patients = patient.getAllPatient(); 
+
+    patients.forEach(element => {
+        console.log(element['id']); 
+        var testResults = result.getResultByRequestId(element['id']); 
+        console.log("Test results: "+testResults); 
+        testResults.forEach(tr=> { 
+            element[getTestNameById(tr['id'])] = tr['value']; 
+        }); 
+    });
+    console.debug("Result: "+ JSON.stringify(patients)); 
+    res.end(JSON.stringify(patients)); 
 });
 
 

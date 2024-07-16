@@ -6,11 +6,11 @@ const PASSWORD = "password";
 const DATABASE = "tuh";
 
 const CREATE_DATABASE_QUERY = "CREATE DATABASE IF NOT EXISTS " + DATABASE;
+
 const CREATE_TABLE_age_table_name = "CREATE TABLE IF NOT EXISTS 'age' (" +
     "age_id INT NOT NULL AUTO_INCREMENT"+
     // Add other columns as needed
-    "PRIMARY KEY (age_id))"
-;
+    "PRIMARY KEY (age_id))";
 
 const CREATE_PATIENT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient`(" +
     "`id` int NOT NULL AUTO_INCREMENT," +
@@ -55,18 +55,18 @@ const CREATE_PATIENT_TEST_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `patient_tes
     "`unit` VARCHAR(45) NOT NULL," +
     "PRIMARY KEY (`id`))";
 
-const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `reference_test_result`( " +
-    "`Request_Test_Result_ID` INT NOT NULL AUTO_INCREMENT," +
-    "`Test_Request_ID` INT NOT NULL," +
-    "`Test_ID` INT NOT NULL," +
-    "`Request_Test_Resultcol` VARCHAR(45) NOT NULL," +
-    "PRIMARY KEY (`Request_Test_Result_ID`))";
+const CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result`( " +
+    "`id` INT NOT NULL AUTO_INCREMENT, " +
+    "`value` VARCHAR(64) NOT NULL, " +
+    "`request_id` INT NOT NULL, " +
+    "`patient_test_id` INT NOT NULL, " +
+    "PRIMARY KEY (`id`))";
     
-const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
-    "`Result_ID` INT NOT NULL AUTO_INCREMENT," +
-    "`Reference_Test_Result_ID` INT NOT NULL," +
-    "`Test_Result` VARCHAR(255) NOT NULL," +
-    "PRIMARY KEY (`Result_ID`))";
+// const CREATE_RESULT_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS `result` (" +
+//     "`Result_ID` INT NOT NULL AUTO_INCREMENT," +
+//     "`Reference_Test_Result_ID` INT NOT NULL," +
+//     "`Test_Result` VARCHAR(255) NOT NULL," +
+//     "PRIMARY KEY (`Result_ID`))";
 
 
 const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
@@ -138,21 +138,29 @@ function createTables() {
         console.log("Connected to MySQL database");
         console.log("Creating patient table if not exists.");
         executeSQLQuery(connection, CREATE_PATIENT_TABLE_QUERY);
+
         console.log("Creating clinician table if not exists.");
         executeSQLQuery(connection, CREATE_CLINICIAN_TABLE_QUERY);
+        
         console.log("Creating request table if not exists.");
         executeSQLQuery(connection, CREATE_REQUEST_TABLE_QUERY);
+        
         console.log("Creating reference_test_result table if not exists.");
         executeSQLQuery(connection, CREATE_REFERENCE_TEST_RESULT_TABLE_QUERY);
-        console.log("Creating Result Table if not exit");
-        executeSQLQuery(connection, CREATE_RESULT_TABLE_QUERY);
-        console.log("Creating PATIENT_TEST Table if not exit");
+        
+        // console.log("Creating Result Table if not exit");
+        // executeSQLQuery(connection, CREATE_RESULT_TABLE_QUERY);
+        // console.log("Creating PATIENT_TEST Table if not exit");
+
         executeSQLQuery(connection, CREATE_PATIENT_TEST_TABLE_QUERY);
         console.log("Creating Reference Table if not exit");
-        executeSQLQuery(connection, CREATE_REFERENCE_TABLE_QUERY);
-        console.log("Creating Age Result Table if not exit");
+        
+        // executeSQLQuery(connection, CREATE_REFERENCE_TABLE_QUERY);
+        // console.log("Creating Age Result Table if not exit");
+        
         executeSQLQuery(connection, CREATE_AGE_RESULT_TABLE_QUERY);
         console.log("Creating User table if not exist");
+        
         executeSQLQuery(connection, CREATE_User_TABLE_QUERY);
         // Add more table creation queries here if needed
     });
