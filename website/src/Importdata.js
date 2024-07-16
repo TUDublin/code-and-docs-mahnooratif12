@@ -122,19 +122,18 @@ function Importdata() {
                
                <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
                 <link rel="stylesheet" type="text/css" href="style.css" />
+                <img src="/logo.ico" alt="img" href="/homepage" className="text-white" style={{ width: '500px', height: '80px', paddingLeft:'10px' }} />
                 <div className="container-fluid">
-                <img src="/TUH%20logo.jpg" alt="TUH pic" className="img-fluid" style={{ width: '40px', height: '40px' }} />
-                    <a className="navbar-brand" href="/homepage">Tallaght University Hospital</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse justify-content-center" id="mynavbar">
                         <ul className="navbar-nav me-auto justify-content-center">
                             <li className="nav-item justify-content-center">
-                                <a className="nav-link justify-content-center" href="/Homepage">Home</a>
+                            <a className="nav-link btn btn-secondary ms-2 text-white" href="/Homepage">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link justify-content-center" href="/importdata">Import Data</a>
+                                <a className="nav-link btn btn-secondary ms-2 text-white" href="/importdata">Import Data</a>
                             </li>
                             
                         </ul>

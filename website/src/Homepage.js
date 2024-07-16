@@ -110,8 +110,8 @@ function Homepage() {
                     {data.patients && data.patients.length > 0 ? (
                         data.patients.map((mrn, index) => (
                             <li key={index}>
-                                <strong>Clinician Code: </strong> {mrn.clinician_code},
-                                 <strong>Clinician Class:</strong> {mrn.clinician_class}, 
+                                <strong>Clinician Code: </strong> {patients.clinician_code},
+                                 <strong>Clinician Class:</strong> {patients.clinician_class}, 
                                  <strong>DOB:</strong> {mrn.dob}
                             </li>
                         ))
@@ -129,22 +129,22 @@ function Homepage() {
     
 
     return (
-        <div>    
+        <div>  
+              
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark ">
                 <link rel="stylesheet" type="text/css" href="style.css" />
+                <img src="/logo.ico" alt="img" href="/homepage" className="text-white" style={{ width: '500px', height: '80px', paddingLeft:'10px' }} />
                 <div className="container-fluid">
-                <img src="/TUH%20logo.jpg" alt="TUH pic" className="img-fluid" style={{ width: '40px', height: '40px' }} />
-                    <a className="navbar-brand" href="/homepage">Tallaght University Hospital</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse justify-content-center" id="mynavbar">
                         <ul className="navbar-nav me-auto justify-content-center">
-                            <li className="nav-item justify-content-center">
-                                <a className="nav-link justify-content-center" href="/Homepage">Home</a>
+                            <li className="nav-item ">
+                                <a className="nav-link btn btn-secondary ms-2 text-white" href="/Homepage">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link justify-content-center" href="/importdata">Import Data</a>
+                                <a className="nav-link btn btn-secondary ms-2 text-white" href="/importdata">Import Data</a>
                             </li>
                             
                         </ul>
@@ -153,7 +153,7 @@ function Homepage() {
                 </div>
             </nav>
             <div className="">
-                <h1>Tallaght University Hospital (TUH) Blood Test Database</h1>
+                <h1>Patient Blood Test Record</h1>
             </div>
             <div className='card'> 
                 <Toast ref={toast} />
