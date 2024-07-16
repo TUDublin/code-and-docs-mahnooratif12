@@ -130,7 +130,7 @@ function Homepage() {
 
     return (
         <div>    
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+            <nav className="navbar navbar-expand-sm navbar-dark bg-dark ">
                 <link rel="stylesheet" type="text/css" href="style.css" />
                 <div className="container-fluid">
                 <img src="/TUH%20logo.jpg" alt="TUH pic" className="img-fluid" style={{ width: '40px', height: '40px' }} />
@@ -152,7 +152,7 @@ function Homepage() {
                     </div>
                 </div>
             </nav>
-            <div className="header">
+            <div className="">
                 <h1>Tallaght University Hospital (TUH) Blood Test Database</h1>
             </div>
             <div className='card'> 
