@@ -105,16 +105,22 @@ function Homepage() {
     const rowExpansionTemplate = (data) => {
         return (
             <div className="p-3">
-                <h5>More Detail {data.clinician}</h5>
-                <DataTable value={Array.isArray(data.clinician) ? data.clinician : []}>
-                    <Column field="clinician_code" header="Clinician Code" sortable></Column>
-                    <Column field="clinician_class" header=" Clinicain Class" sortable></Column>
-                    <Column field="source_code" header="Source Code" sortable></Column>
-                    <Column field="source_class" header="Source Class" sortable></Column>
-                    <Column field="dateofRequest" header="Date Of Request" sortable></Column>
-                    <Column field="timeofRequest" header="Time of Request" sortable></Column>
-                    <Column field="dateofReceived" header="Date of Received" sortable></Column>
-                    <Column field="timeofReceived" header="Time of Received" sortable></Column>
+                <h5>Test Result {data.patients}</h5>
+                <DataTable value={patients}>
+                <Column field="Na" header="Na" sortable></Column>
+                    <Column field="K" header="K" sortable></Column>
+                    <Column field="Urea" header="Urea" sortable></Column>
+                    <Column field="CRP" header="CRP" sortable></Column>
+                    <Column field="TRIG" header="TRIG" sortable></Column>
+                    <Column field="HDL" header="HDL" sortable></Column>
+                    <Column field="FT4" header="FT4" sortable></Column>
+                    <Column field="TSH" header="TSH" sortable></Column>
+                    <Column field="PROT" header="PROT" sortable></Column>
+                    <Column field="ALT" header="ALT" sortable></Column>
+                    <Column field="GGT" header="GGT" sortable></Column>
+                    <Column field="Ca" header="Ca" sortable></Column>
+                    <Column field="TNHS" header="TNHS" sortable></Column>
+                    <Column field="BNPL" header="BNPL" sortable></Column>
                 </DataTable>
             </div>
         );
@@ -170,7 +176,15 @@ function Homepage() {
                     <Column field="address2" header="address2" sortable style={{ width: '25%' }}></Column>
                     <Column field="address3" header="address3" sortable style={{ width: '25%' }}></Column>
                     <Column field="phone_no" header="phone_no" sortable style={{ width: '25%' }}></Column>
-                    
+                    <Column field="clinician_code" header="Clinician Code" sortable></Column>
+                    <Column field="clinician_class" header=" Clinicain Class" sortable></Column>
+                    <Column field="source_code" header="Source Code" sortable></Column>
+                    <Column field="source_class" header="Source Class" sortable></Column>
+                    <Column field="dateofRequest" header="Date Of Request" sortable></Column>
+                    <Column field="timeofRequest" header="Time of Request" sortable></Column>
+                    <Column field="dateofReceived" header="Date of Received" sortable></Column>
+                    <Column field="timeofReceived" header="Time of Received" sortable></Column>
+                                     
                 </DataTable>
             </div>    
             
