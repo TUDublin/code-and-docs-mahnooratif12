@@ -104,21 +104,18 @@ function Homepage() {
 
     const rowExpansionTemplate = (data) => {
         return (
-            <div className="p-3 ">
-                <h5>{data.patients}</h5>
-                <ul>
-                    {data.patients && data.patients.length > 0 ? (
-                        data.patients.map((mrn, index) => (
-                            <li key={index}>
-                                <strong>Clinician Code: </strong> {patients.clinician_code},
-                                 <strong>Clinician Class:</strong> {patients.clinician_class}, 
-                                 <strong>DOB:</strong> {mrn.dob}
-                            </li>
-                        ))
-                    ) : (
-                        <li>No tests available</li>
-                    )}
-                </ul>
+            <div className="p-3">
+                <h5>More Detail {data.clinician}</h5>
+                <DataTable value={Array.isArray(data.clinician) ? data.clinician : []}>
+                    <Column field="clinician_code" header="Clinician Code" sortable></Column>
+                    <Column field="clinician_class" header=" Clinicain Class" sortable></Column>
+                    <Column field="source_code" header="Source Code" sortable></Column>
+                    <Column field="source_class" header="Source Class" sortable></Column>
+                    <Column field="dateofRequest" header="Date Of Request" sortable></Column>
+                    <Column field="timeofRequest" header="Time of Request" sortable></Column>
+                    <Column field="dateofReceived" header="Date of Received" sortable></Column>
+                    <Column field="timeofReceived" header="Time of Received" sortable></Column>
+                </DataTable>
             </div>
         );
     };
@@ -158,7 +155,7 @@ function Homepage() {
             <div className='card'> 
                 <Toast ref={toast} />
                 <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
-                 filters={filters} filterDisplay="row" globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No customers found."
+                 filters={filters} filterDisplay="row" globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No patient found."
                  expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} onRowExpand={onRowExpand} onRowCollapse={onRowCollapse} rowExpansionTemplate={rowExpansionTemplate} dataKey="id">
                 <Column expander style={{ width: '5rem' }} />
                     <Column field="lab_no" header="Lab" sortable style={{ width: '25%' }}></Column>
