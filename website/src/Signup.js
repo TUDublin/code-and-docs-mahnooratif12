@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Signup = () => {
   const [forename, setForename] = useState('');
@@ -101,7 +103,7 @@ const Signup = () => {
               <br/>
               <button className="btn btn-default border w-100 bg-success rounded-0 text-decoration-none text-white" type="submit">Create Account</button>
                 <br/>
-              <button href="/login" className="btn btn-default border w-100 bg-dark rounded-0 text-decoration-none text-white">LogIn</button>
+                <Link to="/" className="btn btn-default border w-100 bg-dark rounded-0 text-decoration-none text-white">Log In</Link>
           </form>
       </div>
     </div>
