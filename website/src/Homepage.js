@@ -103,11 +103,21 @@ function Homepage() {
       
 
     const rowExpansionTemplate = (data) => {
+        if (!data.patients || data.patients.length === 0) {
+            return (
+                <div className="p-3">
+                    <h5>Test Result</h5>
+                    <p>No tests available</p>
+                </div>
+            );
+        }
+    
         return (
             <div className="p-3">
-                <h5>Test Result {data.patients}</h5>
-                <DataTable value={patients}>
-                <Column field="Na" header="Na" sortable></Column>
+                <h5>Test Result {data.mrn}</h5>
+                <DataTable value={data.mrn}>
+                    <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
+                    <Column field="Na" header="Na" sortable></Column>
                     <Column field="K" header="K" sortable></Column>
                     <Column field="Urea" header="Urea" sortable></Column>
                     <Column field="CRP" header="CRP" sortable></Column>
