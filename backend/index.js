@@ -9,6 +9,7 @@ import * as reference from './database/reference.js';
 import * as patient_test from './database/patient_test.js';
 import * as result from './database/result.js';
 import userRoutes from './database/user.js';
+// import * as passwordrest from './passwordrest.js'
 
 const PORT = 3061;  
 
@@ -20,6 +21,7 @@ app.use(userRoutes);
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 
+// passwordrest.insert();
 
 const patient_test_names = patient_test.getAllPatientTestNames(); 
 console.debug("patient_test_names", JSON.stringify(patient_test_names)); 
