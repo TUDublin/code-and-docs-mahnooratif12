@@ -29,21 +29,24 @@ function ForgotPassword() {
     };
 
     return (
-        <div>
-            <h2>Forgot Password</h2>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email">Enter your email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <div id="message">{message}</div>
+        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
+            <div className="bg-white p-3 rounded w-25">
+                <h2>Forgot Password</h2>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="email">Enter your email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            {/* <br/>
+            <div id="message" className="bg-white p-3 rounded w-25">{message}</div> */}
         </div>
     );
 }
