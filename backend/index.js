@@ -8,7 +8,8 @@ import * as age from './database/age.js';
 import * as reference from './database/reference.js';
 import * as patient_test from './database/patient_test.js';
 import * as result from './database/result.js';
-import userRoutes from './database/user.js';
+import * as user from './database/user.js';
+
 // import * as passwordrest from './passwordrest.js'
 
 const PORT = 3061;  
@@ -17,7 +18,6 @@ table.connect();
 
 const app = express(); 
 
-app.use(userRoutes);
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 
@@ -188,6 +188,28 @@ app.get('/patient', (req, res) => {
     });
     console.debug("Result: "+ JSON.stringify(patients)); 
     res.end(JSON.stringify(patients)); 
+});
+
+app.post('/user', (req, res) => {
+    req.on('data', function(data) { 
+        // console.log("Post request received. ");
+        console.log("Data: "+data);
+        data = JSON.parse(data);   
+        user.insert(data); 
+        res.sendStatus(200); 
+    }); 
+});
+
+
+app.get('/user', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    var users = users.getAllPatient(); 
+
+    console.debug("Result: "+ JSON.stringify(users)); 
+    res.end(JSON.stringify(users
+
+    )); 
 });
 
 

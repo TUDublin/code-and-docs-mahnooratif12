@@ -1,37 +1,22 @@
-import { Router } from 'express';
-import mysql from 'mysql';
+import * as dbexecutor from './dbexecutor.js'; 
 
-const router = Router();
+export function insert(dataRecord) { 
+    console.log("dataRecord: "+dataRecord); 
+    var query = getUserInsertQuery(dataRecord); 
+    dbexecutor.executeQuery(getUserInsertQuery(dataRecord)); 
+}
 
-// Create a MySQL connection
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'tuh'
-});
+function getUserInsertQuery(dataRecord) { 
+    return `INSERT INTO user (forename, lastname, user_name, email, password) `+ 
+    `VALUES ('${dataRecord['forename']}', '${dataRecord['lastname']}', '${dataRecord['user_name']}', '${dataRecord['email']}', '${dataRecord['password']}')`; 
+}
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-        return;
-    }
-    console.log('Connected to the MySQL database');
-});
+export function getAllUser() { 
+    var sqlQuery = getQueryAllUser(); 
+    var result = dbexecutor.executeQuery(sqlQuery); 
+    return result;
+}
 
-// Endpoint to create a new user
-router.post('/signup', (req, res) => {
-    const { forename, lastname, username, email, password } = req.body;
-    const insertUserQuery = 'INSERT INTO users (forename, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)';
-    
-    connection.query(insertUserQuery, [forename, lastname, username, email, password], (err, result) => {
-        if (err) {
-            console.error('Error inserting user:', err);
-            res.status(500).send('Error creating account');
-            return;
-        }
-        res.send('Account created successfully');
-    });
-});
-
-export default router;
+function getQueryAllUser() { 
+    return "SELECT * user FROM tuh.user"; 
+}

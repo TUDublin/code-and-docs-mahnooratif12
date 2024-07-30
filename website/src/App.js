@@ -4,7 +4,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Homepage from "./Homepage";
 import Importdata from "./Importdata";
-import Forgetpassword from "./Forgetpassword";
+import Forgetpassword from "./forgetpassword";
 
 
 function App() {
