@@ -204,12 +204,10 @@ app.post('/user', (req, res) => {
 app.get('/user', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*'); 
-    var users = users.getAllPatient(); 
+    var users = user.getAllUser(); 
 
     console.debug("Result: "+ JSON.stringify(users)); 
-    res.end(JSON.stringify(users
-
-    )); 
+    res.end(JSON.stringify(users)); 
 });
 
 

@@ -12,11 +12,9 @@ function getUserInsertQuery(dataRecord) {
 }
 
 export function getAllUser() { 
-    var sqlQuery = getQueryAllUser(); 
-    var result = dbexecutor.executeQuery(sqlQuery); 
-    return result;
+    return dbexecutor.executeQuery(getQueryAllUser());     
 }
 
 function getQueryAllUser() { 
-    return "SELECT * user FROM tuh.user"; 
+    return "SELECT * FROM tuh.user"; 
 }
