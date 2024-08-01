@@ -31,7 +31,7 @@ function Login() {
     };
 
     return (
-        <div className="d-flex justify-content-center align-items-center bg-info vh-100">
+        <div className="d-flex justify-content-center align-items-center bg-dark vh-100">
             <div className="bg-white p-3 rounded w-25">
                 <h2>Sign-In</h2>
                 <form onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ function Login() {
                         {errors.password && <span className="text-danger">{errors.password}</span>}
                     </div>
                     <button type="submit" className="btn btn-success w-100 rounded-0">Log in</button>
-                    <a href="/forgetpassword" className="btn btn-default border w-100 bg-primary rounded-0 text-decoration-none text-white">ForgetPassword</a>
+                    {/* <a href="/forgetpassword" className="btn btn-default border w-100 bg-primary rounded-0 text-decoration-none text-white">ForgetPassword</a> */}
                     <br/>
                     <Link to="/signup" className="btn btn-default border w-100 bg-dark rounded-0 text-decoration-none text-white">Create Account</Link>
                 </form>
