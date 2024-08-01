@@ -115,7 +115,7 @@ function Homepage() {
         return (
             <div className="p-3">
                 <h5>Test Result {data.patients}</h5>
-                <DataTable value={data.patients}>
+                <DataTable value={data.patients} >
                     <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
                     <Column field="Na" header="Na" sortable></Column>
                     <Column field="K" header="K" sortable></Column>
