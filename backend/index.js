@@ -18,8 +18,6 @@ table.connect();
 
 const app = express(); 
 
-// app.use(bodyParser.json());
-
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 
@@ -51,9 +49,6 @@ function getTestNameById(id) {
 function getAllTestNames() { 
     return Object.keys(patient_test_names); 
 }
-
-
-
 
 var patientId; 
 var clinicianId; 
@@ -202,11 +197,6 @@ app.post('/user', (req, res) => {
     });
 });
   
-
-// app.post('/signup', (req, res) => {
-   
-//   });
-
 app.get('/user', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*'); 
