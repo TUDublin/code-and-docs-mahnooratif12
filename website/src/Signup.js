@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import { json, Link } from 'react-router-dom';
 
 const Signup = () => {
   const [forename, setForename] = useState('');
@@ -8,6 +7,52 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+
+  function validateUserData(values) {
+    let error = {};
+    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+  
+    if (values.forename === "") {
+        error.forename = "Forename should not be empty";
+    } else {
+        error.forename = "";
+    }
+  
+    if (values.lastname === "") {
+        error.lastname = "Lastname should not be empty";
+    } else {
+        error.lastname = "";
+    }
+  
+    if (values.username === "") {
+        error.username = "Username should not be empty";
+    } else {
+        error.username = "";
+    }
+  
+    if (values.email === "") {
+        error.email = "Email should not be empty";
+    } else if (!email_pattern.test(values.email)) {
+        error.email = "Email didn't match the required pattern";
+    } else {
+        error.email = "";
+    }
+  
+    if (values.password === "") {
+        error.password = "Password should not be empty";
+    } else if (!password_pattern.test(values.password)) {
+        error.password = "Password should  contain atleast 8 character, atleast one uppercase, atleast one symbol ..... ";
+        
+    } else {
+        error.password = "";
+    }
+  
+    return error;
+  }
+  
+
 
   const handleSubmit = async (event) => {
     console.log("Create user request received. "); 
@@ -20,6 +65,12 @@ const Signup = () => {
       "email": email, 
       "password": password
     }; 
+
+    var error = validateUserData(user); 
+    if (error.password) { 
+      alert(error.password); 
+      return; 
+    }
 
     fetch('http://localhost:3061/user', {
       method: 'POST',
