@@ -10,18 +10,35 @@ const Signup = () => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event) => {
+    console.log("Create user request received. "); 
     event.preventDefault();
 
-    const response = await fetch('/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ forename, lastname, username, email, password }),
-    });
+    var user = { 
+      "forename": forename, 
+      "lastname": lastname, 
+      "username": username, 
+      "email": email, 
+      "password": password
+    }; 
 
-    const result = await response.text();
-    alert(result);
+    fetch('http://localhost:3061/user', {
+      method: 'POST',
+      mode: 'no-cors', 
+      headers: {
+          'Content-Type': 'application/json',                
+      },
+      body: JSON.stringify(user)
+    }).then((data) => {
+      if (data.error) {
+          console.error(data.error);
+      } else {
+          console.log('Data uploaded successfully:', data);          
+      }
+      window.location = '/';
+    })
+    .catch((error) => {
+        console.error('Error uploading data:', error);        
+    });
   };
 
   return (
@@ -39,10 +56,7 @@ const Signup = () => {
                  className='form-control rounded-0'
                  value={forename}
                  onChange={(e) => setForename(e.target.value)} required 
-                 
               />
-              
-
             </div>
             <div  className="mb-3">
                 <label htmlFor="lastname"><strong>Lastname:</strong></label>
@@ -54,9 +68,7 @@ const Signup = () => {
                   className='form-control rounded-0'
                   value={lastname}
                   onChange={(e) => setLastname(e.target.value)} required 
-                  
                 />
-                
             </div>
             <div>
               <label htmlFor="username"><strong>Username:</strong></label>
@@ -82,13 +94,10 @@ const Signup = () => {
                 className='form-control rounded-0'
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} required 
-                
               />
-              
             </div>
             <div>
               <label htmlFor="password"><strong>Password:</strong></label>
-              
               <input 
                 type="password" 
                 id="password" 
@@ -96,9 +105,7 @@ const Signup = () => {
                 className='form-control rounded-0'
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} required 
-              
               />
-              
             </div>
               <br/>
               <button className="btn btn-default border w-100 bg-success rounded-0 text-decoration-none text-white" type="submit">Create Account</button>
