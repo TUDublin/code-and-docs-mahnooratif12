@@ -61,8 +61,8 @@ function Homepage() {
 
     const renderHeader = () => {
         return (
-            <div className="flex justify-content-end">
-                <IconField iconPosition="left">
+            <div className="flex justify-content-right">
+                <IconField iconPosition="right">
                     <InputIcon className="pi pi-search" />
                     <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Keyword Search" />
                 </IconField>
@@ -114,8 +114,8 @@ function Homepage() {
     
         return (
             <div className="p-3">
-                <h5>Test Result {data.patients}</h5>
-                <DataTable value={data.patients} >
+                <h5>Test Result {patients}</h5>
+                <DataTable value={patients} tableStyle={{ minWidth: '50rem' }} showGridlines>
                     <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
                     <Column field="Na" header="Na" sortable></Column>
                     <Column field="K" header="K" sortable></Column>
@@ -170,7 +170,7 @@ function Homepage() {
             </div>
             <div className='card'> 
                 <Toast ref={toast} />
-                <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
+                <DataTable value={patients} removableSort sortField="mrn" sortOrder={-1} sortMode="multiple" showGridlines stripedRows paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }} 
                  filters={filters} filterDisplay="row" globalFilterFields={['lab_no', 'ocs_no', 'mrn', 'forename','surname','forename','dob','age','address1','address2','address3','phone_no']} header={header} emptyMessage="No patient found."
                  expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} onRowExpand={onRowExpand} onRowCollapse={onRowCollapse} rowExpansionTemplate={rowExpansionTemplate} dataKey="id">
                 <Column expander style={{ width: '5rem' }} />

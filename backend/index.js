@@ -18,6 +18,8 @@ table.connect();
 
 const app = express(); 
 
+// app.use(bodyParser.json());
+
 age.insert(); 
 reference.insert(); 
 patient_test.insert(); 
@@ -193,14 +195,15 @@ app.get('/patient', (req, res) => {
 app.post('/user', (req, res) => {
     // req.on('data', function(data) {
     //     -        // console.log("Post request received. ");
-    //     -        console.log("Data: "+data);
-    //     -        data = JSON.parse(data);
-    //     -        user.insert(data);
-    //     -        res.sendStatus(200);
+        // -        console.log("Data: "+data);
+        // -        data = JSON.parse(data);
+        // -        user.insert(data);
+        // -        res.sendStatus(200);
     //     -    });
         
     try {
-      const { forename, lastname, username, email, password } = req.body;
+         const {forename, lastname, username, email, password } = req.body;
+      
   
       // Basic validation
       if (!forename || !lastname || !username || !email || !password) {
