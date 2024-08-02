@@ -193,35 +193,14 @@ app.get('/patient', (req, res) => {
 });
 
 app.post('/user', (req, res) => {
-    // req.on('data', function(data) {
-    //     -        // console.log("Post request received. ");
-        // -        console.log("Data: "+data);
-        // -        data = JSON.parse(data);
-        // -        user.insert(data);
-        // -        res.sendStatus(200);
-    //     -    });
-        
-    try {
-         const {forename, lastname, username, email, password } = req.body;
-      
-  
-      // Basic validation
-      if (!forename || !lastname || !username || !email || !password) {
-        return res.status(400).send('All fields are required');
-      }
-  
-      // Simulate saving user to the database
-      user.insert({ forename, lastname, username, email, password });
-  
-      // Example user object
-      const newUser = { id: 1, forename, lastname, username, email, password };
-  
-      res.status(201).send({ message: 'User created successfully', user: newUser });
-    } catch (error) {
-      console.error('Error during signup:', error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
+    req.on('data', function(data) {
+        console.log("Post request received. ");
+        console.log("Data: "+data);
+        data = JSON.parse(data);
+        user.insert(data);
+        res.sendStatus(200);
+    });
+});
   
 
 // app.post('/signup', (req, res) => {

@@ -7,8 +7,8 @@ export function insert(dataRecord) {
 }
 
 function getUserInsertQuery(dataRecord) { 
-    return `INSERT INTO user (forename, lastname, user_name, email, password) `+ 
-    `VALUES ('${dataRecord['forename']}', '${dataRecord['lastname']}', '${dataRecord['user_name']}', '${dataRecord['email']}', '${dataRecord['password']}')`; 
+    return `INSERT INTO user (forename, lastname, username, email, password) `+ 
+    `VALUES ('${dataRecord['forename']}', '${dataRecord['lastname']}', '${dataRecord['username']}', '${dataRecord['email']}', '${dataRecord['password']}')`; 
 }
 
 export function getAllUser() { 

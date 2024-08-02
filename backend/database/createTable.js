@@ -84,16 +84,15 @@ const CREATE_REFERENCE_TABLE_QUERY = "CREATE TABLE `tuh`.`reference` ("+
     "`period` INT NOT NULL,"+
     "PRIMARY KEY (`id`))";
 
-
 //User table; 
 const CREATE_User_TABLE_QUERY = "CREATE TABLE `tuh`.`user` ( "+
-    "`user_id` INT NOT NULL AUTO_INCREMENT,"+
-    "`fore_name` VARCHAR(45) NOT NULL,"+
-    "`last_name` VARCHAR(45) NOT NULL,"+
-    "`user_name` VARCHAR(45) NOT NULL,"+
+    "`id` INT NOT NULL AUTO_INCREMENT,"+
+    "`forename` VARCHAR(45) NOT NULL,"+
+    "`lastname` VARCHAR(45) NOT NULL,"+
+    "`username` VARCHAR(45) NOT NULL,"+
     "`email` VARCHAR(45) NOT NULL,"+
     "`password` VARCHAR(45) NOT NULL," + 
-    "PRIMARY KEY (`User_id`))";
+    "PRIMARY KEY (`id`))";
 
 export function connect() {
     var connection = mysql.createConnection({
