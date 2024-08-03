@@ -20,7 +20,6 @@ function Homepage() {
     const [filters, setFilters] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-        'country.name': { value: null, matchMode: FilterMatchMode.STARTS_WITH },
         representative: { value: null, matchMode: FilterMatchMode.IN },
         status: { value: null, matchMode: FilterMatchMode.EQUALS },
         verified: { value: null, matchMode: FilterMatchMode.EQUALS }
@@ -102,8 +101,9 @@ function Homepage() {
    
       
 
-    const rowExpansionTemplate = (data) => {
-        if (!data.patients || data.patients.length === 0) {
+    const rowExpansionTemplate = (patient) => {
+        console.log("Data: "+JSON.stringify(patient)); 
+        if (!patient.mrn) {
             return (
                 <div className="p-3">
                     <h5>Test Result</h5>
@@ -111,29 +111,77 @@ function Homepage() {
                 </div>
             );
         }
-    
+        console.log("Data is available"); 
         return (
-            <div className="p-3">
-                <h5>Test Result {patients}</h5>
-                <DataTable value={patients} tableStyle={{ minWidth: '50rem' }} showGridlines>
-                    <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
-                    <Column field="Na" header="Na" sortable></Column>
-                    <Column field="K" header="K" sortable></Column>
-                    <Column field="Urea" header="Urea" sortable></Column>
-                    <Column field="CRP" header="CRP" sortable></Column>
-                    <Column field="TRIG" header="TRIG" sortable></Column>
-                    <Column field="HDL" header="HDL" sortable></Column>
-                    <Column field="FT4" header="FT4" sortable></Column>
-                    <Column field="TSH" header="TSH" sortable></Column>
-                    <Column field="PROT" header="PROT" sortable></Column>
-                    <Column field="ALT" header="ALT" sortable></Column>
-                    <Column field="GGT" header="GGT" sortable></Column>
-                    <Column field="Ca" header="Ca" sortable></Column>
-                    <Column field="TNHS" header="TNHS" sortable></Column>
-                    <Column field="BNPL" header="BNPL" sortable></Column>
-                </DataTable>
+            <div className='card-body card'>
+                 <h5 className=''>Patient Test Results</h5>
+                 <p><b>MRN:</b>{patient.mrn}</p>
+                <p><b>Na:</b>{patient.Na}</p>
+                <p><b>K:</b>{patient.K}</p>
+                <p><b>Urea:</b>{patient.Urea}</p>
+                <p><b>CRP:</b>{patient.CRP}</p>
+                <p><b>TRIG:</b>{patient.TRIG}</p>
+                <p><b>HDL:</b>{patient.HDL}</p>
+                <p><b>FT4:</b>{patient.FT4}</p>
+                <p><b>TSH:</b>{patient.TSH}</p>
+                <p><b>PROT:</b>{patient.PROT}</p>
+                <p><b>ALT:</b>{patient.ALT}</p>
+                <p><b>GGT:</b>{patient.GGT}</p>
+                <p><b>Ca:</b>{patient.Ca}</p>
+                <p><b>TNHS:</b>{patient.TNHS}</p>
+                <p><b>BNPL:</b>{patient.BNPL}</p> 
+                {/*<table className='table table-stripped'>
+                    <thead>
+                        <th><b>MRN</b></th>
+                        <th><b>Na</b></th>
+                        <th><b>K</b></th>
+                        <th><b>Urea</b></th>        
+                        <th><b>CRP</b></th>
+                        <th><b>TRIG</b></th>
+                        <th><b>HDL</b></th>
+                        <th><b>FT4</b></th>
+                        <th><b>TSH</b></th>
+                        <th><b>PROT</b></th>
+                        <th><b>ALT</b></th>
+                        <th><b>GGT</b></th>
+                        <th><b>Ca</b></th>
+                        <th><b>TNHS</b></th>
+                        <th><b>BNPL</b></th>
+                    </thead>
+                    <tbody>
+                        <tr>{patient.mrn}</tr>
+                        <tr></tr>
+                    </tbody>
+                </table> */}
+                
+
+               
+                
             </div>
-        );
+        ); 
+    
+        // return (
+        //     <div className="p-3">
+        //         <h5>Test Result {patient.mrn}</h5>
+        //         <DataTable value={patient} tableStyle={{ minWidth: '50rem' }} showGridlines>
+        //             <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
+        //             <Column field="Na" header="Na" sortable></Column>
+        //             <Column field="K" header="K" sortable></Column>
+        //             <Column field="Urea" header="Urea" sortable></Column>
+        //             <Column field="CRP" header="CRP" sortable></Column>
+        //             <Column field="TRIG" header="TRIG" sortable></Column>
+        //             <Column field="HDL" header="HDL" sortable></Column>
+        //             <Column field="FT4" header="FT4" sortable></Column>
+        //             <Column field="TSH" header="TSH" sortable></Column>
+        //             <Column field="PROT" header="PROT" sortable></Column>
+        //             <Column field="ALT" header="ALT" sortable></Column>
+        //             <Column field="GGT" header="GGT" sortable></Column>
+        //             <Column field="Ca" header="Ca" sortable></Column>
+        //             <Column field="TNHS" header="TNHS" sortable></Column>
+        //             <Column field="BNPL" header="BNPL" sortable></Column>
+        //         </DataTable>
+        //     </div>
+        // );
     };
     
     
