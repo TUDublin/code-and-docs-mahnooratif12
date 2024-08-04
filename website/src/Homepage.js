@@ -116,6 +116,7 @@ function Homepage() {
             <div className='card-body card'>
                  <h5 className=''>Patient Test Results</h5>
                  <p><b>MRN:</b>{patient.mrn}</p>
+                 {/* <p><b>MRN:</b>{patient.mrn}</p>
                 <p><b>Na:</b>{patient.Na}</p>
                 <p><b>K:</b>{patient.K}</p>
                 <p><b>Urea:</b>{patient.Urea}</p>
@@ -129,30 +130,105 @@ function Homepage() {
                 <p><b>GGT:</b>{patient.GGT}</p>
                 <p><b>Ca:</b>{patient.Ca}</p>
                 <p><b>TNHS:</b>{patient.TNHS}</p>
-                <p><b>BNPL:</b>{patient.BNPL}</p> 
-                {/*<table className='table table-stripped'>
-                    <thead>
-                        <th><b>MRN</b></th>
-                        <th><b>Na</b></th>
-                        <th><b>K</b></th>
-                        <th><b>Urea</b></th>        
-                        <th><b>CRP</b></th>
-                        <th><b>TRIG</b></th>
-                        <th><b>HDL</b></th>
-                        <th><b>FT4</b></th>
-                        <th><b>TSH</b></th>
-                        <th><b>PROT</b></th>
-                        <th><b>ALT</b></th>
-                        <th><b>GGT</b></th>
-                        <th><b>Ca</b></th>
-                        <th><b>TNHS</b></th>
-                        <th><b>BNPL</b></th>
+                <p><b>BNPL:</b>{patient.BNPL}</p>  */}
+                <table className='table table-stripped table-bordered table-sm table-responsive-sm'>
+                    <thead className='thead-dark'>
+                        <th><b>Test Names</b></th>
+                        <th><b>Result</b></th>
+                        <th><b>Normal Range</b></th>
+                        <th><b>Unit</b></th>        
+                    
                     </thead>
                     <tbody>
-                        <tr>{patient.mrn}</tr>
-                        <tr></tr>
+                        <tr>
+                            <td>Na</td> 
+                            <td>{patient.Na}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>K</td> 
+                            <td>{patient.K}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>Urea</td> 
+                            <td>{patient.Urea}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>CRP</td> 
+                            <td>{patient.CRP}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>TRIG</td> 
+                            <td>{patient.TRIG}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>HDL</td> 
+                            <td>{patient.HDL}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>FT4</td> 
+                            <td>{patient.FT4}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>TSH</td> 
+                            <td>{patient.TSH}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>PROT</td> 
+                            <td>{patient.PROT}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>ALT</td> 
+                            <td>{patient.ALT}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                         
+                        </tr>
+                        <tr>
+                            <td>GGT</td> 
+                            <td>{patient.GGT}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>Ca</td> 
+                            <td>{patient.Ca}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>TNHS</td> 
+                            <td>{patient.TNHS}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                        </tr>
+                        <tr>
+                            <td>BNPL</td> 
+                            <td>{patient.BNPL}</td>
+                            <td>{patient.ref_range}</td>
+                            <td>{patient.unit}</td>
+                           
+                        </tr>
                     </tbody>
-                </table> */}
+                </table>
                 
 
                
