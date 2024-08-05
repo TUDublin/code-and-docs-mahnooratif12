@@ -15,6 +15,137 @@ import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';        
 
 function Homepage() {
+    const test = { 
+        "Na" : { 
+            lowerLimit: 135, 
+            higherLimit: 145, 
+            unit: "mmol"
+        }, 
+        "K" :  {
+            lowerLimit:3.4,
+            higherLimit: 5.3,
+            unit : "mmol/L"
+        },
+        "Urea":{
+            lowerLimit: 1.0,
+            higherLimit:7.0,
+            unit: "mmol/L"
+        }, 
+        "Creatinine" : {
+            lowerLimit:14,
+            higherLimit: 184, 
+            unit : "umol/L"
+        },
+        "C Reactive Protein" : {
+            lowerLimit : 0,
+            higherLimit: 5, 
+            unit :"mg/L"
+        }, 
+        "Cholesterol" : {
+            lowerLimit: 5, 
+            unit : "mmol/L" 
+        }, 
+        "Triglyceride" : {
+            lowerLimit : 1.7,
+            unit : "mmol/L"
+        },
+        "Low Density Lipoprotein - Cholesterol" :{
+            lowerLimit: 3.0, 
+            unit : "mmol/L"
+        }, 
+        "Hight Density Lipoprotein - Cholesterol" : {
+            lowerLimitLimit: 1.2,
+            unit : "mmol/L"
+
+        }, 
+        "nonHigh Density Lipoprotein - Cholesterol" : {
+            lowerLimit: 3.8, 
+            unit : "mmol/L"
+
+        }, 
+        "Free thyroxine" : {
+            lowerLimit: 11, 
+            higherLimit: 32, 
+            unit: "pmol/L"
+        }, 
+        "Thyroid Stimulating Hormone" : {
+            lowerLimit : 0.3,
+            higherLimit : 15.2, 
+            unit : "mU/L", 
+        }, 
+        "Totoal Protein" : {
+            lowerLimit : 45, 
+            higherLimit: 85, 
+            unit : "g/L"
+        }, 
+        "Albumin" : {
+            lowerLimit : 50, 
+            higherLimit : 50, 
+            unit : "g/L"
+        },
+        "Total Billirubin" : {
+            lowerLimit: 200, 
+            unit : "umol/L"
+        },
+        "Alkaline Phosphatase ": {
+            lowerLimit : 449, 
+            unit : "IU/L"
+        }, 
+        "Alanine Aminotransferase" : {
+            lowerLimit : 45, 
+            unit: "IU/L"
+        }, 
+        "Gamma-Glutamyl transferase" : {
+            higherLimit: 120, 
+            unit : "IU/L"
+        }, 
+        "Total Prtein" : { 
+            lowerLimit: 45, 
+            higherLimit: 85, 
+            unit: "g/L"
+        }, 
+        "Albumin" : { 
+            lowerLimit : 30,
+            higherLimit: 50,
+            unit : "g/L"
+        }, 
+        "Calcium" : { 
+            lowerLimit : 1.48, 
+            higherLimit : 2.70, 
+            unit : "mmol/L"
+        },
+        "Corrected Calcium (Calculation)" : { 
+            lowerLimit : 1.48, 
+            higherLimit : 2.70, 
+            unit : "mmol/L"
+        },
+        "Phosphate" : {
+            lowerLimit : 0.8, 
+            higherLimit : 2.9, 
+            unit : "mmol/L"
+        }, 
+        "Magnesium" : {
+            lowerLimit: 0.1, 
+            higherLimit : 1.00, 
+            unit : "mmol/L"
+
+        },
+        "Vitamin D": { 
+            lowerLimit: 30, 
+            higherLimit : 50, 
+            unit: "nmol/L"
+        }, 
+        "Troponin" : {
+           lowerLimit: 14, 
+           unit: "ng/L"
+        },
+        "NT pro BNP" : {
+            lowerLimit: 300, 
+            unit: "pg/ml"
+        }
+
+
+    }; 
     const navigate = useNavigate();
     const [patients, setPatients] = useState([]); 
     const [filters, setFilters] = useState({
@@ -71,7 +202,9 @@ function Homepage() {
     
    
     const onRowExpand = (event) => {
-        toast.current.show({ severity: 'info', summary: 'Patient Expanded', detail: event.data.patients, life: 3000 });
+        
+        toast.current.show({ severity: 'info', summary: 'Patient Expanded', detail: event.data.patients, life: 3000 });       
+        
     };
 
     const onRowCollapse = (event) => {
@@ -103,6 +236,12 @@ function Homepage() {
 
     const rowExpansionTemplate = (patient) => {
         console.log("Data: "+JSON.stringify(patient)); 
+
+        // if (patient.Na > test.Na.higherLimit) { 
+        //     console.log("Chaning color of element patient_na_result to red. ")
+        //     document.getElementById('patient_na_result').style.color = 'red'; 
+        // }
+                
         if (!patient.mrn) {
             return (
                 <div className="p-3">
@@ -111,6 +250,19 @@ function Homepage() {
                 </div>
             );
         }
+
+        function getNaElement(patient) { 
+            console.log("patient.Na: "+patient.Na); 
+            console.log("test.Na.higherLimit: "+test.Na.higherLimit); 
+            console.log("patient.Na > test.Na.higherLimit: "+patient.Na > test.Na.higherLimit); 
+            if (patient.Na > test.Na.higherLimit) { 
+                return '<p  style="color:red">{patient.Na}</p>'; 
+            }
+            // console.log("Patient na result" +{patient.Na}) 
+            return patient.Na; 
+            
+        }
+        
         console.log("Data is available"); 
         return (
             <div className='card-body card'>
@@ -142,9 +294,9 @@ function Homepage() {
                     <tbody>
                         <tr>
                             <td>Na</td> 
-                            <td>{patient.Na}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td style={{color: ( patient.Na > test.Na.higherLimit || patient.Na < test.Na.lowerLimit ) ? "red" : "black"}}>{patient.Na}</td>
+                            <td>{test.Na.lowerLimit + " - " + test.Na.higherLimit}</td>
+                            <td>{test.Na.unit}</td>
                         </tr>
                         <tr>
                             <td>K</td> 
@@ -228,14 +380,13 @@ function Homepage() {
                            
                         </tr>
                     </tbody>
-                </table>
-                
-
-               
-                
+                </table>   
             </div>
+            
         ); 
     
+        
+
         // return (
         //     <div className="p-3">
         //         <h5>Test Result {patient.mrn}</h5>
