@@ -31,116 +31,116 @@ function Homepage() {
             higherLimit:7.0,
             unit: "mmol/L"
         }, 
-        "Creatinine" : {
+        "Crea" : {
             lowerLimit:14,
             higherLimit: 184, 
             unit : "umol/L"
         },
-        "C Reactive Protein" : {
+        "CRP" : {
             lowerLimit : 0,
             higherLimit: 5, 
             unit :"mg/L"
         }, 
-        "Cholesterol" : {
+        "Chol" : {
             lowerLimit: 5, 
             unit : "mmol/L" 
         }, 
-        "Triglyceride" : {
-            lowerLimit : 1.7,
+        "TRIG" : {
+            higherLimit : 1.7,
             unit : "mmol/L"
         },
-        "Low Density Lipoprotein - Cholesterol" :{
+        "LDL" :{
             lowerLimit: 3.0, 
             unit : "mmol/L"
         }, 
-        "Hight Density Lipoprotein - Cholesterol" : {
-            lowerLimitLimit: 1.2,
+        "HDL" : {
+            higherLimit: 1.2,
             unit : "mmol/L"
 
         }, 
-        "nonHigh Density Lipoprotein - Cholesterol" : {
-            lowerLimit: 3.8, 
+        "nonH" : {
+            higherLimit: 3.8, 
             unit : "mmol/L"
 
         }, 
-        "Free thyroxine" : {
+        "FT4" : {
             lowerLimit: 11, 
             higherLimit: 32, 
             unit: "pmol/L"
         }, 
-        "Thyroid Stimulating Hormone" : {
+        "TSH" : {
             lowerLimit : 0.3,
             higherLimit : 15.2, 
             unit : "mU/L", 
         }, 
-        "Totoal Protein" : {
+        "PROT" : {
             lowerLimit : 45, 
             higherLimit: 85, 
             unit : "g/L"
         }, 
-        "Albumin" : {
+        "ALB" : {
             lowerLimit : 50, 
             higherLimit : 50, 
             unit : "g/L"
         },
-        "Total Billirubin" : {
-            lowerLimit: 200, 
+        "TBIL" : {
+            higherLimit: 200, 
             unit : "umol/L"
         },
-        "Alkaline Phosphatase ": {
-            lowerLimit : 449, 
+        "ALKP": {
+            higherLimit : 449, 
             unit : "IU/L"
         }, 
-        "Alanine Aminotransferase" : {
-            lowerLimit : 45, 
+        "ALT" : {
+            higherLimit : 45, 
             unit: "IU/L"
         }, 
-        "Gamma-Glutamyl transferase" : {
+        "GGT" : {
             higherLimit: 120, 
             unit : "IU/L"
         }, 
-        "Total Prtein" : { 
+        "PROT" : { 
             lowerLimit: 45, 
             higherLimit: 85, 
             unit: "g/L"
         }, 
-        "Albumin" : { 
+        "ALB" : { 
             lowerLimit : 30,
             higherLimit: 50,
             unit : "g/L"
         }, 
-        "Calcium" : { 
+        "Ca" : { 
             lowerLimit : 1.48, 
             higherLimit : 2.70, 
             unit : "mmol/L"
         },
-        "Corrected Calcium (Calculation)" : { 
+        "CCA" : { 
             lowerLimit : 1.48, 
             higherLimit : 2.70, 
             unit : "mmol/L"
         },
-        "Phosphate" : {
+        "Phos" : {
             lowerLimit : 0.8, 
             higherLimit : 2.9, 
             unit : "mmol/L"
         }, 
-        "Magnesium" : {
+        "MG" : {
             lowerLimit: 0.1, 
             higherLimit : 1.00, 
             unit : "mmol/L"
 
         },
-        "Vitamin D": { 
+        "VID2 ": { 
             lowerLimit: 30, 
             higherLimit : 50, 
             unit: "nmol/L"
         }, 
-        "Troponin" : {
-           lowerLimit: 14, 
+        "TNHS" : {
+           higherLimit: 14, 
            unit: "ng/L"
         },
-        "NT pro BNP" : {
-            lowerLimit: 300, 
+        "BNPL" : {
+            higherLimit: 300, 
             unit: "pg/ml"
         }
 
@@ -266,8 +266,10 @@ function Homepage() {
         console.log("Data is available"); 
         return (
             <div className='card-body card'>
-                 <h5 className=''>Patient Test Results</h5>
-                 <p><b>MRN:</b>{patient.mrn}</p>
+                 <h5 className='text-bold'>Patient Test Results</h5>
+                 <p><b>MRN:</b>{patient.mrn} &emsp;<b>Name:</b>{patient.forename}{patient.surname} &emsp; <b>Age: </b> {patient.age} &emsp; <b>DOB: </b>{patient.dob} &emsp; <b>Gender: </b>{patient.gender} &emsp; <b>Phone No:</b>{patient.phone_no} &emsp; <b>Address:</b>{patient.address1}{patient.address2}{patient.address3}</p>
+                 <p><b>Clinicain Code: </b>{patient.clinician_code} &emsp; <b>Clinician Class: </b>{patient.clinician_class} &emsp; <b>Source Code: </b>{patient.source_code} &emsp; <b>Source Class: </b> {patient.source_class}</p> 
+                 <p><b>Date of Request: </b>{patient.dateofRequest} &emsp; <b>Date of Received: </b>{patient.dateofReceived} &emsp; <b>Time of Received: </b>{patient.timeofReceived} &emsp; <b>Time of Request: </b>{patient.timeofRequest}</p>
                  {/* <p><b>MRN:</b>{patient.mrn}</p>
                 <p><b>Na:</b>{patient.Na}</p>
                 <p><b>K:</b>{patient.K}</p>
@@ -284,7 +286,7 @@ function Homepage() {
                 <p><b>TNHS:</b>{patient.TNHS}</p>
                 <p><b>BNPL:</b>{patient.BNPL}</p>  */}
                 <table className='table table-stripped table-bordered table-sm table-responsive-sm'>
-                    <thead className='thead-dark'>
+                    <thead >
                         <th><b>Test Names</b></th>
                         <th><b>Result</b></th>
                         <th><b>Normal Range</b></th>
@@ -301,82 +303,82 @@ function Homepage() {
                         <tr>
                             <td>K</td> 
                             <td>{patient.K}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.K.lowerLimit + "-" + test.K.higherLimit}</td>
+                            <td>{test.K.unit}</td>
                         </tr>
                         <tr>
                             <td>Urea</td> 
                             <td>{patient.Urea}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.Urea.lowerLimit + "-" + test.Urea.higherLimit}</td>
+                            <td>{test.Urea.unit}</td>
                         </tr>
                         <tr>
                             <td>CRP</td> 
                             <td>{patient.CRP}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.CRP.lowerLimit + "-" + test.CRP.higherLimit}</td>
+                            <td>{test.CRP.unit}</td>
                         </tr>
                         <tr>
                             <td>TRIG</td> 
                             <td>{patient.TRIG}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{ "<" + test.TRIG.higherLimit + " (fasting)"}</td>
+                            <td>{test.TRIG.unit}</td>
                         </tr>
                         <tr>
                             <td>HDL</td> 
                             <td>{patient.HDL}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{ "< " + test.HDL.higherLimit}</td>
+                            <td>{test.HDL.unit}</td>
                         </tr>
                         <tr>
                             <td>FT4</td> 
                             <td>{patient.FT4}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.FT4.lowerLimit+ "-" + test.FT4.higherLimit}</td>
+                            <td>{test.FT4.unit}</td>
                         </tr>
                         <tr>
                             <td>TSH</td> 
                             <td>{patient.TSH}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.TSH.lowerLimit + " - " + test.TSH.higherLimit}</td>
+                            <td>{test.TSH.unit}</td>
                             
                         </tr>
                         <tr>
                             <td>PROT</td> 
                             <td>{patient.PROT}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.PROT.lowerLimit + " - " + test.PROT.higherLimit}</td>
+                            <td>{test.PROT.unit}</td>
                         </tr>
                         <tr>
                             <td>ALT</td> 
                             <td>{patient.ALT}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{ " < " + test.ALT.higherLimit}</td>
+                            <td>{test.ALT.unit}</td>
                          
                         </tr>
                         <tr>
                             <td>GGT</td> 
                             <td>{patient.GGT}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{" < " + test.GGT.higherLimit}</td>
+                            <td>{test.GGT.unit}</td>
                         </tr>
                         <tr>
                             <td>Ca</td> 
                             <td>{patient.Ca}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{test.Ca.lowerLimit + " - " + test.Ca.higherLimit }</td>
+                            <td>{test.Ca.unit}</td>
                         </tr>
                         <tr>
                             <td>TNHS</td> 
                             <td>{patient.TNHS}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{" < " +  test.TNHS.higherLimit}</td>
+                            <td>{test.TNHS.unit}</td>
                         </tr>
                         <tr>
                             <td>BNPL</td> 
                             <td>{patient.BNPL}</td>
-                            <td>{patient.ref_range}</td>
-                            <td>{patient.unit}</td>
+                            <td>{"< " + test.BNPL.higherLimit}</td>
+                            <td>{test.BNPL.unit}</td>
                            
                         </tr>
                     </tbody>
@@ -461,14 +463,14 @@ function Homepage() {
                     <Column field="address2" header="address2" sortable style={{ width: '25%' }}></Column>
                     <Column field="address3" header="address3" sortable style={{ width: '25%' }}></Column>
                     <Column field="phone_no" header="phone_no" sortable style={{ width: '25%' }}></Column>
-                    <Column field="clinician_code" header="Clinician Code" sortable></Column>
+                    {/* <Column field="clinician_code" header="Clinician Code" sortable></Column>
                     <Column field="clinician_class" header=" Clinicain Class" sortable></Column>
                     <Column field="source_code" header="Source Code" sortable></Column>
                     <Column field="source_class" header="Source Class" sortable></Column>
                     <Column field="dateofRequest" header="Date Of Request" sortable></Column>
                     <Column field="timeofRequest" header="Time of Request" sortable></Column>
                     <Column field="dateofReceived" header="Date of Received" sortable></Column>
-                    <Column field="timeofReceived" header="Time of Received" sortable></Column>
+                    <Column field="timeofReceived" header="Time of Received" sortable></Column> */}
                                      
                 </DataTable>
             </div>    
