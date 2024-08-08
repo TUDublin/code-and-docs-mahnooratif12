@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import Validation from './LoginValidation';
+
 
 function Login() {
     const [values, setValues] = useState({
@@ -8,6 +10,7 @@ function Login() {
         password: ''
     });
 
+    const [users, setUsers] = useState({});
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
@@ -19,16 +22,47 @@ function Login() {
         });
     };
 
+    function isValidUser(values) { 
+        console.info("Values: "+JSON.stringify(values)); 
+        for (var i=0; i<users.length; i++) { 
+            console.info("user: "+JSON.stringify(users[i])); 
+            console.info("1- ", users[i].email == values.email); 
+            console.info("2- ", users[i].password == values.password); 
+            if (users[i].email == values.email && users[i].password == values.password) { 
+                return true; 
+            }
+        }
+        return false; 
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const validationErrors = Validation(values);
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            // Navigate to Homepage if no validation errors
-            navigate('/Homepage');
+            if (!isValidUser(values)) { 
+                console.error("Invalid user. "); 
+                validationErrors.password = "Incorrect password or user name / email. ";
+            } else { 
+                // Navigate to Homepage if no validation errors
+                navigate('/Homepage');
+            }
         }
+
     };
+
+    useEffect(()=> { 
+        axios.get(`http://localhost:3061/user`, {    
+            method: 'GET',
+            mode: 'no-cors'
+        }).then(res => {
+            console.log('patients: '+ JSON.stringify(res.data)); 
+            setUsers(res.data); 
+        }); 
+    }, []); 
+
+
 
     return (
         <div className="d-flex justify-content-center align-items-center bg-dark vh-100">

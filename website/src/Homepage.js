@@ -386,31 +386,6 @@ function Homepage() {
             </div>
             
         ); 
-    
-        
-
-        // return (
-        //     <div className="p-3">
-        //         <h5>Test Result {patient.mrn}</h5>
-        //         <DataTable value={patient} tableStyle={{ minWidth: '50rem' }} showGridlines>
-        //             <Column field="mrn" header="MRN" sortable style={{ width: '25%' }}></Column>
-        //             <Column field="Na" header="Na" sortable></Column>
-        //             <Column field="K" header="K" sortable></Column>
-        //             <Column field="Urea" header="Urea" sortable></Column>
-        //             <Column field="CRP" header="CRP" sortable></Column>
-        //             <Column field="TRIG" header="TRIG" sortable></Column>
-        //             <Column field="HDL" header="HDL" sortable></Column>
-        //             <Column field="FT4" header="FT4" sortable></Column>
-        //             <Column field="TSH" header="TSH" sortable></Column>
-        //             <Column field="PROT" header="PROT" sortable></Column>
-        //             <Column field="ALT" header="ALT" sortable></Column>
-        //             <Column field="GGT" header="GGT" sortable></Column>
-        //             <Column field="Ca" header="Ca" sortable></Column>
-        //             <Column field="TNHS" header="TNHS" sortable></Column>
-        //             <Column field="BNPL" header="BNPL" sortable></Column>
-        //         </DataTable>
-        //     </div>
-        // );
     };
     
     
