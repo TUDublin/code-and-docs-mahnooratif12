@@ -1,0 +1,19 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Ensure the repository is checked out
+- checkout: self
+
+# Navigate to the correct directory and install dependencies
+- script: |
+    cd path/to/your/project
+    npm install
+  displayName: 'Install dependencies'
+
+# Build the React app
+- script: npm run build
+  displayName: 'Build React app'
