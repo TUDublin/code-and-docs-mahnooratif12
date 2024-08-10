@@ -11,6 +11,7 @@ steps:
 # Navigate to the correct directory and install dependencies
 - script: |
     cd website/package.json
+    cd backend/package.json
     npm install
   displayName: 'Install dependencies'
 
