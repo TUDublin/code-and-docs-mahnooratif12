@@ -10,7 +10,7 @@ steps:
 
 # Navigate to the correct directory and install dependencies
 - script: |
-    cd backend/package.json
+    cd website/package.json
     npm install
   displayName: 'Install dependencies'
 
