@@ -10,3 +10,6 @@
  *lock*
 project-settings
 */UAT Test
+* azure-pipelines.yml
+*.github/workflows/azure-static-web-apps-happy-ground-0c198590f.yml
+
