@@ -3,9 +3,9 @@
 */npm-debug.log
 */.env
 */.DS_Store
-# /package-lock.json 
-# /package.json
+ /package-lock.json 
+ /package.json
 */tag
-# */*lock*
-# *lock*
+ */*lock*
+ *lock*
 project-settings
