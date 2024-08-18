@@ -12,11 +12,27 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.x'
+    versionSpec: '18.x' # Updated to a more recent version of Node.js
   displayName: 'Install Node.js'
 
 - script: |
-    cd website/package.json
+    cd website
     npm install
     npm run build
   displayName: 'npm install and build'
+
+# Optional: Save build artifacts
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: 'website/build'
+#     artifactName: 'build'
+#   displayName: 'Publish Build Artifacts'
+
+# # Optional: Deployment step (adjust based on your deployment needs)
+# # Example for deploying to Azure Web App
+# - task: AzureWebApp@1
+#   inputs:
+#     azureSubscription: 'Azure for Students'
+#     appName: 'TUH'
+#     package: 'website/build'
+#   displayName: 'Deploy to Azure Web App'
