@@ -22,11 +22,11 @@ steps:
   displayName: 'npm install and build'
 
 # Optional: Save build artifacts
-# - task: PublishPipelineArtifact@1
-#   inputs:
-#     targetPath: 'website/build'
-#     artifactName: 'build'
-#   displayName: 'Publish Build Artifacts'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'website/build'
+    artifactName: 'build'
+  displayName: 'Publish Build Artifacts'
 
 # # Optional: Deployment step (adjust based on your deployment needs)
 # # Example for deploying to Azure Web App
