@@ -28,11 +28,12 @@ steps:
     artifactName: 'build'
   displayName: 'Publish Build Artifacts'
 
-# # Optional: Deployment step (adjust based on your deployment needs)
-# # Example for deploying to Azure Web App
-# - task: AzureWebApp@1
-#   inputs:
-#     azureSubscription: 'Azure for Students'
-#     appName: 'TUH'
-#     package: 'website/build'
-#   displayName: 'Deploy to Azure Web App'
+# Optional: Deployment step (adjust based on your deployment needs)
+# Example for deploying to Azure Web App
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure for Students'
+    appName: 'TUH'
+    package: 'website/build'
+    apptype: 'webApp' 
+  displayName: 'Deploy to Azure Web App'
