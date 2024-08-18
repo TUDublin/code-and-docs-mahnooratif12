@@ -267,10 +267,73 @@ function Homepage() {
         return (
             <div className='card-body card'>
                  <h5 className='text-bold'>Patient Test Results</h5>
+                 <p>
+                    <br/>
+                 </p>
+                 <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>MRN:</b>{patient.mrn.trim()}
+                            </td>      
+                            <td>
+                                <b>Name:</b>{patient.forename}{patient.surname}
+                            </td>      
+                            <td>
+                                <b>Age: </b> {patient.age}
+                            </td>      
+                            <td>
+                                <b>Gender: </b>{patient.gender}
+                            </td>      
+                            <td>
+                                <b>Phone No:</b>{patient.phone_no}
+                            </td>      
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Address:</b>{patient.address1}{patient.address2}{patient.address3}
+                            </td>      
+                            <td>
+                                <b>Clinicain Code: </b>{patient.clinician_code} 
+                            </td>      
+                            <td>
+                                <b>Clinician Class: </b>{patient.clinician_class} 
+                            </td>      
+                            <td>
+                                <b>Source Code: </b>{patient.source_code} 
+                            </td>      
+                            <td>
+                                <b>Source Class: </b> {patient.source_class}
+                            </td>      
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Date of Request: </b>{patient.dateofRequest} 
+                            </td>      
+                            <td>
+                                <b>Date of Received: </b>{patient.dateofReceived} 
+                            </td>      
+                            <td>
+                                <b>Time of Received: </b>{patient.timeofReceived} 
+                            </td>      
+                            <td>
+                                <b>Time of Request: </b>{patient.timeofRequest}
+                            </td>      
+                            <td>
+                                
+                            </td>      
+                        </tr>
+                    </tbody>
+                 </table>
+                 <p>
+                    <br/>
+                 </p>
+                 {/*
                  <p><b>MRN:</b>{patient.mrn} &emsp;<b>Name:</b>{patient.forename}{patient.surname} &emsp; <b>Age: </b> {patient.age} &emsp; <b>DOB: </b>{patient.dob} &emsp; <b>Gender: </b>{patient.gender} &emsp; <b>Phone No:</b>{patient.phone_no} &emsp; <b>Address:</b>{patient.address1}{patient.address2}{patient.address3}</p>
                  <p><b>Clinicain Code: </b>{patient.clinician_code} &emsp; <b>Clinician Class: </b>{patient.clinician_class} &emsp; <b>Source Code: </b>{patient.source_code} &emsp; <b>Source Class: </b> {patient.source_class}</p> 
                  <p><b>Date of Request: </b>{patient.dateofRequest} &emsp; <b>Date of Received: </b>{patient.dateofReceived} &emsp; <b>Time of Received: </b>{patient.timeofReceived} &emsp; <b>Time of Request: </b>{patient.timeofRequest}</p>
-                 {/* <p><b>MRN:</b>{patient.mrn}</p>
+                 
+                  <p><b>MRN:</b>{patient.mrn}</p>
                 <p><b>Na:</b>{patient.Na}</p>
                 <p><b>K:</b>{patient.K}</p>
                 <p><b>Urea:</b>{patient.Urea}</p>
@@ -302,42 +365,42 @@ function Homepage() {
                         </tr>
                         <tr>
                             <td>K</td> 
-                            <td>{patient.K}</td>
+                            <td style={{color: ( patient.K > test.K.higherLimit || patient.K < test.K.lowerLimit ) ? "red" : "black"}}>{patient.K}</td>
                             <td>{test.K.lowerLimit + "-" + test.K.higherLimit}</td>
                             <td>{test.K.unit}</td>
                         </tr>
                         <tr>
                             <td>Urea</td> 
-                            <td>{patient.Urea}</td>
+                            <td style={{color: ( patient.Urea > test.Urea.higherLimit || patient.Urea < test.Urea.lowerLimit ) ? "red" : "black"}}>{patient.Urea}</td>
                             <td>{test.Urea.lowerLimit + "-" + test.Urea.higherLimit}</td>
                             <td>{test.Urea.unit}</td>
                         </tr>
                         <tr>
                             <td>CRP</td> 
-                            <td>{patient.CRP}</td>
+                            <td style={{color: ( patient.CRP > test.CRP.higherLimit || patient.CRP < test.CRP.lowerLimit ) ? "red" : "black"}}>{patient.CRP}</td>
                             <td>{test.CRP.lowerLimit + "-" + test.CRP.higherLimit}</td>
                             <td>{test.CRP.unit}</td>
                         </tr>
                         <tr>
                             <td>TRIG</td> 
-                            <td>{patient.TRIG}</td>
+                            <td style={{color: ( patient.TRIG > test.TRIG.higherLimit || patient.TRIG < test.TRIG.lowerLimit ) ? "red" : "black"}}>{patient.TRIG}</td>
                             <td>{ "<" + test.TRIG.higherLimit + " (fasting)"}</td>
                             <td>{test.TRIG.unit}</td>
                         </tr>
                         <tr>
                             <td>HDL</td> 
-                            <td>{patient.HDL}</td>
+                            <td style={{color: ( patient.HDL > test.HDL.higherLimit || patient.HDL < test.HDL.lowerLimit ) ? "red" : "black"}}>{patient.HDL}</td>
                             <td>{ "< " + test.HDL.higherLimit}</td>
                             <td>{test.HDL.unit}</td>
                         </tr>
                         <tr>
                             <td>FT4</td> 
-                            <td>{patient.FT4}</td>
+                            <td style={{color: ( patient.FT4 > test.FT4.higherLimit || patient.FT4 < test.FT4.lowerLimit ) ? "red" : "black"}}>{patient.FT4}</td>
                             <td>{test.FT4.lowerLimit+ "-" + test.FT4.higherLimit}</td>
                             <td>{test.FT4.unit}</td>
                         </tr>
                         <tr>
-                            <td>TSH</td> 
+                            <td style={{color: ( patient.TSH > test.TSH.higherLimit || patient.TSH < test.TSH.lowerLimit ) ? "red" : "black"}}>TSH</td> 
                             <td>{patient.TSH}</td>
                             <td>{test.TSH.lowerLimit + " - " + test.TSH.higherLimit}</td>
                             <td>{test.TSH.unit}</td>
@@ -345,12 +408,12 @@ function Homepage() {
                         </tr>
                         <tr>
                             <td>PROT</td> 
-                            <td>{patient.PROT}</td>
+                            <td style={{color: ( patient.PROT > test.PROT.higherLimit || patient.PROT < test.PROT.lowerLimit ) ? "red" : "black"}} >{patient.PROT}</td>
                             <td>{test.PROT.lowerLimit + " - " + test.PROT.higherLimit}</td>
                             <td>{test.PROT.unit}</td>
                         </tr>
                         <tr>
-                            <td>ALT</td> 
+                            <td style={{color: ( patient.ALT > test.ALT.higherLimit || patient.ALT < test.ALT.lowerLimit ) ? "red" : "black"}}>ALT</td> 
                             <td>{patient.ALT}</td>
                             <td>{ " < " + test.ALT.higherLimit}</td>
                             <td>{test.ALT.unit}</td>
@@ -358,25 +421,25 @@ function Homepage() {
                         </tr>
                         <tr>
                             <td>GGT</td> 
-                            <td>{patient.GGT}</td>
+                            <td style={{color: ( patient.GGT > test.GGT.higherLimit || patient.GGT < test.GGT.lowerLimit ) ? "red" : "black"}}>{patient.GGT}</td>
                             <td>{" < " + test.GGT.higherLimit}</td>
                             <td>{test.GGT.unit}</td>
                         </tr>
                         <tr>
                             <td>Ca</td> 
-                            <td>{patient.Ca}</td>
+                            <td style={{color: ( patient.Ca > test.Ca.higherLimit || patient.Ca < test.Ca.lowerLimit ) ? "red" : "black"}}>{patient.Ca}</td>
                             <td>{test.Ca.lowerLimit + " - " + test.Ca.higherLimit }</td>
                             <td>{test.Ca.unit}</td>
                         </tr>
                         <tr>
                             <td>TNHS</td> 
-                            <td>{patient.TNHS}</td>
+                            <td style={{color: ( patient.TNHS > test.TNHS.higherLimit || patient.TNHS < test.TNHS.lowerLimit ) ? "red" : "black"}}>{patient.TNHS}</td>
                             <td>{" < " +  test.TNHS.higherLimit}</td>
                             <td>{test.TNHS.unit}</td>
                         </tr>
                         <tr>
                             <td>BNPL</td> 
-                            <td>{patient.BNPL}</td>
+                            <td style={{color: ( patient.BNPL > test.BNPL.higherLimit || patient.BNPL < test.BNPL.lowerLimit ) ? "red" : "black"}}>{patient.BNPL}</td>
                             <td>{"< " + test.BNPL.higherLimit}</td>
                             <td>{test.BNPL.unit}</td>
                            
