@@ -400,6 +400,7 @@ function Homepage() {
                             <td>{test.FT4.unit}</td>
                         </tr>
                         <tr>
+                            <td>TSH</td>
                             <td style={{color: ( patient.TSH > test.TSH.higherLimit || patient.TSH < test.TSH.lowerLimit ) ? "red" : "black"}}>TSH</td> 
                             <td>{patient.TSH}</td>
                             <td>{test.TSH.lowerLimit + " - " + test.TSH.higherLimit}</td>
@@ -413,6 +414,7 @@ function Homepage() {
                             <td>{test.PROT.unit}</td>
                         </tr>
                         <tr>
+                            <td>ALT</td>
                             <td style={{color: ( patient.ALT > test.ALT.higherLimit || patient.ALT < test.ALT.lowerLimit ) ? "red" : "black"}}>ALT</td> 
                             <td>{patient.ALT}</td>
                             <td>{ " < " + test.ALT.higherLimit}</td>
