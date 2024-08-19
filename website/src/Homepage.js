@@ -73,16 +73,16 @@ function Homepage() {
             higherLimit : 15.2, 
             unit : "mU/L", 
         }, 
-        "PROT" : {
-            lowerLimit : 45, 
-            higherLimit: 85, 
-            unit : "g/L"
-        }, 
-        "ALB" : {
-            lowerLimit : 50, 
-            higherLimit : 50, 
-            unit : "g/L"
-        },
+        // "PROT" : {
+        //     lowerLimit : 45, 
+        //     higherLimit: 85, 
+        //     unit : "g/L"
+        // }, 
+        // "ALB" : {
+        //     lowerLimit : 50, 
+        //     higherLimit : 50, 
+        //     unit : "g/L"
+        // },
         "TBIL" : {
             higherLimit: 200, 
             unit : "umol/L"
