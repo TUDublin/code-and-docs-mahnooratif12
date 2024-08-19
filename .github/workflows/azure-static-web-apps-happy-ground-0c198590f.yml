@@ -43,4 +43,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # For GitHub integrations (i.e. PR comments)
           action: "upload"
           app_location: "website/"  # The root of your app
-          output_location: "website/build"  # The output directory after the build step
+          output_location: "website/"  # The output directory after the build step
