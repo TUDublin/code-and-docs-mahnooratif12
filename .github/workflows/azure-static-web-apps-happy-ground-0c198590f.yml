@@ -26,11 +26,15 @@ jobs:
           node-version: '16' # Specify your Node.js version
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd website   # Navigate to the correct directory
+          npm install
 
       - name: Build the app
-        run: npm run build # Make sure this matches your build script
-
+        run: |
+          cd website   # Navigate to the correct directory
+          npm run build # Make sure this matches your build script
+          
       - name: Build and Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
