@@ -59,6 +59,7 @@
   },
   "proxy": "http://localhost:3061",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "css-loader": "^6.10.0",
     "style-loader": "^3.3.4"
   }
