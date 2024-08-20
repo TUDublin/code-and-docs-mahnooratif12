@@ -33,6 +33,11 @@ jobs:
           npm install
           npm run build
 
+      - name: List build directory contents
+        run: |
+          cd website
+          ls -la build
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
