@@ -1,51 +1,36 @@
-name: Azure Static Web Apps CI/CD
+name: Build and Deploy to Azure
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Specify your Node.js version
+          node-version: '18'
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: |
-          cd website   # Navigate to the correct directory
+          cd backend
           npm install
 
-      - name: Build the app
-        run: |
-          cd website   # Navigate to the correct directory
-          npm run build # Make sure this matches your build script
-
-      - name: List build directory contents
+      - name: Install frontend dependencies and build
         run: |
           cd website
-          ls -la build
+          npm install
+          npm run build
 
-      - name: Build and Deploy to Azure Static Web Apps
-        id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_GROUND_0C198590F }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # For GitHub integrations (i.e. PR comments)
-          action: "upload"
-          app_location: "website/"  # The root of your app
-          output_location: "build"  # The output directory after the build step
+          app-name: <your-app-name>
+          slot-name: production
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./website/build
