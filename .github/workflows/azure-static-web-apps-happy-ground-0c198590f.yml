@@ -34,7 +34,7 @@ jobs:
         run: |
           cd website   # Navigate to the correct directory
           npm run build # Make sure this matches your build script
-          
+
       - name: Build and Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -42,5 +42,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_HAPPY_GROUND_0C198590F }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # For GitHub integrations (i.e. PR comments)
           action: "upload"
-          app_location: "website/"  # The root of your app
-          output_location: "website/build/"  # The output directory after the build step
+          app_location: "website"  # The root of your app
+          output_location: "website/build"  # The output directory after the build step
