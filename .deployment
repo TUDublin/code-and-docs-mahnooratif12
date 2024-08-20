@@ -1,0 +1,4 @@
+[config]
+SCMPACKAGEBUILDIGNOREFILES=.git;.gitignore;.vscode;node_modules;tests;*.md
+SCM_BUILD_ARGS="npm install && npm run build"
+project=website

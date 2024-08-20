@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/8726d044-280a-45dc-912d-947779d9868a/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/TUH-mahnooratif",
+    "appService.deploySubpath": "."
+}
