@@ -138,7 +138,7 @@ function Importdata() {
             });
         }
         if (uploadedPatientMrn.length > 0) { 
-            alert(uploadedPatientMrn.length+" patients uploaded with nrm ["+JSON.stringify(uploadedPatientMrn)+"]"); 
+            alert(uploadedPatientMrn.length+" patients uploaded with mrn ["+JSON.stringify(uploadedPatientMrn)+"]"); 
         } else { 
             alert("All patients already present in DB, no new patient added. "); 
         }
