@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { json } from 'react-router-dom';
+
 
 function Importdata() {
     const DELIMITER = ',';
@@ -6,6 +9,7 @@ function Importdata() {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [parsedData, setParsedData] = useState([]);
+    const [patientmrn, setPatientmrn] = useState([]); 
     const [error, setError] = useState('');
 
     const handleLogout = () => {
@@ -16,6 +20,16 @@ function Importdata() {
         // Redirect to the login page
         // navigate('/login');
     };
+
+    useEffect(()=> { 
+        axios.get(`http://localhost:3061/patient/mrn`, {    
+            method: 'GET',
+            mode: 'no-cors'
+        }).then(res => {
+            console.log('patientmrn: '+ JSON.stringify(res.data)); 
+            setPatientmrn(res.data);             
+        }); 
+    }, []); 
 
 
     useEffect(() => {
@@ -72,6 +86,7 @@ function Importdata() {
     function handleSubmit(event) {
 
         console.log("Upload data. "); 
+        console.log("Existing partients mrn: "+JSON.stringify(patientmrn)); 
         // console.log("Parsed data ["+JSON.stringify(parsedData)+"]"); 
         event.preventDefault();
 
@@ -80,9 +95,17 @@ function Importdata() {
             return;
         }
 
+        var uploadedPatientMrn = []; 
+
         for (var i = 0; i<parsedData.length; i++ ) { 
             var data  = parsedData[i]; 
-            console.log("Send to backend ["+JSON.stringify(data)); 
+            console.log("Sending to backend ["+JSON.stringify(data)); 
+            if (patientmrn.includes(data['mrn'])) { 
+                alert("Patient already added. ");
+                continue; 
+            }
+            patientmrn.push(data['mrn']); 
+            uploadedPatientMrn.push(data['mrn']); 
             fetch('http://localhost:3061/upload/patient', {
                 method: 'POST',
                 mode: 'no-cors', 
@@ -106,12 +129,18 @@ function Importdata() {
                     setError('');
                     // Optionally, perform any additional actions after successful upload
                 }
+                
             })
             .catch((error) => {
                 console.error('Error uploading data:', error);
                 setError('Error uploading data: ' + error.message);
                 // Optionally, handle the error and provide feedback to the user
             });
+        }
+        if (uploadedPatientMrn.length > 0) { 
+            alert(uploadedPatientMrn.length+" patients uploaded with nrm ["+JSON.stringify(uploadedPatientMrn)+"]"); 
+        } else { 
+            alert("All patients already present in DB, no new patient added. "); 
         }
     }
     
