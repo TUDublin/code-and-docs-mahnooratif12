@@ -24,7 +24,6 @@ jobs:
 
       - name: Build frontend
         run: |
-          cd website
           npm run build
 
       - name: Deploy to Azure Web App
