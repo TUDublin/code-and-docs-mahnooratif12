@@ -1,4 +1,4 @@
-name: Build and Deploy to Azure
+name: Deploy Frontend
 
 on:
   push:
@@ -6,42 +6,30 @@ on:
       - main
 
 jobs:
-  build_and_deploy_job:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Install backend dependencies
-        run: |
-          cd backend
-          npm install
-
-      - name: Install frontend dependencies and build
+      - name: Install dependencies
         run: |
           cd website
           npm install
+
+      - name: Build frontend
+        run: |
+          cd website
           npm run build
-
-      - name: List build directory contents
-        run: |
-          cd website
-          ls -la build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: TUH-mahnooratif
-          slot-name: production
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
           package: ./website/build
