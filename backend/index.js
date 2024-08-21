@@ -187,6 +187,19 @@ app.get('/patient', (req, res) => {
     res.end(JSON.stringify(patients)); 
 });
 
+app.get('/patient/mrn', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    var patients = patient.getAllPatient(); 
+    var partientMrn = []; 
+
+    patients.forEach(element => {
+        partientMrn.push(element['mrn']); 
+    });
+    console.debug("Result: "+ JSON.stringify(partientMrn)); 
+    res.end(JSON.stringify(partientMrn)); 
+});
+
 app.post('/user', (req, res) => {
     req.on('data', function(data) {
         console.log("Post request received. ");
