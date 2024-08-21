@@ -401,7 +401,7 @@ function Homepage() {
                         </tr>
                         <tr>
                             <td>TSH</td>
-                            <td style={{color: ( patient.TSH > test.TSH.higherLimit || patient.TSH < test.TSH.lowerLimit ) ? "red" : "black"}}>TSH</td> 
+                            <td style={{color: ( patient.TSH > test.TSH.higherLimit || patient.TSH < test.TSH.lowerLimit ) ? "red" : "black"}}></td> 
                             <td>{patient.TSH}</td>
                             <td>{test.TSH.lowerLimit + " - " + test.TSH.higherLimit}</td>
                             <td>{test.TSH.unit}</td>
@@ -415,7 +415,7 @@ function Homepage() {
                         </tr>
                         <tr>
                             <td>ALT</td>
-                            <td style={{color: ( patient.ALT > test.ALT.higherLimit || patient.ALT < test.ALT.lowerLimit ) ? "red" : "black"}}>ALT</td> 
+                            <td style={{color: ( patient.ALT > test.ALT.higherLimit || patient.ALT < test.ALT.lowerLimit ) ? "red" : "black"}}></td> 
                             <td>{patient.ALT}</td>
                             <td>{ " < " + test.ALT.higherLimit}</td>
                             <td>{test.ALT.unit}</td>

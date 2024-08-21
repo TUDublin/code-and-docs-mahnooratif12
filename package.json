@@ -1,0 +1,7 @@
+{
+    "scripts": {
+      "build-backend": "cd backend && npm install ",
+      "build-website": "cd website && npm install && npm run build"
+    }
+  }
+  
